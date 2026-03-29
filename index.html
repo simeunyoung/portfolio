@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>심은영 — Backend Developer Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- MAC TITLE BAR -->
+<header class="mac-bar">
+  <!-- 신호등 -->
+  <div class="mac-dots">
+    <div class="mac-dot red" id="sbToggle" title="메뉴 열기/닫기"></div>
+    <div class="mac-dot yellow"></div>
+    <div class="mac-dot green"></div>
+  </div>
+  <!-- 타이틀 -->
+  <div class="mac-title">심은영 — Backend Developer Portfolio</div>
+  <!-- 오른쪽 -->
+  <div class="mac-right">
+    <button class="icon-btn theme-btn" id="themeBtn" title="테마 변경">
+      <i class="fas fa-moon" id="themeIcon"></i>
+    </button>
+  </div>
+</header>
+
+<div class="sb-overlay" id="sbOverlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <nav class="sb-nav">
+
+    <!-- 소개 -->
+    <div class="nav-grp" id="g-intro">
+      <div class="nav-grp-hdr">
+        <div class="nav-grp-hdr-ico" style="background:var(--accent)"><i class="fas fa-user"></i></div>
+        <span class="nav-grp-hdr-txt">소개</span>
+      </div>
+      <div class="nav-grp-items">
+        <a class="nav-item" href="#intro"><i class="fas fa-home"></i>홈</a>
+        <a class="nav-item" href="#about"><i class="fas fa-id-card"></i>소개</a>
+        <a class="nav-item" href="#techstack"><i class="fas fa-layer-group"></i>SKILL</a>
+        <a class="nav-item" href="#certifications"><i class="fas fa-award"></i>자격증</a>
+      </div>
+    </div>
+
+    <div class="sb-divider"></div>
+
+    <!-- 프로젝트 -->
+    <div class="nav-grp" id="g-proj">
+      <div class="nav-grp-hdr">
+        <div class="nav-grp-hdr-ico" style="background:var(--accent4)"><i class="fas fa-satellite-dish"></i></div>
+        <span class="nav-grp-hdr-txt">프로젝트</span>
+      </div>
+      <div class="nav-grp-items">
+        <a class="nav-item" href="#project"><i class="fas fa-list-alt"></i>개요</a>
+        <a class="nav-item" href="#architecture"><i class="fas fa-project-diagram"></i>아키텍처</a>
+      </div>
+    </div>
+
+    <div class="sb-divider"></div>
+
+    <!-- 상세 -->
+    <div class="nav-grp" id="g-svc">
+      <div class="nav-grp-hdr">
+        <div class="nav-grp-hdr-ico" style="background:var(--accent2)"><i class="fas fa-cubes"></i></div>
+        <span class="nav-grp-hdr-txt">상세</span>
+      </div>
+      <div class="nav-grp-items">
+        <a class="nav-item" href="#services"><i class="fas fa-users"></i>회원</a>
+        <a class="nav-item" href="#push"><i class="fas fa-bell"></i>알림</a>
+        <a class="nav-item" href="#security"><i class="fas fa-shield-alt"></i>인증서버</a>
+        <a class="nav-item" href="#eventengine"><i class="fas fa-bolt"></i>이벤트엔진</a>
+        <a class="nav-item" href="#devicecontrol"><i class="fas fa-microchip"></i>제어</a>
+        <a class="nav-item" href="#infra"><i class="fas fa-server"></i>인프라운영</a>
+      </div>
+    </div>
+
+    <div class="sb-divider"></div>
+
+    <!-- 문제해결 -->
+    <div class="nav-grp" id="g-trb">
+      <div class="nav-grp-hdr">
+        <div class="nav-grp-hdr-ico" style="background:var(--accent3)"><i class="fas fa-wrench"></i></div>
+        <span class="nav-grp-hdr-txt">문제해결</span>
+      </div>
+      <div class="nav-grp-items">
+        <a class="nav-item" href="#troubleshooting"><i class="fas fa-tools"></i>트러블슈팅</a>
+        <a class="nav-item" href="#improvements"><i class="fas fa-lightbulb"></i>개선</a>
+      </div>
+    </div>
+
+  </nav>
+  <div class="sb-footer">Backend Dev · 3yr 11mo</div>
+</aside>
+
+<!-- MAIN -->
+<div class="main" id="main">
+
+  <!-- HERO -->
+  <section id="intro" class="hero">
+    <div class="hero-bg"></div><div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-tag"><i class="fas fa-code"></i>Backend Developer · Portfolio 2026</div>
+      <h1 class="hero-name">심 은 영</h1>
+      <p class="hero-role">Backend Developer</p>
+      <div class="hero-kws">
+        <span class="hero-kw">IoT Platform</span>
+        <span class="hero-kw">AWS Cloud</span>
+        <span class="hero-kw">MSA</span>
+      </div>
+      <p class="hero-exp">총 경력 3년 11개월</p>
+      <div class="hero-contact">
+        <a href="/cdn-cgi/l/email-protection#7e1a0b1a1a124a4948483e19131f1712501d1113" class="cp"><i class="fas fa-envelope"></i><span class="__cf_email__" data-cfemail="5f3b2a3b3b336b6869691f38323e3633713c3032">[email&#160;protected]</span></a>
+        <a href="https://github.com/simeunyoung" class="cp" target="_blank"><i class="fab fa-github"></i>github.com/simeunyoung</a>
+        <a href="tel:010-4361-4766" class="cp"><i class="fas fa-mobile-alt"></i>010-4361-4766</a>
+        <a href="https://tech-notes-nu.vercel.app" class="cp" target="_blank"><i class="fas fa-pen-nib"></i>tech-notes-nu.vercel.app</a>
+      </div>
+      <!-- 모든 배지 동일 스타일 (파란 배경 흰 글씨) -->
+      <div class="hero-badges">
+        <span class="hb">Java 17</span>
+        <span class="hb">Spring Boot 3.2</span>
+        <span class="hb">Spring Security 6</span>
+        <span class="hb">AWS IoT Core</span>
+        <span class="hb">MariaDB</span>
+        <span class="hb">OAuth2.1</span>
+        <span class="hb">MQTT/TLS</span>
+        <span class="hb">AWS Lambda</span>
+        <span class="hb">Quartz</span>
+        <span class="hb">FCM</span>
+        <span class="hb">QueryDSL</span>
+        <span class="hb">WebFlux</span>
+      </div>
+    </div>
+    <div class="scroll-hint"><div class="scroll-line"></div><span>SCROLL</span></div>
+  </section>
+  <div class="sep"></div>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="section-header fi">
+      <span class="section-tag">About</span>
+      <h2 class="section-title">소개</h2>
+      <p class="section-desc">백엔드 개발자로서의 경험과 역량</p>
+    </div>
+    <div class="about-layout fi">
+      <div class="about-left">
+        <div class="about-card">
+          <div class="about-hdr"><i class="fas fa-user-circle"></i><span>About Me</span></div>
+          <p class="about-tx">Spring Boot 기반 백엔드 개발 및 AWS 인프라 운영 담당. 모놀리식 IoT 플랫폼을 MSA로 전면 재설계한 경험을 바탕으로 안정적이고 확장 가능한 시스템 구축을 지향합니다.</p>
+        </div>
+        <div class="about-card" style="margin-top:14px">
+          <div class="about-hdr"><i class="fas fa-briefcase"></i><span>Experience</span></div>
+          <p class="exp-total">총 경력 <strong>3년 11개월</strong></p>
+          <div class="exp-list">
+            <div class="exp-item">
+              <div class="exp-dot"></div>
+              <div><div class="exp-company">커머스톤컨설팅</div><div class="exp-period">2023.10 — 현재</div></div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-dot" style="background:var(--accent3)"></div>
+              <div><div class="exp-company">스텔스인터렉티브</div><div class="exp-period">2021.08 — 2023.02</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="about-card" style="margin-top:14px">
+          <div class="about-hdr"><i class="fas fa-graduation-cap"></i><span>Education</span></div>
+          <div class="exp-list">
+            <div class="exp-item">
+              <div class="exp-dot" style="background:var(--accent2)"></div>
+              <div><div class="exp-company">학점은행제 컴퓨터공학과</div><div class="exp-period">2021.09 — 2023.12</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-card" id="certifications">
+        <div class="about-hdr"><i class="fas fa-award"></i><span>Certificates</span></div>
+        <div class="cert-groups">
+          <div class="cert-group">
+            <div class="cert-group-lbl">주요 자격증</div>
+            <div class="exp-list">
+              <div class="exp-item"><div class="exp-dot" style="background:var(--accent4)"></div><div><div class="exp-company">정보처리기사</div><div class="exp-period">2023.06 · 한국산업인력공단</div></div></div>
+              <div class="exp-item"><div class="exp-dot" style="background:var(--accent2)"></div><div><div class="exp-company">리눅스마스터 2급</div><div class="exp-period">2024.10 · 한국정보통신진흥협회</div></div></div>
+              <div class="exp-item"><div class="exp-dot" style="background:var(--accent3)"></div><div><div class="exp-company">SQL 개발자 (SQLD)</div><div class="exp-period">2024.04 · 한국데이터산업진흥원</div></div></div>
+              <div class="exp-item"><div class="exp-dot" style="background:var(--accent)"></div><div><div class="exp-company">웹디자인기능사</div><div class="exp-period">2020.09 · 한국산업인력공단</div></div></div>
+            </div>
+          </div>
+          <div class="cert-group">
+            <div class="cert-group-lbl">그 외 자격증</div>
+            <div class="exp-list">
+              <div class="exp-item"><div class="exp-dot" style="background:var(--text3)"></div><div><div class="exp-company">ITQ 한글파워포인트 A등급</div><div class="exp-period">2012.08 · 한국산업인력공단</div></div></div>
+              <div class="exp-item"><div class="exp-dot" style="background:var(--text3)"></div><div><div class="exp-company">ITQ 한글엑셀 A등급</div><div class="exp-period">2013.03 · 한국생산성본부</div></div></div>
+              <div class="exp-item"><div class="exp-dot" style="background:var(--text3)"></div><div><div class="exp-company">GTQ 포토샵 1급</div><div class="exp-period">2013.07 · 한국생산성본부</div></div></div>
+              <div class="exp-item"><div class="exp-dot" style="background:var(--text3)"></div><div><div class="exp-company">GTQ 일러스트 2급</div><div class="exp-period">2013.11 · 한국생산성본부</div></div></div>
+              <div class="exp-item"><div class="exp-dot" style="background:var(--text3)"></div><div><div class="exp-company">펀드투자상담사</div><div class="exp-period">2013.03 · 한국금융투자협회</div></div></div>
+              <div class="exp-item"><div class="exp-dot" style="background:var(--text3)"></div><div><div class="exp-company">컴퓨터그래픽스운용기능사</div><div class="exp-period">2014.07 · 한국산업인력공단</div></div></div>
+              <div class="exp-item"><div class="exp-dot" style="background:var(--text3)"></div><div><div class="exp-company">2종보통운전면허 (오토)</div><div class="exp-period">2016.09 · 경찰청</div></div></div>
+              <div class="exp-item"><div class="exp-dot" style="background:var(--text3)"></div><div><div class="exp-company">전산회계 1급 (국가공인)</div><div class="exp-period">2016.12 · 한국세무사협회</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="sep"></div>
+
+  <!-- 기술 스택 -->
+  <section id="techstack" class="section">
+    <div class="section-header fi">
+      <span class="section-tag">Skills</span>
+      <h2 class="section-title">기술 스택</h2>
+      <p class="section-desc">안정적이고 확장 가능한 백엔드 시스템 구축을 위한 보유 역량</p>
+    </div>
+    <div class="ts-grid">
+      <div class="ts-card fi">
+        <div class="ts-hdr"><div class="ts-ico" style="background:var(--accent)"><i class="fas fa-server"></i></div><div class="ts-ttl">Backend Development</div></div>
+        <div class="ts-tags">
+          <div class="ts-tag"><i class="fab fa-java"></i>Java 17</div>
+          <div class="ts-tag"><i class="fas fa-leaf"></i>Spring Boot 3.2</div>
+          <div class="ts-tag"><i class="fas fa-shield-alt"></i>Spring Security 6</div>
+          <div class="ts-tag">Spring Auth Server</div>
+          <div class="ts-tag">WebFlux (Reactive)</div>
+          <div class="ts-tag">Quartz Scheduler</div>
+          <div class="ts-tag"><i class="fab fa-python"></i>Python</div>
+          <div class="ts-tag">OAuth 2.1 / OIDC</div>
+        </div>
+      </div>
+      <div class="ts-card fi">
+        <div class="ts-hdr"><div class="ts-ico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="ts-ttl">AWS Cloud Services</div></div>
+        <div class="ts-tags">
+          <div class="ts-tag">IoT Core</div><div class="ts-tag">Lambda</div><div class="ts-tag">EC2</div><div class="ts-tag">RDS</div><div class="ts-tag">S3</div><div class="ts-tag">API Gateway</div><div class="ts-tag">ALB</div><div class="ts-tag">CloudWatch</div><div class="ts-tag">CloudTrail</div><div class="ts-tag">IAM / STS</div><div class="ts-tag">EventBridge</div>
+        </div>
+      </div>
+      <div class="ts-card fi">
+        <div class="ts-hdr"><div class="ts-ico" style="background:var(--accent2)"><i class="fas fa-database"></i></div><div class="ts-ttl">Database & ORM</div></div>
+        <div class="ts-tags">
+          <div class="ts-tag">MariaDB</div><div class="ts-tag">JPA / Hibernate</div><div class="ts-tag">QueryDSL 5.0</div><div class="ts-tag">Native SQL</div><div class="ts-tag">MySQL</div>
+        </div>
+      </div>
+      <div class="ts-card fi">
+        <div class="ts-hdr"><div class="ts-ico" style="background:var(--accent3)"><i class="fas fa-tools"></i></div><div class="ts-ttl">Infra & DevOps</div></div>
+        <div class="ts-tags">
+          <div class="ts-tag"><i class="fab fa-linux"></i>Linux (systemd)</div><div class="ts-tag">Logrotate</div><div class="ts-tag">MQTT / Paho</div><div class="ts-tag"><i class="fab fa-git-alt"></i>Git (3-Env)</div><div class="ts-tag">FCM (Firebase)</div><div class="ts-tag">Tableau</div><div class="ts-tag">SSL/TLS (X.509)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="sep"></div>
+
+  <!-- PROJECT -->
+  <section id="project" class="section">
+    <div class="section-header fi">
+      <span class="section-tag">Project Overview</span>
+      <h2 class="section-title">DAMDA 2.0</h2>
+      <p class="section-desc">기존 모놀리식 IoT 플랫폼을 AWS 기반 MSA로 전면 재설계한 상용화 프로젝트</p>
+    </div>
+    <div class="proj-card fi">
+      <div class="proj-lbl"><i class="fas fa-satellite-dish"></i>IoT Platform Renewal</div>
+      <h3 class="proj-title">DAMDA 2.0 Project</h3>
+      <p class="proj-desc">스마트홈 IoT 디바이스 신규 버전 지원을 위해 기존 모놀리식 플랫폼을 <strong>AWS 기반의 MSA 구조</strong>로 전면 재설계한 상용화 프로젝트입니다.</p>
+      <div class="ov-grid">
+        <div class="ov-card"><div class="ov-ico" style="background:var(--accent)"><i class="fas fa-layer-group"></i></div><div class="ov-ttl">Microservices Architecture</div><div class="ov-desc">인증, 회원, 알림, 자동화, 제어 등 5개의 독립적인 Spring Boot 서비스로 구성하여 확장성 확보</div></div>
+        <div class="ov-card"><div class="ov-ico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="ov-ttl">AWS Serverless & IoT</div><div class="ov-desc">AWS IoT Core, Lambda x4, API Gateway를 활용한 이벤트 기반 서버리스 아키텍처 구현</div></div>
+        <div class="ov-card"><div class="ov-ico" style="background:var(--accent2)"><i class="fas fa-lock"></i></div><div class="ov-ttl">Security First</div><div class="ov-desc">OAuth2.1 + PKCE 인증, MQTT TLS 암호화, 개인정보 마스킹 등 보안 최우선 설계 적용</div></div>
+        <div class="ov-card"><div class="ov-ico" style="background:var(--accent3)"><i class="fas fa-check-circle"></i></div><div class="ov-ttl">Operational Excellence</div><div class="ov-desc">Dev/QA/Prod 3환경 분리, CI/CD, 시스템 모니터링 및 로그 표준화로 안정적인 운영 환경 구축</div></div>
+      </div>
+      <div class="stk-lbl">Core Tech Stack</div>
+      <div class="stk-tags">
+        <div class="stk-tag"><i class="fab fa-java"></i>Java 17</div><div class="stk-tag"><i class="fas fa-leaf"></i>Spring Boot 3.2</div><div class="stk-tag"><i class="fas fa-database"></i>MariaDB</div><div class="stk-tag"><i class="fab fa-aws"></i>AWS IoT Core</div><div class="stk-tag"><i class="fas fa-cubes"></i>MSA</div><div class="stk-tag"><i class="fas fa-bolt"></i>Event-Driven</div>
+      </div>
+    </div>
+  </section>
+  <div class="sep"></div>
+
+  <!-- ARCHITECTURE -->
+  <section id="architecture" class="section">
+    <div class="section-header fi">
+      <span class="section-tag">System Architecture</span>
+      <h2 class="section-title">전체 시스템 아키텍처</h2>
+      <p class="section-desc">모바일/웹 앱부터 AWS IoT Core까지 이어지는 전체 데이터 흐름과 MSA 구조</p>
+    </div>
+    <div class="arch-wrap fi">
+      <div class="arch-top"><div class="arch-top-ico"><i class="fas fa-project-diagram"></i></div><div class="arch-top-ttl">DAMDA 2.0 — System Architecture</div><span style="margin-left:auto;font-size:11px;color:var(--text3)">AWS VPC 기반 MSA</span></div>
+      <div class="arch-body">
+        <div class="arch-layer"><div class="arch-lhdr">External Clients</div><div class="arch-lcnt"><div class="arch-node"><i class="fas fa-mobile-alt" style="color:var(--accent)"></i>Mobile App</div><div class="arch-node"><i class="fas fa-laptop" style="color:var(--accent2)"></i>Web Console</div><div class="arch-node"><i class="fas fa-microchip" style="color:var(--accent5)"></i>IoT Device</div></div></div>
+        <div class="arch-arrow"><i class="fas fa-arrow-down"></i>HTTPS / MQTT(TLS)</div>
+        <div class="arch-layer"><div class="arch-lhdr">Gateway & Security — AWS VPC (Public Subnet)</div><div class="arch-lcnt"><div class="arch-node"><i class="fas fa-network-wired" style="color:var(--text3)"></i><span><div style="font-size:12px;font-weight:700">API Gateway</div><div class="arch-nsub">Routing & Throttling</div></span></div><div class="arch-node" style="border-left:3px solid var(--accent2)"><i class="fas fa-shield-alt" style="color:var(--accent2)"></i><span><div style="font-size:12px;font-weight:700">Auth Server</div><div class="arch-nsub">OAuth2.1 + PKCE</div></span></div></div></div>
+        <div class="arch-arrow"><i class="fas fa-arrow-down"></i>REST API / Internal Call</div>
+        <div class="arch-layer"><div class="arch-lhdr">Business Services — AWS ECS / EC2 (Private Subnet)</div>
+          <div class="arch-svcs">
+            <div class="ms-card" style="border-color:var(--accent)"><div class="ms-ico" style="background:var(--accent)"><i class="fas fa-users"></i></div><div class="ms-nm">회원 관리</div><div class="ms-dc">User Mgmt</div></div>
+            <div class="ms-card" style="border-color:var(--accent3)"><div class="ms-ico" style="background:var(--accent3)"><i class="fas fa-bell"></i></div><div class="ms-nm">푸시 알림</div><div class="ms-dc">Push Noti</div></div>
+            <div class="ms-card" style="border-color:var(--accent4)"><div class="ms-ico" style="background:var(--accent4)"><i class="fas fa-bolt"></i></div><div class="ms-nm">이벤트 엔진</div><div class="ms-dc">Automation</div></div>
+            <div class="ms-card" style="border-color:var(--accent5)"><div class="ms-ico" style="background:var(--accent5)"><i class="fas fa-sliders-h"></i></div><div class="ms-nm">디바이스 제어</div><div class="ms-dc">Device Ctrl</div></div>
+            <div class="ms-card" style="border-color:var(--accent2)"><div class="ms-ico" style="background:var(--accent2)"><i class="fas fa-database"></i></div><div class="ms-nm">데이터 수집</div><div class="ms-dc">Collection</div></div>
+          </div>
+        </div>
+        <div class="arch-arrow"><i class="fas fa-arrow-down"></i>JDBC / AWS SDK</div>
+        <div class="arch-layer"><div class="arch-lhdr">AWS Managed Services</div>
+          <div class="arch-infra">
+            <div class="infra-chip"><i class="fas fa-cloud"></i><div><div class="ic-ttl">AWS IoT Core</div><div class="ic-sub">MQTT Broker, Shadow</div></div></div>
+            <div class="infra-chip"><i class="fas fa-code-branch"></i><div><div class="ic-ttl">AWS Lambda</div><div class="ic-sub">Event Router, OTA Job</div></div></div>
+            <div class="infra-chip"><i class="fas fa-database"></i><div><div class="ic-ttl">Amazon RDS</div><div class="ic-sub">MariaDB (Multi-AZ)</div></div></div>
+            <div class="infra-chip"><i class="fas fa-chart-line"></i><div><div class="ic-ttl">CloudWatch</div><div class="ic-sub">Log & Monitoring</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="sep"></div>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="section-header fi"><span class="section-tag">Microservices</span><h2 class="section-title">회원 & 알림 서비스</h2><p class="section-desc">회원 관리 & 푸시 알림 마이크로서비스 구현 상세</p></div>
+    <div class="svc-grid">
+      <div class="svc-card fi">
+        <div class="svc-hdr"><div class="svc-ico" style="background:var(--accent)"><i class="fas fa-users-cog"></i></div><div><div class="svc-ttl">회원 관리 서비스</div><div class="svc-sub">Membership Management</div></div></div>
+        <div class="svc-body">
+          <div class="feat"><i class="fas fa-check-circle feat-chk"></i><div><div class="feat-ttl">회원 가입 및 인증 시스템</div><div class="feat-desc">아이디·이메일·휴대폰 중복 확인 및 무결성 검증 로직 구현</div><div class="feat-tags"><span class="ftag">Validation</span><span class="ftag">Duplication Check</span></div></div></div>
+          <div class="feat"><i class="fas fa-check-circle feat-chk"></i><div><div class="feat-ttl">SMS 본인 인증 (Aligo API)</div><div class="feat-desc">임시키 발급 → 문자 발송 → 코드 검증의 3단계 보안 프로세스</div><div class="feat-tags"><span class="ftag ftag-a">Aligo API</span><span class="ftag">Redis TTL</span></div></div></div>
+          <div class="feat"><i class="fas fa-check-circle feat-chk"></i><div><div class="feat-ttl">그룹 초대 워크플로우</div><div class="feat-desc">전화번호 기반 초대, 수락/거절 상태 관리 및 관리자 강제 퇴장</div></div></div>
+          <div class="feat"><i class="fas fa-check-circle feat-chk"></i><div><div class="feat-ttl">요청 추적 및 로깅</div><div class="feat-desc">비동기 환경에서의 분산 로그 추적을 위한 MDC traceId 적용</div><div class="feat-tags"><span class="ftag ftag-p">CachingFilter</span><span class="ftag">Interceptor</span><span class="ftag">MDC</span></div></div></div>
+        </div>
+      </div>
+      <div class="svc-card fi" id="push">
+        <div class="svc-hdr"><div class="svc-ico" style="background:var(--accent3)"><i class="fas fa-paper-plane"></i></div><div><div class="svc-ttl">푸시 알림 서비스</div><div class="svc-sub">Firebase Push Notification</div></div></div>
+        <div class="svc-body">
+          <div class="feat"><i class="fas fa-check-circle feat-chk" style="color:var(--accent3)"></i><div><div class="feat-ttl">FCM 토큰 고성능 UPSERT</div><div class="feat-desc">Native SQL 'ON DUPLICATE KEY UPDATE'를 활용하여 DB 부하 최소화 및 토큰 갱신 속도 극대화</div><div class="feat-tags"><span class="ftag ftag-g">Native SQL</span><span class="ftag">Performance</span></div></div></div>
+          <div class="feat"><i class="fas fa-check-circle feat-chk" style="color:var(--accent3)"></i><div><div class="feat-ttl">WebClient 기반 비동기 전송</div><div class="feat-desc">Spring WebFlux WebClient 사용 — 스레드 블로킹 없이 대량 알림 처리 (6초 타임아웃)</div><div class="feat-tags"><span class="ftag ftag-g">WebFlux</span><span class="ftag">Non-blocking</span></div></div></div>
+          <div class="feat"><i class="fas fa-check-circle feat-chk" style="color:var(--accent3)"></i><div><div class="feat-ttl">Access Token 자동 갱신</div><div class="feat-desc">만료 60초 전 선제적 캐시 갱신 로직으로 인증 실패 방지</div></div></div>
+          <div class="feat"><i class="fas fa-check-circle feat-chk" style="color:var(--accent3)"></i><div><div class="feat-ttl">토큰 생명주기 자동 관리</div><div class="feat-desc">FCM 404/Unregistered 에러 감지 시 유효하지 않은 토큰 즉시 자동 삭제</div><div class="feat-tags"><span class="ftag ftag-g">Garbage Collection</span><span class="ftag">Masking</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="sep"></div>
+
+  <!-- SECURITY -->
+  <section id="security" class="section">
+    <div class="section-header fi"><span class="section-tag">Security</span><h2 class="section-title">OAuth2.0 인증 서버</h2><p class="section-desc">Spring Authorization Server 기반 표준 인증 체계 구축 및 키 관리·토큰 구조 최적화</p></div>
+    <div class="oauth-layout fi">
+      <div class="oauth-panel">
+        <div class="pnl-hdr"><i class="fas fa-project-diagram"></i><span class="pnl-ttl">Authentication Flow</span></div>
+        <div class="flow-wrap">
+          <div class="flow-step"><div class="flow-num">1</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Authorize Request</div><div class="flow-dc">클라이언트 앱 → /oauth2/authorize</div></div></div>
+          <div class="flow-step"><div class="flow-num">2</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">PKCE Validation</div><div class="flow-dc">Code Challenge 검증 및 동의 화면</div></div></div>
+          <div class="flow-step"><div class="flow-num">3</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Login & Authentication</div><div class="flow-dc">사용자 자격 증명 확인 및 로그인 처리</div></div></div>
+          <div class="flow-step"><div class="flow-num">4</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Issue Auth Code</div><div class="flow-dc">Authorization Code 발급 (임시 코드)</div></div></div>
+          <div class="flow-step"><div class="flow-num">5</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Token Issuance (JWT)</div><div class="flow-dc">/oauth2/token → Access Token 발급</div></div></div>
+          <div class="flow-step"><div class="flow-num">6</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Public Key (JWKS)</div><div class="flow-dc">/oauth2/jwks 공개키 제공</div></div></div>
+          <div class="flow-step"><div class="flow-num">7</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Device Logout</div><div class="flow-dc">기기별 토큰 폐기, FCM 토큰 초기화</div></div></div>
+        </div>
+      </div>
+      <div class="oauth-panel">
+        <div class="pnl-hdr"><i class="fas fa-key"></i><span class="pnl-ttl">Key Management</span></div>
+        <div class="cmp-box">
+          <div class="cmp-side cmp-b"><div class="cmp-ttl"><i class="fas fa-exclamation-triangle"></i>Vulnerability</div><div class="cmp-item"><div class="cmp-nm">키 재생성 이슈</div><div class="cmp-dc">서버 재기동 시 RSA 키 재생성 → 기존 토큰 전체 무효화</div></div><div class="cmp-item"><div class="cmp-nm">광범위한 permitAll</div><div class="cmp-dc">/oauth2/** 패턴 전체 허용 → Auth Code 탈취 위험</div></div><div class="cmp-item"><div class="cmp-nm">Plain Text 로깅</div><div class="cmp-dc">민감 정보(토큰 등) 로그에 노출</div></div></div>
+          <div class="cmp-side cmp-a"><div class="cmp-ttl"><i class="fas fa-check-double"></i>Security Hardening</div><div class="cmp-item"><div class="cmp-nm">DB 기반 RSA 키 관리</div><div class="cmp-dc">DB에 RSA 키를 생성·저장하여, 기동 시 DB에서 조회해 사용하고 없으면 새로 생성 → 서버 재기동/다중 인스턴스 정합성 보장</div></div><div class="cmp-item"><div class="cmp-nm">OIDC 표준 준수</div><div class="cmp-dc">SecurityFilterChain 분리 및 커스텀 Userinfo OIDC 표준 전환</div></div><div class="cmp-item"><div class="cmp-nm">마스킹 로깅 도입</div><div class="cmp-dc">토큰 및 개인정보 마스킹 (앞 6자리만 노출)</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="sep"></div>
+
+  <!-- EVENT ENGINE -->
+  <section id="eventengine" class="section">
+    <div class="section-header fi"><span class="section-tag">Automation</span><h2 class="section-title">자동화 이벤트 엔진</h2><p class="section-desc">다양한 IoT 제어 방식 통합 및 이벤트 기반 아키텍처 개선</p></div>
+    <div class="evt-types fi">
+      <div class="type-card"><div class="type-ico" style="background:var(--accent)"><i class="fas fa-tasks"></i></div><div class="type-ttl">일괄 제어</div><div class="type-sub">Batch Control</div><div class="type-dc">버튼 하나로 여러 디바이스를 동시에 제어하는 수동 일괄 실행</div></div>
+      <div class="type-card"><div class="type-ico" style="background:var(--accent2)"><i class="fas fa-clock"></i></div><div class="type-ttl">스케줄링</div><div class="type-sub">Time Based</div><div class="type-dc">Quartz 1분 주기 스케줄링 — 요일/시간 기반 반복 예약 제어</div></div>
+      <div class="type-card"><div class="type-ico" style="background:var(--accent4)"><i class="fas fa-bolt"></i></div><div class="type-ttl">조건부 실행</div><div class="type-sub">Trigger & Action</div><div class="type-dc">디바이스 상태 변화 감지 시 설정된 조건에 따라 자동 제어</div></div>
+    </div>
+    <div class="entry-bar fi"><i class="fas fa-code"></i><span>EventEngine.execute() — 단일 실행 진입점</span></div>
+    <div class="arch-cmp fi">
+      <div class="acmp-side acmp-b">
+        <div class="cmp-ttl" style="font-size:13px;margin-bottom:12px"><i class="fas fa-times-circle" style="color:var(--red)"></i>Before — 강결합 구조</div>
+        <div class="arch-box">디바이스 제어 로직</div>
+        <div style="text-align:center;color:var(--text3);font-size:11px;padding:3px 0">↓ 동기 호출 (Direct Call)</div>
+        <div class="arch-box" style="border-color:rgba(255,69,58,.3)">푸시 알림 API 호출</div>
+        <div class="kpt"><div class="pt-bad">❌ Tightly Coupled</div><div class="pt-dc">외부 API 실패 시 디바이스 제어까지 <strong>전체 롤백</strong> 발생</div></div>
+      </div>
+      <div class="vs-badge">VS</div>
+      <div class="acmp-side acmp-a">
+        <div class="cmp-ttl" style="font-size:13px;margin-bottom:12px"><i class="fas fa-check-circle" style="color:var(--accent3)"></i>After — 이벤트 드리븐</div>
+        <div class="arch-box">디바이스 제어 로직</div>
+        <div style="text-align:center;color:var(--text3);font-size:11px;padding:3px 0">↓ publishEvent()</div>
+        <div class="arch-box" style="border-color:rgba(52,199,89,.3);background:rgba(52,199,89,.05)">Spring ApplicationEvent</div>
+        <div class="mini-tags"><div class="mini-tag">Push</div><div class="mini-tag">History</div><div class="mini-tag">Device</div></div>
+        <div class="kpt"><div class="pt-good">✅ Loose Coupling</div><div class="pt-dc">비동기 리스너 분리로 <strong>독립적 실패 처리</strong> 및 트랜잭션 분리</div></div>
+      </div>
+    </div>
+  </section>
+  <div class="sep"></div>
+
+  <!-- DEVICE CONTROL -->
+  <section id="devicecontrol" class="section">
+    <div class="section-header fi"><span class="section-tag">IoT</span><h2 class="section-title">디바이스 제어 서비스</h2><p class="section-desc">MQTT over SSL/TLS와 사가 보상 트랜잭션을 적용하여 신뢰성 있는 디바이스 제어 및 등록 프로세스 구현</p></div>
+    <div class="dev-layout">
+      <div class="dc-panel fi">
+        <div class="dc-ph"><i class="fas fa-stream"></i><div class="dc-pttl">디바이스 등록 흐름 (Registration Flow)</div></div>
+        <div class="dc-flow">
+          <div class="dc-step"><div class="dc-snum">1</div><div><div class="dc-sttl">서비스 DB 저장</div><div class="dc-sdc">사용자/그룹 관계 메타데이터 저장</div></div></div>
+          <div class="dc-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="dc-step"><div class="dc-snum">2</div><div><div class="dc-sttl">AWS IoT Core</div><div class="dc-sdc">Thing 생성 + 인증서 발급 + 정책 연결</div></div></div>
+          <div class="dc-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="dc-step"><div class="dc-snum">3</div><div><div class="dc-sttl">IoT 데이터베이스 저장</div><div class="dc-sdc">가등록 기록 저장 (ChainedTransactionManager)</div></div></div>
+          <div class="dc-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="dc-step"><div class="dc-snum">4</div><div><div class="dc-sttl">디바이스 부팅 & LWM2M 검증</div><div class="dc-sdc">MQTT Register 메시지 전송 및 URI 정합성 확인</div></div></div>
+        </div>
+        <div class="rollback"><i class="fas fa-exclamation-triangle"></i><span>중간 실패 시 rollbackRegistration() 실행 — Thing / Certificate / Policy 자동 삭제하여 리소스 고아 상태 방지</span></div>
+      </div>
+      <div class="dc-panel fi">
+        <div class="dc-ph"><i class="fas fa-cogs" style="color:var(--accent)"></i><div class="dc-pttl">핵심 기술 및 특징</div></div>
+        <div class="dc-feats">
+          <div class="dc-fcard"><div class="dc-fith"><div class="dc-fi fi-s"><i class="fas fa-lock"></i></div><div class="dc-fttl">MQTT over SSL/TLS</div></div><div class="dc-fdc">Eclipse Paho 클라이언트, 포트 8883, QoS 1 보장. X.509 인증서 기반 상호 TLS 인증으로 디바이스 통신 보안 강화.</div></div>
+          <div class="dc-fcard"><div class="dc-fith"><div class="dc-fi fi-t"><i class="fas fa-sync-alt"></i></div><div class="dc-fttl">Saga 보상 트랜잭션</div></div><div class="dc-fdc">서비스 DB → AWS Thing → IoT DB 순서. 실패 시 Spring Retry 3회 시도 후 수동 롤백으로 데이터 정합성 유지.</div></div>
+          <div class="dc-fcard"><div class="dc-fith"><div class="dc-fi fi-o"><i class="fas fa-cloud-download-alt"></i></div><div class="dc-fttl">OTA 펌웨어 업데이트</div></div><div class="dc-fdc">MCU / ESP32 구분 처리. MQTT로 최신 버전 전달. 상태 전이 추적으로 업데이트 신뢰성 확보.</div><div class="tmt"><span class="tm">LWM2M /3/0/3</span><span class="tm">MCU</span><span class="tm">ESP32</span></div></div>
+          <div class="dc-fcard"><div class="dc-fith"><div class="dc-fi fi-m"><i class="fas fa-sitemap"></i></div><div class="dc-fttl">LWM2M 리소스 모델</div></div><div class="dc-fdc">/ObjectId/InstanceId/ResourceId 체계 표준화. 디바이스 제어 및 센서 데이터를 계층적으로 관리.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="sep"></div>
+
+  <!-- INFRA -->
+  <section id="infra" class="section">
+    <div class="section-header fi"><span class="section-tag">Infrastructure</span><h2 class="section-title">AWS Lambda & 인프라 운영</h2><p class="section-desc">서버리스 함수 구현 및 안정적인 인프라 운영·자동화 경험</p></div>
+    <div class="lmb-layout">
+      <div class="lmb-panel fi">
+        <div class="lmb-hdr"><div class="lmb-hico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="lmb-ttl">Serverless Functions (Lambda)</div></div>
+        <div class="lmb-list">
+          <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">MqttEventRouter</span><span class="lmb-lg lg-n">Node.js</span></div><div class="lmb-dc">IoT Core MQTT sid 기반 메시지 라우팅 — 이벤트 엔진 / SmartThings API 연동 처리</div></div>
+          <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">HandleJobStatus</span><span class="lmb-lg lg-p">Python</span></div><div class="lmb-dc">OTA 업데이트 상태 실시간 추적</div><div class="ux-imp"><i class="fas fa-magic"></i>IN_PROGRESS 제거로 UX 개선</div></div>
+          <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">HandleIoTJobCreate</span><span class="lmb-lg lg-p">Python</span></div><div class="lmb-dc">OTA Job 생성·삭제 및 ThingGroup QUEUED 초기화 자동화</div></div>
+          <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">AGW-auth</span><span class="lmb-lg lg-n">Node.js</span></div><div class="lmb-dc">API Gateway 인증 함수 구현 (Custom Authorizer)</div></div>
+        </div>
+      </div>
+      <div class="lmb-panel fi">
+        <div class="lmb-hdr"><div class="lmb-hico" style="background:var(--text3)"><i class="fas fa-server"></i></div><div class="lmb-ttl">Infrastructure & DevOps</div></div>
+        <div class="inf-list">
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">logrotate 표준화:</span> 7개 전 서버 표준화 및 systemd 서비스 등록으로 안정성 확보</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">로그 관리 자동화:</span> crontab을 활용한 로그 압축 및 90일 이전 데이터 자동 삭제</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">계정 관리:</span> 리눅스 계정 만료 이슈 해결 (chage) 및 보안 설정 강화</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Network:</span> API Gateway 구축 (온프레미스 라우팅), ALB Response Time 모니터링</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Security & Audit:</span> CloudTrail 감사 로그 분석, ACM 인증서 갱신, SecurityGroup 주기적 검토</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Database:</span> RDS MariaDB 버전 업그레이드 일정 조율 및 SDS 보고</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Resource Ops:</span> EBS 볼륨 최적화, AMI 이미지 생성 관리, EC2 스케줄링 운영</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="sep"></div>
+
+  <!-- TROUBLESHOOTING -->
+  <section id="troubleshooting" class="section">
+    <div class="section-header fi"><span class="section-tag">Problem Solving</span><h2 class="section-title">트러블슈팅</h2><p class="section-desc">개발 및 운영 과정에서 발생한 주요 이슈와 해결 과정</p></div>
+    <div class="trb-grid">
+      <div class="trb-card fi"><div class="trb-top"><span class="trb-badge tb-s">Security</span><i class="fas fa-key" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">OAuth2 JWT 이중화 이슈<br>(재기동 시 로그아웃)</div><div class="prob-box"><span class="bx-lbl bl-p">Problem</span><p class="bx-tx">서버 재기동마다 키 재생성으로 인해 Sticky Session에 의존하게 되며, 무중단 배포 시 전체 사용자가 로그아웃되는 현상 발생</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">Solution</span><p class="bx-tx">DB에 RSA 키를 생성·저장하고 기동 시 DB에서 조회하는 방식으로 전환하여, 서버 재기동 시에도 키 일관성 유지 및 세션 유지 보장</p></div></div></div>
+      <div class="trb-card fi"><div class="trb-top"><span class="trb-badge tb-a">AWS IoT</span><i class="fas fa-cloud" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">OTA Lambda 미실행<br>(운영 계정 이슈)</div><div class="prob-box"><span class="bx-lbl bl-p">Problem</span><p class="bx-tx">개발 계정에서는 정상 작동하나, 운영 계정에서만 IoT Rule이 트리거되지 않고 CloudWatch 로그도 남지 않음</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">Solution</span><p class="bx-tx">AWS IoT Core Settings의 Event-based messages 설정에서 JOB_EXECUTION 이벤트가 운영 계정만 비활성 상태임을 확인 후 활성화</p></div></div></div>
+      <div class="trb-card fi"><div class="trb-top"><span class="trb-badge tb-u">UX</span><i class="fas fa-mobile-alt" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">OTA 완료 표시 지연<br>(상태 전이 문제)</div><div class="prob-box"><span class="bx-lbl bl-p">Problem</span><p class="bx-tx">Lambda에서 IN_PROGRESS 상태를 저장하면서 앱의 업데이트 완료 표시가 수 초 늦게 사라져 사용자 경험 저하</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">Solution</span><p class="bx-tx">IN_PROGRESS DB 저장 로직을 제거하고, 상태 전이 가드(SUCCEEDED 덮어쓰기 방지)를 추가하여 반응 속도 개선</p></div></div></div>
+    </div>
+  </section>
+  <div class="sep"></div>
+
+  <!-- IMPROVEMENTS -->
+  <section id="improvements" class="section">
+    <div class="section-header fi"><span class="section-tag">Initiative</span><h2 class="section-title">주도적 개선 경험</h2><p class="section-desc">시스템 안정성과 운영 효율성을 높이기 위한 기술적 도전과 해결 과정</p></div>
+    <div class="imp-grid">
+      <div class="imp-panel fi"><div class="imp-hdr l"><div class="imp-ico" style="background:var(--accent)"><i class="fas fa-code"></i></div><div class="imp-ttl">Code & Security</div><span class="imp-sub">Refactoring</span></div>
+        <div class="imp-body">
+          <div class="imp-item"><i class="fas fa-check-circle imp-chk ic-l"></i><div><div class="imp-nm">자동화 엔진 이벤트 드리븐 리팩토링</div><div class="imp-dc">API 직접 호출의 강결합 구조를 Spring Event 비동기 방식으로 전환하여 서비스 간 의존성 제거 및 독립적 실패 처리 구현</div><div class="imp-tags"><span class="itag">Loose Coupling</span><span class="itag">Async Event</span></div></div></div>
+          <div class="imp-item"><i class="fas fa-check-circle imp-chk ic-l"></i><div><div class="imp-nm">전체 서비스 로그 구조 표준화</div><div class="imp-dc">Service 계층의 파편화된 로그를 Filter/Interceptor로 분리하고 MDC traceId를 도입하여 요청 흐름 추적성 확보</div><div class="imp-tags"><span class="itag">MDC</span><span class="itag">AOP</span><span class="itag">Tracing</span></div></div></div>
+          <div class="imp-item"><i class="fas fa-check-circle imp-chk ic-l"></i><div><div class="imp-nm">인증 서버 보안 고도화</div><div class="imp-dc">Code 탈취 취약점 대응을 위해 PKCE 활성화 및 OIDC 표준 적용, 불필요한 permitAll 제거로 보안 수준 강화</div><div class="imp-tags"><span class="itag">OAuth2.1</span><span class="itag">PKCE</span><span class="itag">OIDC</span></div></div></div>
+        </div>
+      </div>
+      <div class="imp-panel fi"><div class="imp-hdr r"><div class="imp-ico" style="background:var(--accent3)"><i class="fas fa-server"></i></div><div class="imp-ttl">Infra & Architecture</div><span class="imp-sub">DevOps & Optimization</span></div>
+        <div class="imp-body">
+          <div class="imp-item"><i class="fas fa-check-circle imp-chk ic-r"></i><div><div class="imp-nm">Git 브랜치 전략 수립 & 문서화</div><div class="imp-dc">3-Tier(Dev/Release/Main) 전략 및 Conventional Commits 도입으로 배포 환경 혼선 방지 및 협업 효율 증대</div><div class="imp-tags"><span class="itag">Git Flow</span><span class="itag">Convention</span></div></div></div>
+          <div class="imp-item"><i class="fas fa-check-circle imp-chk ic-r"></i><div><div class="imp-nm">Systemd 서비스 전환</div><div class="imp-dc">nohup 방식의 불안정성을 해결하기 위해 Systemd로 이관하여 자동 재시작 및 Graceful Shutdown 보장</div><div class="imp-tags"><span class="itag">Reliability</span><span class="itag">Linux</span></div></div></div>
+          <div class="imp-item"><i class="fas fa-check-circle imp-chk ic-r"></i><div><div class="imp-nm">내부 네트워크 경로 최적화</div><div class="imp-dc">외부 ALB 경유로 인한 Timeout 이슈 해결을 위해 Internal NLB 및 Private DNS 도입 방안 분석 및 제안</div><div class="imp-tags"><span class="itag">Network Optimization</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <footer class="closing">
+    <div class="closing-bg"></div>
+    <div style="position:relative;z-index:1;text-align:center">
+      <div class="cl-name">감사합니다</div>
+      <div class="cl-role">심은영</div>
+      <div class="cl-badge">Backend Developer</div>
+      <div class="cl-cards">
+        <a href="/cdn-cgi/l/email-protection#2c4859484840181b1a1a6c4b414d4540024f4341" class="cl-card"><div class="cl-ico" style="background:var(--accent)"><i class="fas fa-envelope"></i></div><div class="cl-lbl">Email</div><div class="cl-val"><span class="__cf_email__" data-cfemail="0e6a7b6a6a623a3938384e69636f6762206d6163">[email&#160;protected]</span></div></a>
+        <a href="https://github.com/simeunyoung" target="_blank" class="cl-card"><div class="cl-ico" style="background:#24292e"><i class="fab fa-github"></i></div><div class="cl-lbl">GitHub</div><div class="cl-val">github.com/simeunyoung</div></a>
+        <a href="https://tech-notes-nu.vercel.app" target="_blank" class="cl-card"><div class="cl-ico" style="background:var(--accent3)"><i class="fas fa-pen-nib"></i></div><div class="cl-lbl">Tech Blog</div><div class="cl-val">tech-notes-nu.vercel.app</div></a>
+      </div>
+      <div class="quote-box"><div class="q-ico"><i class="fas fa-quote-left"></i></div><p class="q-tx">"사용자를 행복하게 하는 안정적이고 확장 가능한<br>IoT 백엔드 플랫폼을 만들어가겠습니다."</p></div>
+    </div>
+  </footer>
+
+</div><!-- .main -->
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="scripts.js" defer></script>
+</body>
+</html>
