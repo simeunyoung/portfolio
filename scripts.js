@@ -60,6 +60,15 @@ document.querySelectorAll('.nav-grp').forEach(grp => {
   });
 });
 
+// Scroll to top button
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+if (scrollTopBtn) {
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+  }, {passive:true});
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+}
+
 // Progress bar
 const pb = document.getElementById('progressBar');
 window.addEventListener('scroll', () => {
@@ -76,7 +85,7 @@ document.querySelectorAll('.fi').forEach(el => fobs.observe(el));
 
 // Active nav based on sections
 const nitems = document.querySelectorAll('.nav-item');
-const allTargets = document.querySelectorAll('section[id], [id="certifications"], [id="push"]');
+const allTargets = document.querySelectorAll('section[id]');
 const nobs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting){
