@@ -348,7 +348,7 @@ a{color:inherit;text-decoration:none}p{margin:0}
 .trb-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .trb-top{padding:14px 16px;background:var(--bg3);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border2)}
 .trb-badge{font-size:11px;font-weight:700;padding:3px 8px;border-radius:5px}
-.tb-s{background:rgba(255,69,58,.1);color:var(--red)}.tb-a{background:rgba(255,149,0,.1);color:var(--accent4)}.tb-u{background:rgba(88,86,214,.1);color:var(--accent2)}
+.tb-s{background:rgba(255,69,58,.1);color:var(--red)}.tb-a{background:rgba(255,149,0,.1);color:var(--accent4)}.tb-u{background:rgba(88,86,214,.1);color:var(--accent2)}.tb-c{background:rgba(0,113,227,.1);color:var(--accent)}.tb-g{background:rgba(52,199,89,.1);color:var(--accent3)}
 .trb-body{padding:16px}
 .trb-ttl{font-size:14px;font-weight:800;color:var(--text);line-height:1.35;margin-bottom:12px}
 .prob-box{background:rgba(255,69,58,.05);border-left:3px solid var(--red);border-radius:0 var(--r3) var(--r3) 0;padding:11px;margin-bottom:7px}
