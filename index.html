@@ -357,12 +357,11 @@
         <div class="pnl-hdr"><i class="fas fa-project-diagram"></i><span class="pnl-ttl">Authentication Flow</span></div>
         <div class="flow-wrap">
           <div class="flow-step"><div class="flow-num">1</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Authorize Request</div><div class="flow-dc">클라이언트 앱 → /oauth2/authorize</div></div></div>
-          <div class="flow-step"><div class="flow-num">2</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">PKCE Validation</div><div class="flow-dc">Code Challenge 검증 및 동의 화면</div></div></div>
-          <div class="flow-step"><div class="flow-num">3</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Login & Authentication</div><div class="flow-dc">사용자 자격 증명 확인 및 로그인 처리</div></div></div>
-          <div class="flow-step"><div class="flow-num">4</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Issue Auth Code</div><div class="flow-dc">Authorization Code 발급 (임시 코드)</div></div></div>
-          <div class="flow-step"><div class="flow-num">5</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Token Issuance (JWT)</div><div class="flow-dc">/oauth2/token → Access Token 발급</div></div></div>
-          <div class="flow-step"><div class="flow-num">6</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Public Key (JWKS)</div><div class="flow-dc">/oauth2/jwks 공개키 제공</div></div></div>
-          <div class="flow-step"><div class="flow-num">7</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Device Logout</div><div class="flow-dc">기기별 토큰 폐기, FCM 토큰 초기화</div></div></div>
+          <div class="flow-step"><div class="flow-num">2</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Login & Authentication</div><div class="flow-dc">사용자 자격 증명 확인 및 로그인 처리</div></div></div>
+          <div class="flow-step"><div class="flow-num">3</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Issue Auth Code</div><div class="flow-dc">Authorization Code 발급 (임시 코드)</div></div></div>
+          <div class="flow-step"><div class="flow-num">4</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Token Issuance (JWT)</div><div class="flow-dc">/oauth2/token → Access Token 발급</div></div></div>
+          <div class="flow-step"><div class="flow-num">5</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Public Key (JWKS)</div><div class="flow-dc">/oauth2/jwks 공개키 제공</div></div></div>
+          <div class="flow-step"><div class="flow-num">6</div><div class="flow-ln"></div><div class="flow-cnt"><div class="flow-ttl">Device Logout</div><div class="flow-dc">기기별 토큰 폐기, FCM 토큰 초기화</div></div></div>
         </div>
       </div>
       <div class="oauth-panel">
@@ -408,7 +407,7 @@
 
   <!-- DEVICE CONTROL -->
   <section id="devicecontrol" class="section">
-    <div class="section-header fi"><span class="section-tag">IoT</span><h2 class="section-title">디바이스 제어 서비스</h2><p class="section-desc">MQTT over SSL/TLS와 사가 보상 트랜잭션을 적용하여 신뢰성 있는 디바이스 제어 및 등록 프로세스 구현</p></div>
+    <div class="section-header fi"><span class="section-tag">IoT</span><h2 class="section-title">디바이스 제어 서비스</h2><p class="section-desc">기존 서비스 인계받아 운영. OTA 펌웨어 업데이트 구조 개선 및 관련 트러블슈팅 담당</p></div>
     <div class="dev-layout">
       <div class="dc-panel fi">
         <div class="dc-ph"><i class="fas fa-stream"></i><div class="dc-pttl">디바이스 등록 흐름 (Registration Flow)</div></div>
@@ -452,13 +451,12 @@
       <div class="lmb-panel fi">
         <div class="lmb-hdr"><div class="lmb-hico" style="background:var(--text3)"><i class="fas fa-server"></i></div><div class="lmb-ttl">Infrastructure & DevOps</div></div>
         <div class="inf-list">
-          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">logrotate 표준화:</span> 7개 전 서버 표준화 및 systemd 서비스 등록으로 안정성 확보</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">logrotate 표준화:</span> 서버마다 파편화된 로그 로테이션 설정을 /etc/logrotate.d/ 기준으로 통일. 크기 기반 분할(size), gzip 압축, 보존 기간 표준화를 전 서버(7대)에 일괄 적용</div></div>
           <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">로그 관리 자동화:</span> crontab을 활용한 로그 압축 및 90일 이전 데이터 자동 삭제</div></div>
           <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">계정 관리:</span> 리눅스 계정 만료 이슈 해결 (chage) 및 보안 설정 강화</div></div>
-          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Network:</span> API Gateway 구축 (온프레미스 라우팅), ALB Response Time 모니터링</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Network:</span> API Gateway 구축 (온프레미스 라우팅)</div></div>
           <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Security & Audit:</span> CloudTrail 감사 로그 분석, ACM 인증서 갱신, SecurityGroup 주기적 검토</div></div>
-          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Database:</span> RDS MariaDB 버전 업그레이드 일정 조율 및 SDS 보고</div></div>
-          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Resource Ops:</span> EBS 볼륨 최적화, AMI 이미지 생성 관리, EC2 스케줄링 운영</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Database:</span> RDS MariaDB 버전 업그레이드 일정 조율 (SDS 담당), 새벽 유지보수 중 서비스 이상 없음 모니터링</div></div>
         </div>
       </div>
     </div>
