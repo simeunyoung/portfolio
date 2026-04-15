@@ -233,28 +233,26 @@
           <div class="ts-tag"><i class="fas fa-leaf"></i>Spring Boot 3.2</div>
           <div class="ts-tag"><i class="fas fa-shield-alt"></i>Spring Security 6</div>
           <div class="ts-tag">Spring Auth Server</div>
-          <div class="ts-tag">WebFlux (Reactive)</div>
           <div class="ts-tag">Quartz Scheduler</div>
-          <div class="ts-tag"><i class="fab fa-python"></i>Python</div>
-          <div class="ts-tag">OAuth 2.1 / OIDC</div>
+          <div class="ts-tag">OAuth 2.1</div>
         </div>
       </div>
       <div class="ts-card fi">
         <div class="ts-hdr"><div class="ts-ico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="ts-ttl">AWS Cloud Services</div></div>
         <div class="ts-tags">
-          <div class="ts-tag">IoT Core</div><div class="ts-tag">Lambda</div><div class="ts-tag">EC2</div><div class="ts-tag">RDS</div><div class="ts-tag">S3</div><div class="ts-tag">API Gateway</div><div class="ts-tag">ALB</div><div class="ts-tag">CloudWatch</div><div class="ts-tag">CloudTrail</div><div class="ts-tag">IAM / STS</div><div class="ts-tag">EventBridge</div>
+          <div class="ts-tag">IoT Core</div><div class="ts-tag">Lambda</div><div class="ts-tag">EC2</div><div class="ts-tag">RDS</div><div class="ts-tag">S3</div><div class="ts-tag">API Gateway</div><div class="ts-tag">ALB</div><div class="ts-tag">CloudWatch</div><div class="ts-tag">CloudTrail</div><div class="ts-tag">IAM</div><div class="ts-tag">EventBridge</div>
         </div>
       </div>
       <div class="ts-card fi">
         <div class="ts-hdr"><div class="ts-ico" style="background:var(--accent2)"><i class="fas fa-database"></i></div><div class="ts-ttl">Database & ORM</div></div>
         <div class="ts-tags">
-          <div class="ts-tag">MariaDB</div><div class="ts-tag">JPA / Hibernate</div><div class="ts-tag">QueryDSL 5.0</div><div class="ts-tag">Native SQL</div><div class="ts-tag">MySQL</div>
+          <div class="ts-tag">MariaDB</div><div class="ts-tag">JPA</div><div class="ts-tag">MySQL</div>
         </div>
       </div>
       <div class="ts-card fi">
         <div class="ts-hdr"><div class="ts-ico" style="background:var(--accent3)"><i class="fas fa-tools"></i></div><div class="ts-ttl">Infra & DevOps</div></div>
         <div class="ts-tags">
-          <div class="ts-tag"><i class="fab fa-linux"></i>Linux (systemd)</div><div class="ts-tag">Logrotate</div><div class="ts-tag">MQTT / Paho</div><div class="ts-tag"><i class="fab fa-git-alt"></i>Git (3-Env)</div><div class="ts-tag">FCM (Firebase)</div><div class="ts-tag">Tableau</div><div class="ts-tag">SSL/TLS (X.509)</div>
+          <div class="ts-tag"><i class="fab fa-linux"></i>Linux</div><div class="ts-tag">Logrotate</div><div class="ts-tag">MQTT</div><div class="ts-tag"><i class="fab fa-git-alt"></i>Git</div><div class="ts-tag">Firebase</div><div class="ts-tag">Tableau</div>
         </div>
       </div>
     </div>
@@ -274,9 +272,9 @@
       <p class="proj-desc">스마트홈 IoT 디바이스 신규 버전 지원을 위해 기존 모놀리식 플랫폼을 <strong>AWS 기반의 MSA 구조</strong>로 전면 재설계한 상용화 프로젝트입니다.</p>
       <div class="ov-grid">
         <div class="ov-card"><div class="ov-ico" style="background:var(--accent)"><i class="fas fa-layer-group"></i></div><div class="ov-ttl">Microservices Architecture</div><div class="ov-desc">인증, 회원, 알림, 자동화, 제어 등 5개의 독립적인 Spring Boot 서비스로 구성하여 확장성 확보</div></div>
-        <div class="ov-card"><div class="ov-ico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="ov-ttl">AWS Serverless & IoT</div><div class="ov-desc">AWS IoT Core, Lambda x4, API Gateway를 활용한 이벤트 기반 서버리스 아키텍처 구현</div></div>
+        <div class="ov-card"><div class="ov-ico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="ov-ttl">AWS Serverless & IoT</div><div class="ov-desc">AWS IoT Core, Lambda, API Gateway를 활용한 이벤트 기반 서버리스 아키텍처 구현</div></div>
         <div class="ov-card"><div class="ov-ico" style="background:var(--accent2)"><i class="fas fa-lock"></i></div><div class="ov-ttl">Security First</div><div class="ov-desc">OAuth2.1 + PKCE 인증, MQTT TLS 암호화, 개인정보 마스킹 등 보안 최우선 설계 적용</div></div>
-        <div class="ov-card"><div class="ov-ico" style="background:var(--accent3)"><i class="fas fa-check-circle"></i></div><div class="ov-ttl">Operational Excellence</div><div class="ov-desc">Dev/QA/Prod 3환경 분리, CI/CD, 시스템 모니터링 및 로그 표준화로 안정적인 운영 환경 구축</div></div>
+        <div class="ov-card"><div class="ov-ico" style="background:var(--accent3)"><i class="fas fa-check-circle"></i></div><div class="ov-ttl">Operational Excellence</div><div class="ov-desc">DEV/QA/PROD 3환경 분리, CI/CD, 시스템 모니터링 및 로그 표준화로 안정적인 운영 환경 구축</div></div>
       </div>
       <div class="stk-lbl">Core Tech Stack</div>
       <div class="stk-tags">
@@ -287,7 +285,7 @@
   <div class="sep"></div>
 
   <!-- ARCHITECTURE -->
-  <section id="architecture" class="section">
+  <!-- <section id="architecture" class="section">
     <div class="section-header fi">
       <span class="section-tag">System Architecture</span>
       <h2 class="section-title">전체 시스템 아키텍처</h2>
@@ -321,7 +319,7 @@
       </div>
     </div>
   </section>
-  <div class="sep"></div>
+  <div class="sep"></div> -->
 
   <!-- SERVICES -->
   <section id="services" class="section">
@@ -379,9 +377,9 @@
   <section id="eventengine" class="section">
     <div class="section-header fi"><span class="section-tag">Automation</span><h2 class="section-title">자동화 이벤트 엔진</h2><p class="section-desc">다양한 IoT 제어 방식 통합 및 이벤트 기반 아키텍처 개선</p></div>
     <div class="evt-types fi">
-      <div class="type-card"><div class="type-ico" style="background:var(--accent)"><i class="fas fa-tasks"></i></div><div class="type-ttl">일괄 제어</div><div class="type-sub">Batch Control</div><div class="type-dc">버튼 하나로 여러 디바이스를 동시에 제어하는 수동 일괄 실행</div></div>
-      <div class="type-card"><div class="type-ico" style="background:var(--accent2)"><i class="fas fa-clock"></i></div><div class="type-ttl">스케줄링</div><div class="type-sub">Time Based</div><div class="type-dc">Quartz 1분 주기 스케줄링 — 요일/시간 기반 반복 예약 제어</div></div>
-      <div class="type-card"><div class="type-ico" style="background:var(--accent4)"><i class="fas fa-bolt"></i></div><div class="type-ttl">조건부 실행</div><div class="type-sub">Trigger & Action</div><div class="type-dc">디바이스 상태 변화 감지 시 설정된 조건에 따라 자동 제어</div></div>
+      <div class="type-card"><div class="type-ico" style="background:var(--accent)"><i class="fas fa-tasks"></i></div><div class="type-ttl">일괄 제어</div><div class="type-dc">버튼 하나로 여러 디바이스를 동시에 제어하는 수동 일괄 실행</div></div>
+      <div class="type-card"><div class="type-ico" style="background:var(--accent2)"><i class="fas fa-clock"></i></div><div class="type-ttl">스케줄링</div><div class="type-dc">Quartz 1분 주기 스케줄링 — 요일/시간 기반 반복 예약 제어</div></div>
+      <div class="type-card"><div class="type-ico" style="background:var(--accent4)"><i class="fas fa-bolt"></i></div><div class="type-ttl">조건부 실행</div><div class="type-dc">디바이스 상태 변화 감지 시 설정된 조건에 따라 자동 제어</div></div>
     </div>
     <div class="entry-bar fi"><i class="fas fa-code"></i><span>EventEngine.execute() — 단일 실행 진입점</span></div>
     <div class="arch-cmp fi">
@@ -406,8 +404,8 @@
   <div class="sep"></div>
 
   <!-- DEVICE CONTROL -->
-  <section id="devicecontrol" class="section">
-    <div class="section-header fi"><span class="section-tag">IoT</span><h2 class="section-title">디바이스 제어 서비스</h2><p class="section-desc">기존 서비스 인계받아 운영. OTA 펌웨어 업데이트 구조 개선 및 관련 트러블슈팅 담당</p></div>
+  <!-- <section id="devicecontrol" class="section">
+    <div class="section-header fi"><span class="section-tag">IoT</span><h2 class="section-title">디바이스 제어 서비스</h2><p class="section-desc">MQTT over SSL/TLS와 사가 보상 트랜잭션을 적용하여 신뢰성 있는 디바이스 제어 및 등록 프로세스 구현</p></div>
     <div class="dev-layout">
       <div class="dc-panel fi">
         <div class="dc-ph"><i class="fas fa-stream"></i><div class="dc-pttl">디바이스 등록 흐름 (Registration Flow)</div></div>
@@ -433,7 +431,7 @@
       </div>
     </div>
   </section>
-  <div class="sep"></div>
+  <div class="sep"></div> -->
 
   <!-- INFRA -->
   <section id="infra" class="section">
@@ -442,21 +440,21 @@
       <div class="lmb-panel fi">
         <div class="lmb-hdr"><div class="lmb-hico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="lmb-ttl">Serverless Functions (Lambda)</div></div>
         <div class="lmb-list">
-          <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">MqttEventRouter</span><span class="lmb-lg lg-n">Node.js</span></div><div class="lmb-dc">IoT Core MQTT sid 기반 메시지 라우팅 — 이벤트 엔진 / SmartThings API 연동 처리</div></div>
-          <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">HandleJobStatus</span><span class="lmb-lg lg-p">Python</span></div><div class="lmb-dc">OTA 업데이트 상태 실시간 추적</div><div class="ux-imp"><i class="fas fa-magic"></i>IN_PROGRESS 제거로 UX 개선</div></div>
-          <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">HandleIoTJobCreate</span><span class="lmb-lg lg-p">Python</span></div><div class="lmb-dc">OTA Job 생성·삭제 및 ThingGroup QUEUED 초기화 자동화</div></div>
-          <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">AGW-auth</span><span class="lmb-lg lg-n">Node.js</span></div><div class="lmb-dc">API Gateway 인증 함수 구현 (Custom Authorizer)</div></div>
+          <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">iot-event-router</span><span class="lmb-lg lg-n">Node.js</span></div><div class="lmb-dc">IoT Core MQTT 메시지 라우팅 — 이벤트 엔진</div></div>
+          <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">ota-status-handler</span><span class="lmb-lg lg-p">Python</span></div><div class="lmb-dc">OTA 업데이트 상태 실시간 추적</div></div>
+          <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">ota-job-handler</span><span class="lmb-lg lg-p">Python</span></div><div class="lmb-dc">OTA Job 생성·삭제</div></div>
+          <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">api-gateway-authorizer</span><span class="lmb-lg lg-n">Node.js</span></div><div class="lmb-dc">API Gateway 인증 함수 구현 (Custom Authorizer)</div></div>
         </div>
       </div>
       <div class="lmb-panel fi">
         <div class="lmb-hdr"><div class="lmb-hico" style="background:var(--text3)"><i class="fas fa-server"></i></div><div class="lmb-ttl">Infrastructure & DevOps</div></div>
         <div class="inf-list">
-          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">logrotate 표준화:</span> 서버마다 파편화된 로그 로테이션 설정을 /etc/logrotate.d/ 기준으로 통일. 크기 기반 분할(size), gzip 압축, 보존 기간 표준화를 전 서버(7대)에 일괄 적용</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">logrotate 표준화:</span> 전 서버 표준화 및 systemd 서비스 등록으로 안정성 확보</div></div>
           <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">로그 관리 자동화:</span> crontab을 활용한 로그 압축 및 90일 이전 데이터 자동 삭제</div></div>
           <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">계정 관리:</span> 리눅스 계정 만료 이슈 해결 (chage) 및 보안 설정 강화</div></div>
           <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Network:</span> API Gateway 구축 (온프레미스 라우팅)</div></div>
-          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Security & Audit:</span> CloudTrail 감사 로그 분석, ACM 인증서 갱신, SecurityGroup 주기적 검토</div></div>
-          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Database:</span> RDS MariaDB 버전 업그레이드 일정 조율 (SDS 담당), 새벽 유지보수 중 서비스 이상 없음 모니터링</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Security & Audit:</span> CloudTrail 감사 로그 분석, ACM 인증서 갱신</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Database:</span> RDS MariaDB 버전 업그레이드 일정 조율 및 SDS 보고</div></div>
         </div>
       </div>
     </div>
@@ -470,7 +468,7 @@
       <div class="trb-card fi"><div class="trb-top"><span class="trb-badge tb-s">Security</span><i class="fas fa-key" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">OAuth2 JWT 이중화 이슈<br>(재기동 시 로그아웃)</div><div class="prob-box"><span class="bx-lbl bl-p">Problem</span><p class="bx-tx">서버 재기동마다 키 재생성으로 인해 Sticky Session에 의존하게 되며, 무중단 배포 시 전체 사용자가 로그아웃되는 현상 발생</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">Solution</span><p class="bx-tx">DB에 RSA 키를 생성·저장하고 기동 시 DB에서 조회하는 방식으로 전환하여, 서버 재기동 시에도 키 일관성 유지 및 세션 유지 보장</p></div><a href="https://tech-notes-nu.vercel.app/blog/2026-02-23-oauth2-jwt-key" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
       <div class="trb-card fi"><div class="trb-top"><span class="trb-badge tb-a">Infra</span><i class="fas fa-cloud" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">CloudFront 이미지 캐시<br>(교체 후 미반영)</div><div class="prob-box"><span class="bx-lbl bl-p">Problem</span><p class="bx-tx">S3에 동일 파일명으로 이미지를 교체 업로드해도 CloudFront가 기존 캐시를 계속 반환하여 변경된 이미지가 반영되지 않음</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">Solution</span><p class="bx-tx">서버 시간(KST) 기반 타임스탬프를 파일명에 포함하여 교체 시마다 URL 자체를 변경, Cache Invalidation 없이 즉시 최신 이미지 반환</p></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-30-cloudfront-image-cache" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
       <div class="trb-card fi"><div class="trb-top"><span class="trb-badge tb-a">Infra</span><i class="fas fa-server" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">EC2 스케줄 부팅 실패<br>(CONSOLE_EVTCHN 오류)</div><div class="prob-box"><span class="bx-lbl bl-p">Problem</span><p class="bx-tx">평일 09:00 자동 시작 스케줄 운영 중, t2(Xen) 기반 인스턴스에서 커널-하이퍼바이저 콘솔 채널 협상 타이밍 이슈로 간헐적 부팅 실패 발생. 직렬 콘솔 미지원으로 내부 접근 불가</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">Solution</span><p class="bx-tx">수동 재부팅으로 즉시 복구 후, 재발 방지를 위해 t2 → t3 인스턴스 타입 변경. Nitro 하이퍼바이저 전환으로 오류 원인 제거 및 직렬 콘솔 지원 확보</p></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-26-ec2-boot-failure" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
-      <div class="trb-card fi"><div class="trb-top"><span class="trb-badge tb-a">AWS IoT</span><i class="fas fa-sync-alt" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">OTA 디바이스 상태 반영 지연<br>(EventBridge 폴링 구조)</div><div class="prob-box"><span class="bx-lbl bl-p">Problem</span><p class="bx-tx">EventBridge 5분 주기 폴링으로 최대 5분 지연 발생. 진행 중인 Job 없어도 무조건 실행되어 불필요한 Lambda 호출 비용 낭비. 상태 전이 가드 부재로 SUCCEEDED 이후 IN_PROGRESS 덮어쓰기 역전 가능성 존재</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">Solution</span><p class="bx-tx">HandleJobStatus를 MQTT 이벤트 드리븐으로 전환. $aws/events/jobExecution/+/+ 토픽 이벤트 발생 시 IoT Rule이 즉시 Lambda 트리거. 폴링 제거로 실시간 반영, should_update_status() 가드로 상태 역전 차단</p></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-04-ota-polling-to-event" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
+      <div class="trb-card fi"><div class="trb-top"><span class="trb-badge tb-a">AWS IoT</span><i class="fas fa-sync-alt" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">OTA 디바이스 상태 반영 지연<br>(EventBridge 폴링 구조)</div><div class="prob-box"><span class="bx-lbl bl-p">Problem</span><p class="bx-tx">EventBridge 5분 주기 폴링으로 최대 5분 지연 발생. 진행 중인 Job 없어도 무조건 실행되어 불필요한 Lambda 호출 비용 낭비. 상태 전이 가드 부재로 SUCCEEDED 이후 IN_PROGRESS 덮어쓰기 역전 가능성 존재</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">Solution</span><p class="bx-tx">ota-status-handler를 MQTT 이벤트 드리븐으로 전환. $aws/events/jobExecution/+/+ 토픽 이벤트 발생 시 IoT Rule이 즉시 Lambda 트리거. 폴링 제거로 실시간 반영, should_update_status() 가드로 상태 역전 차단</p></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-04-ota-polling-to-event" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
       <div class="trb-card fi"><div class="trb-top"><span class="trb-badge tb-s">Backend</span><i class="fas fa-exclamation-triangle" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">GlobalExceptionHandler 미처리<br>(/error 500 발생)</div><div class="prob-box"><span class="bx-lbl bl-p">Problem</span><p class="bx-tx">/validate에서 에러가 발생하는데 로그가 전혀 남지 않고 500만 반환. Controller에서 throws Exception으로 상위 전달했으나 GlobalExceptionHandler가 최상위 Exception을 처리하지 않아 Spring 기본 /error 경로로 빠짐</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">Solution</span><p class="bx-tx">GlobalExceptionHandler에 @ExceptionHandler(Exception.class)를 추가하여 모든 예외를 처리하도록 확장</p></div></div></div>
     </div>
   </section>
@@ -486,7 +484,7 @@
       <div class="trb-card fi"><div class="trb-top"><span class="trb-badge tb-g">DevOps</span><i class="fab fa-git-alt" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">Git 브랜치 전략 수립 & 문서화</div><div class="prob-box"><span class="bx-lbl bl-p">Before</span><p class="bx-tx">팀 내 브랜치 전략과 커밋 규칙이 없어 dev·staging·prod 배포 환경 혼선이 잦고 PR 리뷰 기준도 불명확했음</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">After</span><p class="bx-tx">3-Tier(Dev/Release/Main) 전략과 Conventional Commits 규칙을 수립해 문서화하고 팀에 전파, 배포 환경 혼선 방지 및 협업 효율 개선</p></div><div class="imp-tags" style="margin-top:10px"><span class="itag">Git Flow</span><span class="itag">Convention</span></div></div></div>
       <div class="trb-card fi"><div class="trb-top"><span class="trb-badge tb-a">Infra</span><i class="fas fa-server" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">Systemd 서비스 전환</div><div class="prob-box"><span class="bx-lbl bl-p">Before</span><p class="bx-tx">nohup으로 서비스를 띄우는 방식이어서 서버 재부팅 시 자동 재시작이 안 되고, Graceful Shutdown도 보장되지 않아 배포 중 요청 유실 위험이 있었음</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">After</span><p class="bx-tx">Systemd unit 파일을 작성해 서비스로 등록. 재부팅 시 자동 시작과 Graceful Shutdown 보장</p></div><div class="imp-tags" style="margin-top:10px"><span class="itag">Reliability</span><span class="itag">Linux</span></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-12-nohup-vs-systemd" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
       <div class="trb-card fi"><div class="trb-top"><span class="trb-badge tb-a">Infra</span><i class="fas fa-network-wired" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">내부 네트워크 경로 최적화</div><div class="prob-box"><span class="bx-lbl bl-p">Before</span><p class="bx-tx">내부 서비스 간 통신이 외부 ALB를 경유하는 구조여서 불필요한 왕복이 발생해 간헐적 Timeout 이슈가 생겼음</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">After</span><p class="bx-tx">Internal NLB와 Private DNS를 도입해 내부 트래픽을 VPC 내부로 직접 라우팅하는 방안을 분석하고 제안</p></div><div class="imp-tags" style="margin-top:10px"><span class="itag">Network Optimization</span></div></div></div>
-      <div class="trb-card fi" style="grid-column:1/-1"><div class="trb-top"><span class="trb-badge tb-a">AWS IoT</span><i class="fas fa-cloud-download-alt" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">OTA Lambda 역할 분리 및 구조 개선</div><div class="prob-box"><span class="bx-lbl bl-p">Before</span><p class="bx-tx">HandleJobCreate 하나가 Job 생성·삭제·초기 등록·상태 업데이트를 모두 처리해 역할 불명확. OTA 진행 중 신규 디바이스 ThingGroup 추가 시 DB 누락 케이스 존재</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">After</span><p class="bx-tx">HandleJobCreate(Job 생명주기)·HandleJobStatus(상태 업데이트)로 책임 분리. AddThingToThingGroup 이벤트 처리 추가로 신규 디바이스 누락 선제 방어</p></div><div class="imp-tags" style="margin-top:10px"><span class="itag">Single Responsibility</span><span class="itag">Event-Driven</span><span class="itag">AWS IoT</span></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-04-ota-lambda-role" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
+      <div class="trb-card fi" style="grid-column:1/-1"><div class="trb-top"><span class="trb-badge tb-a">AWS IoT</span><i class="fas fa-cloud-download-alt" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">OTA Lambda 역할 분리 및 구조 개선</div><div class="prob-box"><span class="bx-lbl bl-p">Before</span><p class="bx-tx">ota-job-handler 하나가 Job 생성·삭제·초기 등록·상태 업데이트를 모두 처리해 역할 불명확. OTA 진행 중 신규 디바이스 ThingGroup 추가 시 DB 누락 케이스 존재</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">After</span><p class="bx-tx">ota-job-handler(Job 생명주기)·ota-status-handler(상태 업데이트)로 책임 분리. AddThingToThingGroup 이벤트 처리 추가로 신규 디바이스 누락 선제 방어</p></div><div class="imp-tags" style="margin-top:10px"><span class="itag">Single Responsibility</span><span class="itag">Event-Driven</span><span class="itag">AWS IoT</span></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-04-ota-lambda-role" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
     </div>
   </section>
 
