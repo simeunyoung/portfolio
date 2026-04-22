@@ -83,6 +83,21 @@ const fobs = new IntersectionObserver(entries => {
 }, {threshold: 0.08});
 document.querySelectorAll('.fi').forEach(el => fobs.observe(el));
 
+// Section category filters
+document.querySelectorAll('.sec-filter').forEach(filterGroup => {
+  filterGroup.querySelectorAll('.sec-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterGroup.querySelectorAll('.sec-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      const grid = filterGroup.nextElementSibling;
+      grid.querySelectorAll('.trb-card').forEach(card => {
+        card.classList.toggle('hidden', cat !== 'all' && card.dataset.cat !== cat);
+      });
+    });
+  });
+});
+
 // Active nav based on sections
 const nitems = document.querySelectorAll('.nav-item');
 const allTargets = document.querySelectorAll('section[id]');

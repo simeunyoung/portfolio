@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:tech-notes-nu.vercel.app)"
+      "WebFetch(domain:tech-notes-nu.vercel.app)",
+      "Bash(python -m http.server 8080)"
     ]
   }
 }

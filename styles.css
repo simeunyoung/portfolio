@@ -346,6 +346,11 @@ a{color:inherit;text-decoration:none}p{margin:0}
 .inf-hl{font-weight:700;color:var(--text)}
 
 /* TROUBLE */
+.sec-filter{display:flex;gap:8px;margin-bottom:20px}
+.sec-filter-btn{padding:5px 16px;border-radius:20px;border:1.5px solid var(--border);background:transparent;color:var(--text2);font-size:0.83rem;font-weight:600;cursor:pointer;transition:all .18s var(--ease);font-family:inherit}
+.sec-filter-btn:hover{border-color:var(--accent);color:var(--accent)}
+.sec-filter-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.trb-card.hidden{display:none}
 .trb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .trb-card{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow2);transition:all .25s var(--ease);display:flex;flex-direction:column}
 .trb-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
