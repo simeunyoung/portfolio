@@ -83,6 +83,7 @@ const fobs = new IntersectionObserver(entries => {
 }, {threshold: 0.08});
 document.querySelectorAll('.fi').forEach(el => fobs.observe(el));
 
+<<<<<<< Updated upstream
 // Section category filters
 document.querySelectorAll('.sec-filter').forEach(filterGroup => {
   filterGroup.querySelectorAll('.sec-filter-btn').forEach(btn => {
@@ -95,6 +96,14 @@ document.querySelectorAll('.sec-filter').forEach(filterGroup => {
         card.classList.toggle('hidden', cat !== 'all' && card.dataset.cat !== cat);
       });
     });
+=======
+// Accordion cards
+document.querySelectorAll('.acc-card').forEach(card => {
+  const summary = card.querySelector('.acc-summary');
+  if (!summary) return;
+  summary.addEventListener('click', () => {
+    card.classList.toggle('open');
+>>>>>>> Stashed changes
   });
 });
 

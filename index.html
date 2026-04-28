@@ -155,7 +155,7 @@
            한 영역에 머물지 않고 필요한 곳으로 역할이 넓어진 경험이, 시스템을 넓게 바라보는 시각을 만들어줬다고 생각합니다.</p>
         <p class="about-tx about-tx-2">개발할 때 기능 자체보다 "왜 필요한가"와 "이 결정이 어디까지 영향을 미치는가"를 먼저 생각하려 합니다.<br>
           좁은 범위에서 구현을 완성하는 것보다, 전체 흐름 안에서 이 기능이 어디에 위치하는지를 파악하고 사이드이펙트를 미리 고려하는 것이 습관이 됐습니다. 문제가 생겼을 때도 증상을 빠르게 덮기보다 근본 원인을 찾는 방향으로 접근합니다.
-          <br> 아직 부족한 점이 많지만, 무언가를 만들기 전에 한 번 더 "왜"를 묻고 "그래서 어디까지 영향이 가는가"를 생각하는 태도, 그 습관만큼은 계속 가져가고 싶습니다.</p>
+          <br>무언가를 만들기 전에 한 번 더 "왜"를 묻고 "그래서 어디까지 영향이 가는가"를 생각하는 태도, 그 습관만큼은 계속 가져가고 싶습니다.</p>
       </div>
       <div class="about-card" style="margin-top:14px">
         <div class="about-hdr"><i class="fas fa-briefcase"></i><span>Experience</span></div>
@@ -273,14 +273,18 @@
       <h3 class="proj-title">DAMDA 2.0 Project</h3>
       <p class="proj-desc">스마트홈 IoT 디바이스 신규 버전 지원을 위해 기존 모놀리식 플랫폼을 <strong>AWS 기반의 MSA 구조</strong>로 전면 재설계한 상용화 프로젝트입니다.</p>
       <div class="ov-grid">
-        <div class="ov-card"><div class="ov-ico" style="background:var(--accent)"><i class="fas fa-layer-group"></i></div><div class="ov-ttl">Microservices Architecture</div><div class="ov-desc">인증, 회원, 알림, 자동화, 제어 등 5개의 독립적인 Spring Boot 서비스로 구성하여 확장성 확보</div></div>
-        <div class="ov-card"><div class="ov-ico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="ov-ttl">AWS Serverless & IoT</div><div class="ov-desc">AWS IoT Core, Lambda, API Gateway를 활용한 이벤트 기반 서버리스 아키텍처 구현</div></div>
+        <div class="ov-card"><div class="ov-ico" style="background:var(--accent)"><i class="fas fa-layer-group"></i></div><div class="ov-ttl">Microservices Architecture</div><div class="ov-desc">인증, 회원, 알림, 자동화, 제어 등 <span class="stat-hl">5개</span>의 독립적인 Spring Boot 서비스로 구성하여 확장성 확보</div></div>
+        <div class="ov-card"><div class="ov-ico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="ov-ttl">AWS Serverless & IoT</div><div class="ov-desc">AWS IoT Core, <span class="stat-hl">4종 Lambda</span>, API Gateway를 활용한 이벤트 기반 서버리스 아키텍처 구현</div></div>
         <div class="ov-card"><div class="ov-ico" style="background:var(--accent2)"><i class="fas fa-lock"></i></div><div class="ov-ttl">Security First</div><div class="ov-desc">OAuth2.1 + PKCE 인증, MQTT TLS 암호화, 개인정보 마스킹 등 보안 최우선 설계 적용</div></div>
         <div class="ov-card"><div class="ov-ico" style="background:var(--accent3)"><i class="fas fa-check-circle"></i></div><div class="ov-ttl">Operational Excellence</div><div class="ov-desc">DEV/QA/PROD 3환경 분리, CI/CD, 시스템 모니터링 및 로그 표준화로 안정적인 운영 환경 구축</div></div>
       </div>
       <div class="stk-lbl">Core Tech Stack</div>
       <div class="stk-tags">
         <div class="stk-tag"><i class="fab fa-java"></i>Java 17</div><div class="stk-tag"><i class="fas fa-leaf"></i>Spring Boot 3.2</div><div class="stk-tag"><i class="fas fa-database"></i>MariaDB</div><div class="stk-tag"><i class="fab fa-aws"></i>AWS IoT Core</div><div class="stk-tag"><i class="fas fa-cubes"></i>MSA</div><div class="stk-tag"><i class="fas fa-bolt"></i>Event-Driven</div>
+      </div>
+      <div class="retro-box fi">
+        <div class="retro-label"><i class="fas fa-comment-alt"></i> 회고</div>
+        <p class="retro-tx">IoT 플랫폼을 단독으로 설계하고 운영하면서, 기능 구현보다 '왜 이렇게 설계해야 하는가'를 먼저 생각하는 습관이 생겼습니다. 담당자 이탈로 인프라를 인수했을 때는 서비스 안정성을 유지하면서 구조를 개선해야 했고, 그 과정에서 빠른 덮기보다 근본 원인을 파악하는 것이 장기적으로 낫다는 것을 실감했습니다. OAuth2 이중화 이슈, EC2 부팅 실패 등 예상치 못한 문제들을 직접 분석하고 해결하면서, 시스템 전체를 이해하는 시야가 넓어진 프로젝트였습니다.</p>
       </div>
     </div>
   </section>
@@ -340,7 +344,7 @@
         <div class="svc-hdr"><div class="svc-ico" style="background:var(--accent3)"><i class="fas fa-paper-plane"></i></div><div><div class="svc-ttl">푸시 알림 서비스</div><div class="svc-sub">Firebase Push Notification</div></div></div>
         <div class="svc-body">
           <div class="feat"><i class="fas fa-check-circle feat-chk" style="color:var(--accent3)"></i><div><div class="feat-ttl">FCM 토큰 고성능 UPSERT</div><div class="feat-desc">Native SQL 'ON DUPLICATE KEY UPDATE'를 활용하여 DB 부하 최소화 및 토큰 갱신 속도 극대화</div><div class="feat-tags"><span class="ftag ftag-g">Native SQL</span><span class="ftag">Performance</span></div></div></div>
-          <div class="feat"><i class="fas fa-check-circle feat-chk" style="color:var(--accent3)"></i><div><div class="feat-ttl">WebClient 기반 비동기 전송</div><div class="feat-desc">Spring WebFlux WebClient 사용 — 스레드 블로킹 없이 대량 알림 처리 (6초 타임아웃)</div><div class="feat-tags"><span class="ftag ftag-g">WebFlux</span><span class="ftag">Non-blocking</span></div></div></div>
+          <div class="feat"><i class="fas fa-check-circle feat-chk" style="color:var(--accent3)"></i><div><div class="feat-ttl">WebClient 기반 비동기 전송</div><div class="feat-desc"><span class="stat-bad">동기 블로킹</span> → <span class="stat-good">비동기</span>, 메인 API 응답에서 FCM 대기 제거. Spring WebFlux WebClient 사용 (6초 타임아웃)</div><div class="feat-tags"><span class="ftag ftag-g">WebFlux</span><span class="ftag">Non-blocking</span></div></div></div>
           <div class="feat"><i class="fas fa-check-circle feat-chk" style="color:var(--accent3)"></i><div><div class="feat-ttl">Access Token 자동 갱신</div><div class="feat-desc">만료 60초 전 선제적 캐시 갱신 로직으로 인증 실패 방지</div></div></div>
           <div class="feat"><i class="fas fa-check-circle feat-chk" style="color:var(--accent3)"></i><div><div class="feat-ttl">토큰 생명주기 자동 관리</div><div class="feat-desc">FCM 404/Unregistered 에러 감지 시 유효하지 않은 토큰 즉시 자동 삭제</div><div class="feat-tags"><span class="ftag ftag-g">Garbage Collection</span><span class="ftag">Masking</span></div></div></div>
         </div>
@@ -440,7 +444,7 @@
     <div class="section-header fi"><span class="section-tag">Infrastructure</span><h2 class="section-title">AWS Lambda & 인프라 운영</h2><p class="section-desc">서버리스 함수 구현 및 안정적인 인프라 운영·자동화 경험</p></div>
     <div class="lmb-layout">
       <div class="lmb-panel fi">
-        <div class="lmb-hdr"><div class="lmb-hico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="lmb-ttl">Serverless Functions (Lambda)</div></div>
+        <div class="lmb-hdr"><div class="lmb-hico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="lmb-ttl">Serverless Functions — <span class="stat-hl">4종 Lambda</span></div></div>
         <div class="lmb-list">
           <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">iot-event-router</span><span class="lmb-lg lg-n">Node.js</span></div><div class="lmb-dc">IoT Core MQTT 메시지 라우팅 — 이벤트 엔진</div></div>
           <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">ota-status-handler</span><span class="lmb-lg lg-p">Python</span></div><div class="lmb-dc">OTA 업데이트 상태 실시간 추적</div></div>
@@ -472,11 +476,96 @@
       <button class="sec-filter-btn" data-cat="infra">인프라</button>
     </div>
     <div class="trb-grid">
-      <div class="trb-card fi" data-cat="dev"><div class="trb-top"><span class="trb-badge tb-s">Security</span><i class="fas fa-key" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">OAuth2 JWT 이중화 이슈<br>(재기동 시 로그아웃)</div><div class="prob-box"><span class="bx-lbl bl-p">Problem</span><p class="bx-tx">서버 재기동마다 키 재생성으로 인해 Sticky Session에 의존하게 되며, 무중단 배포 시 전체 사용자가 로그아웃되는 현상 발생</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">Solution</span><p class="bx-tx">DB에 RSA 키를 생성·저장하고 기동 시 DB에서 조회하는 방식으로 전환하여, 서버 재기동 시에도 키 일관성 유지 및 세션 유지 보장</p></div><a href="https://tech-notes-nu.vercel.app/blog/2026-02-23-oauth2-jwt-key" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
-      <div class="trb-card fi" data-cat="infra"><div class="trb-top"><span class="trb-badge tb-a">Infra</span><i class="fas fa-cloud" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">CloudFront 이미지 캐시<br>(교체 후 미반영)</div><div class="prob-box"><span class="bx-lbl bl-p">Problem</span><p class="bx-tx">S3에 동일 파일명으로 이미지를 교체 업로드해도 CloudFront가 기존 캐시를 계속 반환하여 변경된 이미지가 반영되지 않음</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">Solution</span><p class="bx-tx">서버 시간(KST) 기반 타임스탬프를 파일명에 포함하여 교체 시마다 URL 자체를 변경, Cache Invalidation 없이 즉시 최신 이미지 반환</p></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-30-cloudfront-image-cache" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
-      <div class="trb-card fi" data-cat="infra"><div class="trb-top"><span class="trb-badge tb-a">Infra</span><i class="fas fa-server" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">EC2 스케줄 부팅 실패<br>(CONSOLE_EVTCHN 오류)</div><div class="prob-box"><span class="bx-lbl bl-p">Problem</span><p class="bx-tx">평일 09:00 자동 시작 스케줄 운영 중, t2(Xen) 기반 인스턴스에서 커널-하이퍼바이저 콘솔 채널 협상 타이밍 이슈로 간헐적 부팅 실패 발생. 직렬 콘솔 미지원으로 내부 접근 불가</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">Solution</span><p class="bx-tx">수동 재부팅으로 즉시 복구 후, 재발 방지를 위해 t2 → t3 인스턴스 타입 변경. Nitro 하이퍼바이저 전환으로 오류 원인 제거 및 직렬 콘솔 지원 확보</p></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-26-ec2-boot-failure" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
-      <div class="trb-card fi" data-cat="infra"><div class="trb-top"><span class="trb-badge tb-a">AWS IoT</span><i class="fas fa-sync-alt" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">OTA 디바이스 상태 반영 지연<br>(EventBridge 폴링 구조)</div><div class="prob-box"><span class="bx-lbl bl-p">Problem</span><p class="bx-tx">EventBridge 5분 주기 폴링으로 최대 5분 지연 발생. 진행 중인 Job 없어도 무조건 실행되어 불필요한 Lambda 호출 비용 낭비. 상태 전이 가드 부재로 SUCCEEDED 이후 IN_PROGRESS 덮어쓰기 역전 가능성 존재</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">Solution</span><p class="bx-tx">ota-status-handler를 MQTT 이벤트 드리븐으로 전환. $aws/events/jobExecution/+/+ 토픽 이벤트 발생 시 IoT Rule이 즉시 Lambda 트리거. 폴링 제거로 실시간 반영, should_update_status() 가드로 상태 역전 차단</p></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-04-ota-polling-to-event" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
-      <div class="trb-card fi" data-cat="dev"><div class="trb-top"><span class="trb-badge tb-s">Backend</span><i class="fas fa-exclamation-triangle" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">GlobalExceptionHandler 미처리<br>(/error 500 발생)</div><div class="prob-box"><span class="bx-lbl bl-p">Problem</span><p class="bx-tx">/validate에서 에러가 발생하는데 로그가 전혀 남지 않고 500만 반환. Controller에서 throws Exception으로 상위 전달했으나 GlobalExceptionHandler가 최상위 Exception을 처리하지 않아 Spring 기본 /error 경로로 빠짐</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">Solution</span><p class="bx-tx">GlobalExceptionHandler에 @ExceptionHandler(Exception.class)를 추가하여 모든 예외를 처리하도록 확장</p></div></div></div>
+
+      <!-- Card 1: OAuth2 JWT -->
+      <div class="trb-card fi acc-card">
+        <div class="acc-summary">
+          <div class="trb-top-row"><span class="trb-badge tb-s">Security</span><i class="fas fa-key" style="color:var(--text3)"></i></div>
+          <div class="trb-ttl">OAuth2 JWT 이중화 이슈</div>
+          <div class="acc-hint"><span class="acc-preview">재기동 시 전체 사용자 로그아웃</span><i class="fas fa-chevron-down acc-arrow"></i></div>
+        </div>
+        <div class="acc-detail">
+          <div class="detail-row row-bg"><span class="dr-lbl">배경</span><p class="dr-tx">이중화 환경에서 무중단 배포를 시도하다 발견</p></div>
+          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">서버마다 RSA 키가 달라 Sticky Session에 의존, 재기동 시 전체 사용자 로그아웃</p></div>
+          <div class="detail-row row-cause"><span class="dr-lbl">원인 분석</span><p class="dr-tx">서버 기동 시마다 RSA 키를 메모리에서 새로 생성하는 구조였음을 확인</p></div>
+          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">Redis 캐싱 vs DB 영속화 검토 → 서버 전체 재기동 시나리오에서도 키 유지가 필요해 DB 영속화 선택</p></div>
+          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">jwk_settings 테이블에 RSA 키 저장, 기동 시 DB 조회 → 없으면 생성</p></div>
+          <div class="detail-row row-result"><span class="dr-lbl">결과</span><p class="dr-tx">Sticky Session 의존 제거, 무중단 배포 가능 구조로 전환</p></div>
+          <div class="acc-actions"><a href="https://tech-notes-nu.vercel.app/blog/2026-02-23-oauth2-jwt-key" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div>
+        </div>
+      </div>
+
+      <!-- Card 2: EC2 부팅 실패 -->
+      <div class="trb-card fi acc-card">
+        <div class="acc-summary">
+          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><i class="fas fa-cloud" style="color:var(--text3)"></i></div>
+          <div class="trb-ttl">EC2 부팅 실패<br>(CONSOLE_EVTCHN 오류)</div>
+          <div class="acc-hint"><span class="acc-preview">Xen 하이퍼바이저 커널 타이밍 이슈</span><i class="fas fa-chevron-down acc-arrow"></i></div>
+        </div>
+        <div class="acc-detail">
+          <div class="detail-row row-bg"><span class="dr-lbl">배경</span><p class="dr-tx">평일 09:00 자동 시작 스케줄 운영 중 간헐적 발생</p></div>
+          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">t2.large 인스턴스 부팅 실패, 직렬 콘솔 미지원으로 내부 접근 불가</p></div>
+          <div class="detail-row row-cause"><span class="dr-lbl">원인 분석</span><p class="dr-tx">EC2 스크린샷으로 CONSOLE_EVTCHN 오류 확인, Xen 하이퍼바이저 커널 타이밍 이슈로 파악</p></div>
+          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">수동 재부팅 반복 vs 인스턴스 타입 변경 → 근본 원인인 Xen 환경 자체를 Nitro로 교체하는 게 맞다고 판단</p></div>
+          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">t2 → t3(Nitro 하이퍼바이저) 마이그레이션, 직렬 콘솔 지원 확보</p></div>
+          <div class="detail-row row-result"><span class="dr-lbl">결과</span><p class="dr-tx">부팅 실패 재발 없음, 향후 직렬 콘솔 디버깅 환경 확보</p></div>
+          <div class="acc-actions"><a href="https://tech-notes-nu.vercel.app/blog/2026-03-26-ec2-boot-failure" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div>
+        </div>
+      </div>
+
+      <!-- Card 3: OTA 5분 지연 -->
+      <div class="trb-card fi acc-card">
+        <div class="acc-summary">
+          <div class="trb-top-row"><span class="trb-badge tb-a">AWS IoT</span><i class="fas fa-sync-alt" style="color:var(--text3)"></i></div>
+          <div class="trb-ttl">OTA 상태 반영 최대 5분 지연</div>
+          <div class="acc-hint"><span class="acc-preview"><span class="stat-bad">최대 5분</span> → <span class="stat-good">즉시</span> 반영</span><i class="fas fa-chevron-down acc-arrow"></i></div>
+        </div>
+        <div class="acc-detail">
+          <div class="detail-row row-bg"><span class="dr-lbl">배경</span><p class="dr-tx">OTA 펌웨어 업데이트 상태를 실시간으로 보여줘야 하는 요구사항</p></div>
+          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">EventBridge <strong>5분 주기 폴링</strong> 구조, 최대 5분 지연. Job 없을 때도 Lambda 실행되는 비용 낭비</p></div>
+          <div class="detail-row row-cause"><span class="dr-lbl">원인 분석</span><p class="dr-tx">폴링 기반 구조 자체가 실시간 요구사항과 맞지 않음을 파악</p></div>
+          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">폴링 주기 단축 vs 이벤트 드리븐 전환 검토 → 주기 단축은 비용만 증가하고 근본 해결이 안 됨, MQTT 이벤트가 이미 존재하므로 드리븐 방식으로 전환</p></div>
+          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx"><code>$aws/events/jobExecution/+/+</code> 토픽 이벤트 발생 시 IoT Rule이 즉시 Lambda 트리거</p></div>
+          <div class="detail-row row-result"><span class="dr-lbl">결과</span><p class="dr-tx"><span class="stat-bad">최대 5분 지연</span> → <span class="stat-good">즉시 반영</span>, 불필요한 Lambda 호출 제거</p></div>
+          <div class="acc-actions"><a href="https://tech-notes-nu.vercel.app/blog/2026-03-04-ota-polling-to-event" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div>
+        </div>
+      </div>
+
+      <!-- Card 4: 디스크 사용률 93% -->
+      <div class="trb-card fi acc-card">
+        <div class="acc-summary">
+          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><i class="fas fa-hdd" style="color:var(--text3)"></i></div>
+          <div class="trb-ttl">서버 디스크 사용률 93%</div>
+          <div class="acc-hint"><span class="acc-preview"><span class="stat-bad">93%</span> → <span class="stat-good">46%</span></span><i class="fas fa-chevron-down acc-arrow"></i></div>
+        </div>
+        <div class="acc-detail">
+          <div class="detail-row row-bg"><span class="dr-lbl">배경</span><p class="dr-tx">운영 서버 모니터링 중 디스크 알람 발생</p></div>
+          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">디스크 사용률 <span class="stat-bad">93%</span>, 서비스 장애 임박 상태</p></div>
+          <div class="detail-row row-cause"><span class="dr-lbl">원인 분석</span><p class="dr-tx">du 명령으로 디렉토리별 용량 추적 → 로그 디렉토리에 로테이션 없이 누적된 고아 로그 파일 발견</p></div>
+          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">수동 삭제만 vs 자동화 체계 구축 → 재발 방지를 위해 logrotate 전 서버 표준화까지 진행</p></div>
+          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">고아 로그 정리 + logrotate 설정 전 서버(개발/수요/운영) 동시 적용, crontab 90일 자동 삭제</p></div>
+          <div class="detail-row row-result"><span class="dr-lbl">결과</span><p class="dr-tx">디스크 사용률 <span class="stat-bad">93%</span> → <span class="stat-good">46%</span></p></div>
+        </div>
+      </div>
+
+      <!-- Card 5: CloudFront 캐시 -->
+      <div class="trb-card fi acc-card">
+        <div class="acc-summary">
+          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><i class="fas fa-cloud" style="color:var(--text3)"></i></div>
+          <div class="trb-ttl">CloudFront 이미지 캐시 미갱신</div>
+          <div class="acc-hint"><span class="acc-preview">동일 파일명 교체 시 구버전 CDN 반환</span><i class="fas fa-chevron-down acc-arrow"></i></div>
+        </div>
+        <div class="acc-detail">
+          <div class="detail-row row-bg"><span class="dr-lbl">배경</span><p class="dr-tx">운영 중 이미지 교체 요청 처리 중 발생</p></div>
+          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">S3에 동일 파일명으로 교체 업로드해도 CDN이 구버전 이미지 계속 반환</p></div>
+          <div class="detail-row row-cause"><span class="dr-lbl">원인 분석</span><p class="dr-tx">CloudFront 캐시 동작 원리 확인 → URL이 동일하면 TTL 만료 전까지 캐시 유지하는 것이 원인</p></div>
+          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">Invalidation API 호출 vs 파일명 전략 변경 → Invalidation은 건당 비용 발생 + 즉시성 보장 안 됨, 파일명에 타임스탬프 포함이 근본 해결</p></div>
+          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">KST 서버 시간 기반 타임스탬프를 파일명에 포함, URL 자체가 변경되어 캐시 무관하게 즉시 반영</p></div>
+          <div class="detail-row row-result"><span class="dr-lbl">결과</span><p class="dr-tx">Invalidation 없이 즉시 최신 이미지 반영</p></div>
+          <div class="acc-actions"><a href="https://tech-notes-nu.vercel.app/blog/2026-03-30-cloudfront-image-cache" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div>
+        </div>
+      </div>
+
     </div>
   </section>
   <div class="sep"></div>
@@ -490,13 +579,112 @@
       <button class="sec-filter-btn" data-cat="infra">인프라</button>
     </div>
     <div class="imp-grid">
-      <div class="trb-card fi" data-cat="dev"><div class="trb-top"><span class="trb-badge tb-c">Code</span><i class="fas fa-code" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">자동화 엔진 이벤트 드리븐 리팩토링</div><div class="prob-box"><span class="bx-lbl bl-p">Before</span><p class="bx-tx">이벤트 엔진이 SmartThings·FCM·디바이스 제어를 API로 직접 호출하는 강결합 구조. 하나가 실패하면 전체 흐름이 중단됨</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">After</span><p class="bx-tx">Spring ApplicationEvent 기반 비동기 이벤트로 전환. 서비스 간 의존성을 끊고 한 처리가 실패해도 다른 흐름에 영향 없도록 독립적 실패 처리 구현</p></div><div class="imp-tags" style="margin-top:10px"><span class="itag">Loose Coupling</span><span class="itag">Async Event</span></div><a href="https://tech-notes-nu.vercel.app/blog/2026-02-08-spring-event-async" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
-      <div class="trb-card fi" data-cat="dev"><div class="trb-top"><span class="trb-badge tb-c">Code</span><i class="fas fa-list-alt" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">전체 서비스 로그 구조 표준화</div><div class="prob-box"><span class="bx-lbl bl-p">Before</span><p class="bx-tx">각 Service에서 파편화된 방식으로 로그를 남겨 장애 발생 시 요청 흐름 추적이 어려웠음</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">After</span><p class="bx-tx">Filter/Interceptor로 로그 처리를 분리하고 MDC traceId를 도입. 모든 로그에 동일한 요청 식별자가 기록되도록 표준화하여 전 서비스 요청 추적성 확보</p></div><div class="imp-tags" style="margin-top:10px"><span class="itag">MDC</span><span class="itag">AOP</span><span class="itag">Tracing</span></div></div></div>
-      <div class="trb-card fi" data-cat="dev"><div class="trb-top"><span class="trb-badge tb-s">Security</span><i class="fas fa-shield-alt" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">인증 서버 보안 고도화</div><div class="prob-box"><span class="bx-lbl bl-p">Before</span><p class="bx-tx">/oauth2/** 전체에 permitAll이 걸려 Authorization Code 탈취 위험이 있었고, PKCE는 비활성화 상태였음</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">After</span><p class="bx-tx">SecurityFilterChain 분리, PKCE 활성화, OIDC 표준 전환, 불필요한 permitAll 제거로 보안 수준 강화</p></div><div class="imp-tags" style="margin-top:10px"><span class="itag">OAuth2.1</span><span class="itag">PKCE</span><span class="itag">OIDC</span></div></div></div>
-      <div class="trb-card fi" data-cat="dev"><div class="trb-top"><span class="trb-badge tb-g">DevOps</span><i class="fab fa-git-alt" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">Git 브랜치 전략 수립 & 문서화</div><div class="prob-box"><span class="bx-lbl bl-p">Before</span><p class="bx-tx">팀 내 브랜치 전략과 커밋 규칙이 없어 dev·staging·prod 배포 환경 혼선이 잦고 PR 리뷰 기준도 불명확했음</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">After</span><p class="bx-tx">3-Tier(Dev/Release/Main) 전략과 Conventional Commits 규칙을 수립해 문서화하고 팀에 전파, 배포 환경 혼선 방지 및 협업 효율 개선</p></div><div class="imp-tags" style="margin-top:10px"><span class="itag">Git Flow</span><span class="itag">Convention</span></div></div></div>
-      <div class="trb-card fi" data-cat="infra"><div class="trb-top"><span class="trb-badge tb-a">Infra</span><i class="fas fa-server" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">Systemd 서비스 전환</div><div class="prob-box"><span class="bx-lbl bl-p">Before</span><p class="bx-tx">nohup으로 서비스를 띄우는 방식이어서 서버 재부팅 시 자동 재시작이 안 되고, Graceful Shutdown도 보장되지 않아 배포 중 요청 유실 위험이 있었음</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">After</span><p class="bx-tx">Systemd unit 파일을 작성해 서비스로 등록. 재부팅 시 자동 시작과 Graceful Shutdown 보장</p></div><div class="imp-tags" style="margin-top:10px"><span class="itag">Reliability</span><span class="itag">Linux</span></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-12-nohup-vs-systemd" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
-      <div class="trb-card fi" data-cat="infra"><div class="trb-top"><span class="trb-badge tb-a">Infra</span><i class="fas fa-network-wired" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">내부 네트워크 경로 최적화</div><div class="prob-box"><span class="bx-lbl bl-p">Before</span><p class="bx-tx">내부 서비스 간 통신이 외부 ALB를 경유하는 구조여서 불필요한 왕복이 발생해 간헐적 Timeout 이슈가 생겼음</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">After</span><p class="bx-tx">Internal NLB와 Private DNS를 도입해 내부 트래픽을 VPC 내부로 직접 라우팅하는 방안을 분석하고 제안</p></div><div class="imp-tags" style="margin-top:10px"><span class="itag">Network Optimization</span></div></div></div>
-      <div class="trb-card fi" data-cat="infra" style="grid-column:1/-1"><div class="trb-top"><span class="trb-badge tb-a">AWS IoT</span><i class="fas fa-cloud-download-alt" style="color:var(--text3)"></i></div><div class="trb-body"><div class="trb-ttl">OTA Lambda 역할 분리 및 구조 개선</div><div class="prob-box"><span class="bx-lbl bl-p">Before</span><p class="bx-tx">ota-job-handler 하나가 Job 생성·삭제·초기 등록·상태 업데이트를 모두 처리해 역할 불명확. OTA 진행 중 신규 디바이스 ThingGroup 추가 시 DB 누락 케이스 존재</p></div><div class="arr-div"><i class="fas fa-chevron-down"></i></div><div class="soln-box"><span class="bx-lbl bl-s">After</span><p class="bx-tx">ota-job-handler(Job 생명주기)·ota-status-handler(상태 업데이트)로 책임 분리. AddThingToThingGroup 이벤트 처리 추가로 신규 디바이스 누락 선제 방어</p></div><div class="imp-tags" style="margin-top:10px"><span class="itag">Single Responsibility</span><span class="itag">Event-Driven</span><span class="itag">AWS IoT</span></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-04-ota-lambda-role" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div></div>
+
+      <!-- 1. 이벤트 드리븐 리팩토링 -->
+      <div class="trb-card fi acc-card">
+        <div class="acc-summary">
+          <div class="trb-top-row"><span class="trb-badge tb-c">Code</span><i class="fas fa-code" style="color:var(--text3)"></i></div>
+          <div class="trb-ttl">자동화 엔진 이벤트 드리븐 리팩토링</div>
+          <div class="acc-hint"><span class="acc-preview">강결합 직접 호출 → Spring ApplicationEvent</span><i class="fas fa-chevron-down acc-arrow"></i></div>
+        </div>
+        <div class="acc-detail">
+          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">이벤트 엔진이 SmartThings·FCM·디바이스 제어를 API로 직접 호출하는 강결합 구조. 하나가 실패하면 전체 흐름이 중단됨</p></div>
+          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">RestTemplate 분리 vs Spring ApplicationEvent → 추가 인프라 없이 구현 가능하고 Spring 트랜잭션 경계와 자연스럽게 분리 가능</p></div>
+          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">Spring ApplicationEvent 기반 비동기 이벤트로 전환. 서비스 간 의존성을 끊고 독립적 실패 처리 구현</p></div>
+          <div class="acc-actions"><div class="imp-tags"><span class="itag">Loose Coupling</span><span class="itag">Async Event</span></div><a href="https://tech-notes-nu.vercel.app/blog/2026-02-08-spring-event-async" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div>
+        </div>
+      </div>
+
+      <!-- 2. 로그 구조 표준화 -->
+      <div class="trb-card fi acc-card">
+        <div class="acc-summary">
+          <div class="trb-top-row"><span class="trb-badge tb-c">Code</span><i class="fas fa-list-alt" style="color:var(--text3)"></i></div>
+          <div class="trb-ttl">전체 서비스 로그 구조 표준화</div>
+          <div class="acc-hint"><span class="acc-preview">파편화된 로그 → MDC traceId 전 서비스 통일</span><i class="fas fa-chevron-down acc-arrow"></i></div>
+        </div>
+        <div class="acc-detail">
+          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">각 Service에서 파편화된 방식으로 로그를 남겨 장애 발생 시 요청 흐름 추적이 어려웠음</p></div>
+          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">AOP vs Filter/Interceptor → 요청 단위 전처리가 필요하고 HTTP 레이어에서 처리해야 하므로 Filter+Interceptor 선택</p></div>
+          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">Filter/Interceptor로 로그 처리를 분리하고 MDC traceId를 도입. 모든 로그에 동일한 요청 식별자가 기록되도록 표준화하여 전 서비스 요청 추적성 확보</p></div>
+          <div class="acc-actions"><div class="imp-tags"><span class="itag">MDC</span><span class="itag">AOP</span><span class="itag">Tracing</span></div></div>
+        </div>
+      </div>
+
+      <!-- 3. 인증 서버 보안 고도화 -->
+      <div class="trb-card fi acc-card">
+        <div class="acc-summary">
+          <div class="trb-top-row"><span class="trb-badge tb-s">Security</span><i class="fas fa-shield-alt" style="color:var(--text3)"></i></div>
+          <div class="trb-ttl">인증 서버 보안 고도화</div>
+          <div class="acc-hint"><span class="acc-preview">permitAll 전체 허용 → SecurityFilterChain 분리</span><i class="fas fa-chevron-down acc-arrow"></i></div>
+        </div>
+        <div class="acc-detail">
+          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">/oauth2/** 전체에 permitAll이 걸려 Authorization Code 탈취 위험이 있었고, PKCE는 비활성화 상태였음</p></div>
+          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">부분 수정 vs 전체 SecurityFilterChain 재설계 → 권한 설정이 뒤섞이면 누락 위험이 높으므로 체인 분리로 책임 명확화</p></div>
+          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">SecurityFilterChain 분리, PKCE 활성화, OIDC 표준 전환, 불필요한 permitAll 제거로 보안 수준 강화</p></div>
+          <div class="acc-actions"><div class="imp-tags"><span class="itag">OAuth2.1</span><span class="itag">PKCE</span><span class="itag">OIDC</span></div></div>
+        </div>
+      </div>
+
+      <!-- 4. Git 브랜치 전략 -->
+      <div class="trb-card fi acc-card">
+        <div class="acc-summary">
+          <div class="trb-top-row"><span class="trb-badge tb-g">DevOps</span><i class="fab fa-git-alt" style="color:var(--text3)"></i></div>
+          <div class="trb-ttl">Git 브랜치 전략 수립 & 문서화</div>
+          <div class="acc-hint"><span class="acc-preview">브랜치 전략 부재 → 3-Tier + Conventional Commits</span><i class="fas fa-chevron-down acc-arrow"></i></div>
+        </div>
+        <div class="acc-detail">
+          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">팀 내 브랜치 전략과 커밋 규칙이 없어 dev·staging·prod 배포 환경 혼선이 잦고 PR 리뷰 기준도 불명확했음</p></div>
+          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">Git Flow vs 3-Tier 단순화 → 팀 규모와 배포 환경에 맞게 feature/release/main 3단계로 단순화, 복잡한 hotfix/develop 분기 불필요</p></div>
+          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">3-Tier(Dev/Release/Main) 전략과 Conventional Commits 규칙을 수립해 문서화하고 팀에 전파, 배포 환경 혼선 방지 및 협업 효율 개선</p></div>
+          <div class="acc-actions"><div class="imp-tags"><span class="itag">Git Flow</span><span class="itag">Convention</span></div></div>
+        </div>
+      </div>
+
+      <!-- 5. Systemd 전환 -->
+      <div class="trb-card fi acc-card">
+        <div class="acc-summary">
+          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><i class="fas fa-server" style="color:var(--text3)"></i></div>
+          <div class="trb-ttl">Systemd 서비스 전환</div>
+          <div class="acc-hint"><span class="acc-preview">nohup 수동 실행 → systemd 자동 관리</span><i class="fas fa-chevron-down acc-arrow"></i></div>
+        </div>
+        <div class="acc-detail">
+          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">nohup으로 서비스를 띄우는 방식이어서 서버 재부팅 시 자동 재시작이 안 되고, Graceful Shutdown도 보장되지 않아 배포 중 요청 유실 위험이 있었음</p></div>
+          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">nohup + cron vs systemd → systemd는 재시작 정책, 의존성 관리, 로그 통합이 한 unit 파일로 가능해 운영 부담이 현저히 낮음</p></div>
+          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">Systemd unit 파일을 작성해 서비스로 등록. 재부팅 시 자동 시작과 Graceful Shutdown 보장</p></div>
+          <div class="acc-actions"><div class="imp-tags"><span class="itag">Reliability</span><span class="itag">Linux</span></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-12-nohup-vs-systemd" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div>
+        </div>
+      </div>
+
+      <!-- 6. 내부 네트워크 최적화 -->
+      <div class="trb-card fi acc-card">
+        <div class="acc-summary">
+          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><i class="fas fa-network-wired" style="color:var(--text3)"></i></div>
+          <div class="trb-ttl">내부 네트워크 경로 최적화</div>
+          <div class="acc-hint"><span class="acc-preview">외부 ALB 경유 → Internal NLB + Private DNS</span><i class="fas fa-chevron-down acc-arrow"></i></div>
+        </div>
+        <div class="acc-detail">
+          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">내부 서비스 간 통신이 외부 ALB를 경유하는 구조여서 불필요한 왕복이 발생해 간헐적 Timeout 이슈가 생겼음</p></div>
+          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">hosts 파일 직접 수정 vs NLB + Private DNS → 단기 패치보다 인프라 수준에서 해결해야 재현·롤백·확장이 쉬움</p></div>
+          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">Internal NLB와 Private DNS를 도입해 내부 트래픽을 VPC 내부로 직접 라우팅하는 방안을 분석하고 제안</p></div>
+          <div class="acc-actions"><div class="imp-tags"><span class="itag">Network Optimization</span></div></div>
+        </div>
+      </div>
+
+      <!-- 7. OTA Lambda 역할 분리 -->
+      <div class="trb-card fi acc-card" style="grid-column:1/-1">
+        <div class="acc-summary">
+          <div class="trb-top-row"><span class="trb-badge tb-a">AWS IoT</span><i class="fas fa-cloud-download-alt" style="color:var(--text3)"></i></div>
+          <div class="trb-ttl">OTA Lambda 역할 분리 및 구조 개선</div>
+          <div class="acc-hint"><span class="acc-preview">단일 Lambda 다목적 처리 → 책임 분리 2개 Lambda</span><i class="fas fa-chevron-down acc-arrow"></i></div>
+        </div>
+        <div class="acc-detail">
+          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">ota-job-handler 하나가 Job 생성·삭제·초기 등록·상태 업데이트를 모두 처리해 역할 불명확. OTA 진행 중 신규 디바이스 ThingGroup 추가 시 DB 누락 케이스 존재</p></div>
+          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">단일 Lambda 내 분기 처리 vs 책임 분리 → 이벤트 트리거 소스가 달라 분리가 자연스럽고, 장애 시 영향 범위를 줄이기 위해 분리 결정</p></div>
+          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">ota-job-handler(Job 생명주기)·ota-status-handler(상태 업데이트)로 책임 분리. AddThingToThingGroup 이벤트 처리 추가로 신규 디바이스 누락 선제 방어</p></div>
+          <div class="acc-actions"><div class="imp-tags"><span class="itag">Single Responsibility</span><span class="itag">Event-Driven</span><span class="itag">AWS IoT</span></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-04-ota-lambda-role" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -512,6 +700,7 @@
         <a href="https://github.com/simeunyoung" target="_blank" class="cl-card"><div class="cl-ico" style="background:#24292e"><i class="fab fa-github"></i></div><div class="cl-lbl">GitHub</div><div class="cl-val">github.com/simeunyoung</div></a>
         <a href="https://tech-notes-nu.vercel.app" target="_blank" class="cl-card"><div class="cl-ico" style="background:var(--accent3)"><i class="fas fa-pen-nib"></i></div><div class="cl-lbl">Tech Blog</div><div class="cl-val">tech-notes-nu.vercel.app</div></a>
       </div>
+      
     </div>
   </footer>
 
