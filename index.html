@@ -478,91 +478,117 @@
     <div class="trb-grid">
 
       <!-- Card 1: OAuth2 JWT -->
-      <div class="trb-card fi acc-card">
+      <div class="trb-card fi acc-card open" data-cat="dev">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-s">Security</span><i class="fas fa-key" style="color:var(--text3)"></i></div>
+          <div class="trb-top-row"><span class="trb-badge tb-s">Security</span><a href="https://tech-notes-nu.vercel.app/blog/2026-02-23-oauth2-jwt-key" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그</a></div>
           <div class="trb-ttl">OAuth2 JWT 이중화 이슈</div>
           <div class="acc-hint"><span class="acc-preview">재기동 시 전체 사용자 로그아웃</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
         <div class="acc-detail">
-          <div class="detail-row row-bg"><span class="dr-lbl">배경</span><p class="dr-tx">이중화 환경에서 무중단 배포를 시도하다 발견</p></div>
-          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">서버마다 RSA 키가 달라 Sticky Session에 의존, 재기동 시 전체 사용자 로그아웃</p></div>
-          <div class="detail-row row-cause"><span class="dr-lbl">원인 분석</span><p class="dr-tx">서버 기동 시마다 RSA 키를 메모리에서 새로 생성하는 구조였음을 확인</p></div>
-          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">Redis 캐싱 vs DB 영속화 검토 → 서버 전체 재기동 시나리오에서도 키 유지가 필요해 DB 영속화 선택</p></div>
-          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">jwk_settings 테이블에 RSA 키 저장, 기동 시 DB 조회 → 없으면 생성</p></div>
-          <div class="detail-row row-result"><span class="dr-lbl">결과</span><p class="dr-tx">Sticky Session 의존 제거, 무중단 배포 가능 구조로 전환</p></div>
-          <div class="acc-actions"><a href="https://tech-notes-nu.vercel.app/blog/2026-02-23-oauth2-jwt-key" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div>
+          <div class="detail-row row-problem">
+            <span class="dr-lbl">🔍 문제 상황</span>
+            <p class="dr-tx">이중화 환경에서 무중단 배포를 시도하던 중 발견했습니다. 서버가 기동될 때마다 RSA 키를 메모리에서 새로 생성하는 구조여서 인스턴스마다 키가 달랐고, 이 때문에 Sticky Session에 의존할 수밖에 없었습니다. 서버 재기동 시 전체 사용자가 로그아웃되는 현상이 발생했습니다.</p>
+          </div>
+          <div class="detail-row row-analysis">
+            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <p class="dr-tx">RSA 키를 서버 기동 시마다 새로 생성하는 것 자체가 문제였습니다. 해결 방법으로 Redis 캐싱과 DB 영속화를 검토했는데, Redis는 장애 발생 시 키가 사라지는 리스크가 있고 서버 전체 재기동 시나리오에서 키 유실 가능성이 있어 DB 영속화를 선택했습니다.</p>
+          </div>
+          <div class="detail-row row-solution">
+            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <p class="dr-tx">jwk_settings 테이블에 RSA 키를 저장하고, 기동 시 DB에서 조회해 사용하고 없으면 그때 생성하도록 변경했습니다. Sticky Session 의존이 제거됐고 무중단 배포가 가능한 구조로 전환됐습니다.</p>
+          </div>
         </div>
       </div>
 
       <!-- Card 2: EC2 부팅 실패 -->
-      <div class="trb-card fi acc-card">
+      <div class="trb-card fi acc-card open" data-cat="infra">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><i class="fas fa-cloud" style="color:var(--text3)"></i></div>
+          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><a href="https://tech-notes-nu.vercel.app/blog/2026-03-26-ec2-boot-failure" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그</a></div>
           <div class="trb-ttl">EC2 부팅 실패<br>(CONSOLE_EVTCHN 오류)</div>
           <div class="acc-hint"><span class="acc-preview">Xen 하이퍼바이저 커널 타이밍 이슈</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
         <div class="acc-detail">
-          <div class="detail-row row-bg"><span class="dr-lbl">배경</span><p class="dr-tx">평일 09:00 자동 시작 스케줄 운영 중 간헐적 발생</p></div>
-          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">t2.large 인스턴스 부팅 실패, 직렬 콘솔 미지원으로 내부 접근 불가</p></div>
-          <div class="detail-row row-cause"><span class="dr-lbl">원인 분석</span><p class="dr-tx">EC2 스크린샷으로 CONSOLE_EVTCHN 오류 확인, Xen 하이퍼바이저 커널 타이밍 이슈로 파악</p></div>
-          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">수동 재부팅 반복 vs 인스턴스 타입 변경 → 근본 원인인 Xen 환경 자체를 Nitro로 교체하는 게 맞다고 판단</p></div>
-          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">t2 → t3(Nitro 하이퍼바이저) 마이그레이션, 직렬 콘솔 지원 확보</p></div>
-          <div class="detail-row row-result"><span class="dr-lbl">결과</span><p class="dr-tx">부팅 실패 재발 없음, 향후 직렬 콘솔 디버깅 환경 확보</p></div>
-          <div class="acc-actions"><a href="https://tech-notes-nu.vercel.app/blog/2026-03-26-ec2-boot-failure" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div>
+          <div class="detail-row row-problem">
+            <span class="dr-lbl">🔍 문제 상황</span>
+            <p class="dr-tx">평일 09:00 자동 시작 스케줄로 운영하던 t2.large 인스턴스에서 간헐적으로 부팅 실패가 발생했습니다. 직렬 콘솔을 지원하지 않는 환경이라 내부 접근이 불가능했고, EC2 스크린샷으로만 원인을 추적해야 했습니다.</p>
+          </div>
+          <div class="detail-row row-analysis">
+            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <p class="dr-tx">스크린샷에서 CONSOLE_EVTCHN 오류를 확인했습니다. t2는 Xen 하이퍼바이저 기반인데, 커널과 하이퍼바이저 간 콘솔 채널 협상 타이밍 이슈가 원인이었습니다. 수동 재부팅으로 즉시 복구는 가능했지만 재발 가능성이 남아있어, 근본 원인인 Xen 환경 자체를 바꾸는 방향으로 결정했습니다.</p>
+          </div>
+          <div class="detail-row row-solution">
+            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <p class="dr-tx">t2 → t3(Nitro 하이퍼바이저)로 인스턴스 타입을 변경했습니다. 부팅 실패가 재발하지 않았고, Nitro 전환으로 직렬 콘솔 지원도 함께 확보돼 향후 디버깅 환경이 개선됐습니다.</p>
+          </div>
         </div>
       </div>
 
       <!-- Card 3: OTA 5분 지연 -->
-      <div class="trb-card fi acc-card">
+      <div class="trb-card fi acc-card open" data-cat="infra">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-a">AWS IoT</span><i class="fas fa-sync-alt" style="color:var(--text3)"></i></div>
+          <div class="trb-top-row"><span class="trb-badge tb-a">AWS IoT</span><a href="https://tech-notes-nu.vercel.app/blog/2026-03-04-ota-polling-to-event" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그</a></div>
           <div class="trb-ttl">OTA 상태 반영 최대 5분 지연</div>
           <div class="acc-hint"><span class="acc-preview"><span class="stat-bad">최대 5분</span> → <span class="stat-good">즉시</span> 반영</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
         <div class="acc-detail">
-          <div class="detail-row row-bg"><span class="dr-lbl">배경</span><p class="dr-tx">OTA 펌웨어 업데이트 상태를 실시간으로 보여줘야 하는 요구사항</p></div>
-          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">EventBridge <strong>5분 주기 폴링</strong> 구조, 최대 5분 지연. Job 없을 때도 Lambda 실행되는 비용 낭비</p></div>
-          <div class="detail-row row-cause"><span class="dr-lbl">원인 분석</span><p class="dr-tx">폴링 기반 구조 자체가 실시간 요구사항과 맞지 않음을 파악</p></div>
-          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">폴링 주기 단축 vs 이벤트 드리븐 전환 검토 → 주기 단축은 비용만 증가하고 근본 해결이 안 됨, MQTT 이벤트가 이미 존재하므로 드리븐 방식으로 전환</p></div>
-          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx"><code>$aws/events/jobExecution/+/+</code> 토픽 이벤트 발생 시 IoT Rule이 즉시 Lambda 트리거</p></div>
-          <div class="detail-row row-result"><span class="dr-lbl">결과</span><p class="dr-tx"><span class="stat-bad">최대 5분 지연</span> → <span class="stat-good">즉시 반영</span>, 불필요한 Lambda 호출 제거</p></div>
-          <div class="acc-actions"><a href="https://tech-notes-nu.vercel.app/blog/2026-03-04-ota-polling-to-event" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div>
+          <div class="detail-row row-problem">
+            <span class="dr-lbl">🔍 문제 상황</span>
+            <p class="dr-tx">OTA 펌웨어 업데이트 상태를 실시간으로 보여줘야 하는 요구사항이 있었는데, EventBridge 5분 주기 폴링 구조로 인해 <span class="stat-bad">최대 5분</span>의 지연이 발생했습니다. 진행 중인 Job이 없어도 Lambda가 5분마다 무조건 실행되어 불필요한 비용이 낭비되고 있었고, 상태 전이 가드도 없어서 SUCCEEDED 이후에 IN_PROGRESS가 덮어쓰이는 역전 케이스도 존재했습니다.</p>
+          </div>
+          <div class="detail-row row-analysis">
+            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <p class="dr-tx">폴링 주기를 1분으로 줄이는 방법도 검토했지만, Lambda 호출 비용만 5배 증가하고 실시간 반영은 여전히 보장되지 않습니다. MQTT 이벤트가 이미 발생하고 있는 구조였기 때문에 이걸 트리거로 쓰는 이벤트 드리븐 방식으로 전환하는 것이 근본 해결이라고 판단했습니다.</p>
+          </div>
+          <div class="detail-row row-solution">
+            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <p class="dr-tx"><code>$aws/events/jobExecution/+/+</code> 토픽 이벤트 발생 시 IoT Rule이 즉시 Lambda를 트리거하도록 전환했습니다. <span class="stat-bad">최대 5분 지연</span>이 <span class="stat-good">즉시 반영</span>으로 바뀌었고, 불필요한 Lambda 호출이 제거됐습니다. should_update_status() 가드를 추가해 상태 역전도 차단했습니다.</p>
+          </div>
         </div>
       </div>
 
       <!-- Card 4: 디스크 사용률 93% -->
-      <div class="trb-card fi acc-card">
+      <div class="trb-card fi acc-card open" data-cat="infra">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><i class="fas fa-hdd" style="color:var(--text3)"></i></div>
+          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span></div>
           <div class="trb-ttl">서버 디스크 사용률 93%</div>
           <div class="acc-hint"><span class="acc-preview"><span class="stat-bad">93%</span> → <span class="stat-good">46%</span></span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
         <div class="acc-detail">
-          <div class="detail-row row-bg"><span class="dr-lbl">배경</span><p class="dr-tx">운영 서버 모니터링 중 디스크 알람 발생</p></div>
-          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">디스크 사용률 <span class="stat-bad">93%</span>, 서비스 장애 임박 상태</p></div>
-          <div class="detail-row row-cause"><span class="dr-lbl">원인 분석</span><p class="dr-tx">du 명령으로 디렉토리별 용량 추적 → 로그 디렉토리에 로테이션 없이 누적된 고아 로그 파일 발견</p></div>
-          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">수동 삭제만 vs 자동화 체계 구축 → 재발 방지를 위해 logrotate 전 서버 표준화까지 진행</p></div>
-          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">고아 로그 정리 + logrotate 설정 전 서버(개발/수요/운영) 동시 적용, crontab 90일 자동 삭제</p></div>
-          <div class="detail-row row-result"><span class="dr-lbl">결과</span><p class="dr-tx">디스크 사용률 <span class="stat-bad">93%</span> → <span class="stat-good">46%</span></p></div>
+          <div class="detail-row row-problem">
+            <span class="dr-lbl">🔍 문제 상황</span>
+            <p class="dr-tx">운영 서버 모니터링 중 디스크 알람이 발생했습니다. 사용률이 <span class="stat-bad">93%</span>에 달해 서비스 장애가 임박한 상태였고, 처음엔 원인이 불명확해 어디서부터 확인해야 할지 파악이 필요했습니다.</p>
+          </div>
+          <div class="detail-row row-analysis">
+            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <p class="dr-tx"><code>du</code> 명령으로 디렉토리별 용량을 추적했고, 로그 디렉토리에 로테이션 없이 누적된 고아 로그 파일이 원인임을 확인했습니다. 수동 삭제만 하면 동일한 문제가 반복될 것이 명확했기 때문에, 이 기회에 <code>logrotate</code>를 개발/수요/운영 전 서버에 동시 표준화하는 방향으로 진행했습니다.</p>
+          </div>
+          <div class="detail-row row-solution">
+            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <p class="dr-tx">고아 로그 정리 후 <code>logrotate</code> 설정과 <code>crontab</code> 90일 자동 삭제를 전 서버에 적용했습니다. 디스크 사용률이 <span class="stat-bad">93%</span> → <span class="stat-good">46%</span>로 감소했고 재발 방지 체계를 마련했습니다.</p>
+          </div>
         </div>
       </div>
 
       <!-- Card 5: CloudFront 캐시 -->
-      <div class="trb-card fi acc-card">
+      <div class="trb-card fi acc-card open" data-cat="infra">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><i class="fas fa-cloud" style="color:var(--text3)"></i></div>
+          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><a href="https://tech-notes-nu.vercel.app/blog/2026-03-30-cloudfront-image-cache" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그</a></div>
           <div class="trb-ttl">CloudFront 이미지 캐시 미갱신</div>
           <div class="acc-hint"><span class="acc-preview">동일 파일명 교체 시 구버전 CDN 반환</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
         <div class="acc-detail">
-          <div class="detail-row row-bg"><span class="dr-lbl">배경</span><p class="dr-tx">운영 중 이미지 교체 요청 처리 중 발생</p></div>
-          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">S3에 동일 파일명으로 교체 업로드해도 CDN이 구버전 이미지 계속 반환</p></div>
-          <div class="detail-row row-cause"><span class="dr-lbl">원인 분석</span><p class="dr-tx">CloudFront 캐시 동작 원리 확인 → URL이 동일하면 TTL 만료 전까지 캐시 유지하는 것이 원인</p></div>
-          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">Invalidation API 호출 vs 파일명 전략 변경 → Invalidation은 건당 비용 발생 + 즉시성 보장 안 됨, 파일명에 타임스탬프 포함이 근본 해결</p></div>
-          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">KST 서버 시간 기반 타임스탬프를 파일명에 포함, URL 자체가 변경되어 캐시 무관하게 즉시 반영</p></div>
-          <div class="detail-row row-result"><span class="dr-lbl">결과</span><p class="dr-tx">Invalidation 없이 즉시 최신 이미지 반영</p></div>
-          <div class="acc-actions"><a href="https://tech-notes-nu.vercel.app/blog/2026-03-30-cloudfront-image-cache" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div>
+          <div class="detail-row row-problem">
+            <span class="dr-lbl">🔍 문제 상황</span>
+            <p class="dr-tx">운영 중 이미지 교체 요청을 처리하면서 문제가 발생했습니다. S3에 동일한 파일명으로 새 이미지를 업로드했음에도 CloudFront가 구버전 이미지를 계속 반환하여, 사용자에게 항상 최신 이미지를 보여줘야 하는 서비스 요구사항에 맞지 않는 상황이었습니다.</p>
+          </div>
+          <div class="detail-row row-analysis">
+            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <p class="dr-tx">CloudFront 캐시 동작 원리를 분석한 결과, URL이 동일하면 TTL 만료 전까지 캐시된 응답을 그대로 반환하는 것이 원인이었습니다. Invalidation API 호출도 검토했지만 건당 비용이 발생하고 즉시성이 보장되지 않아, URL 자체를 변경하는 파일명 타임스탬프 전략이 근본적인 해결책이라고 판단했습니다.</p>
+          </div>
+          <div class="detail-row row-solution">
+            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <p class="dr-tx">KST 서버 시간 기반 타임스탬프를 파일명에 포함하도록 업로드 로직을 수정했습니다. URL 자체가 매번 달라지기 때문에 Invalidation 없이도 이미지 교체 즉시 최신 버전이 반영되었습니다.</p>
+          </div>
         </div>
       </div>
 
@@ -581,107 +607,170 @@
     <div class="imp-grid">
 
       <!-- 1. 이벤트 드리븐 리팩토링 -->
-      <div class="trb-card fi acc-card">
+      <div class="trb-card fi acc-card open" data-cat="dev">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-c">Code</span><i class="fas fa-code" style="color:var(--text3)"></i></div>
+          <div class="trb-top-row"><span class="trb-badge tb-c">Code</span><a href="https://tech-notes-nu.vercel.app/blog/2026-02-08-spring-event-async" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그</a></div>
           <div class="trb-ttl">자동화 엔진 이벤트 드리븐 리팩토링</div>
           <div class="acc-hint"><span class="acc-preview">강결합 직접 호출 → Spring ApplicationEvent</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
         <div class="acc-detail">
-          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">이벤트 엔진이 SmartThings·FCM·디바이스 제어를 API로 직접 호출하는 강결합 구조. 하나가 실패하면 전체 흐름이 중단됨</p></div>
-          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">RestTemplate 분리 vs Spring ApplicationEvent → 추가 인프라 없이 구현 가능하고 Spring 트랜잭션 경계와 자연스럽게 분리 가능</p></div>
-          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">Spring ApplicationEvent 기반 비동기 이벤트로 전환. 서비스 간 의존성을 끊고 독립적 실패 처리 구현</p></div>
-          <div class="acc-actions"><div class="imp-tags"><span class="itag">Loose Coupling</span><span class="itag">Async Event</span></div><a href="https://tech-notes-nu.vercel.app/blog/2026-02-08-spring-event-async" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div>
+          <div class="detail-row row-problem">
+            <span class="dr-lbl">🔍 문제 상황</span>
+            <p class="dr-tx">자동화 엔진이 SmartThings·FCM·디바이스 제어 서비스를 API로 직접 호출하는 강결합 구조였습니다. 연동 서비스 중 하나가 실패하면 전체 자동화 흐름이 중단되었고, 서비스 간 의존성이 높아 유지보수와 기능 확장이 어려운 상태였습니다.</p>
+          </div>
+          <div class="detail-row row-analysis">
+            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <p class="dr-tx">RestTemplate 분리 방식도 검토했지만, Spring ApplicationEvent를 활용하면 추가 인프라 없이도 느슨한 결합을 구현할 수 있고, Spring 트랜잭션 경계와 자연스럽게 분리할 수 있다는 점에서 더 적합하다고 판단했습니다. <span class="stat-hl">FCM 동기 → 비동기</span> 전환으로 자동화 흐름의 안정성을 높일 수 있었습니다.</p>
+          </div>
+          <div class="detail-row row-solution">
+            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <p class="dr-tx">Spring ApplicationEvent 기반 비동기 이벤트로 전환하여 서비스 간 의존성을 끊고 독립적인 실패 처리를 구현했습니다. 개별 서비스 장애가 전체 자동화 흐름에 영향을 주지 않는 구조가 되었습니다.</p>
+          </div>
+          <div class="acc-actions"><div class="imp-tags"><span class="itag">Loose Coupling</span><span class="itag">Async Event</span></div></div>
         </div>
       </div>
 
       <!-- 2. 로그 구조 표준화 -->
-      <div class="trb-card fi acc-card">
+      <div class="trb-card fi acc-card open" data-cat="dev">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-c">Code</span><i class="fas fa-list-alt" style="color:var(--text3)"></i></div>
+          <div class="trb-top-row"><span class="trb-badge tb-c">Code</span></div>
           <div class="trb-ttl">전체 서비스 로그 구조 표준화</div>
           <div class="acc-hint"><span class="acc-preview">파편화된 로그 → MDC traceId 전 서비스 통일</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
         <div class="acc-detail">
-          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">각 Service에서 파편화된 방식으로 로그를 남겨 장애 발생 시 요청 흐름 추적이 어려웠음</p></div>
-          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">AOP vs Filter/Interceptor → 요청 단위 전처리가 필요하고 HTTP 레이어에서 처리해야 하므로 Filter+Interceptor 선택</p></div>
-          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">Filter/Interceptor로 로그 처리를 분리하고 MDC traceId를 도입. 모든 로그에 동일한 요청 식별자가 기록되도록 표준화하여 전 서비스 요청 추적성 확보</p></div>
+          <div class="detail-row row-problem">
+            <span class="dr-lbl">🔍 문제 상황</span>
+            <p class="dr-tx">각 Service 클래스에서 파편화된 방식으로 로그를 남기고 있어, 장애 발생 시 특정 요청의 흐름을 추적하는 것이 매우 어려운 상태였습니다. 여러 서비스에 걸친 요청을 연결할 수 있는 공통 식별자가 없었습니다.</p>
+          </div>
+          <div class="detail-row row-analysis">
+            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <p class="dr-tx">AOP로 로깅을 통합하는 방법도 검토했지만, HTTP 레이어에서 요청 단위로 식별자를 생성·전파하려면 Filter와 Interceptor가 더 적합한 위치라고 판단했습니다. MDC를 활용하면 별도 파라미터 전달 없이 모든 레이어에서 동일한 traceId를 참조할 수 있어 선택했습니다.</p>
+          </div>
+          <div class="detail-row row-solution">
+            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <p class="dr-tx">Filter/Interceptor에서 MDC traceId를 생성하고 전파하는 구조를 도입하여, 전 서비스의 로그가 동일한 요청 식별자로 연결되도록 표준화했습니다. 장애 발생 시 요청 흐름을 즉시 추적할 수 있게 되었습니다.</p>
+          </div>
           <div class="acc-actions"><div class="imp-tags"><span class="itag">MDC</span><span class="itag">AOP</span><span class="itag">Tracing</span></div></div>
         </div>
       </div>
 
       <!-- 3. 인증 서버 보안 고도화 -->
-      <div class="trb-card fi acc-card">
+      <div class="trb-card fi acc-card open" data-cat="dev">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-s">Security</span><i class="fas fa-shield-alt" style="color:var(--text3)"></i></div>
+          <div class="trb-top-row"><span class="trb-badge tb-s">Security</span></div>
           <div class="trb-ttl">인증 서버 보안 고도화</div>
           <div class="acc-hint"><span class="acc-preview">permitAll 전체 허용 → SecurityFilterChain 분리</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
         <div class="acc-detail">
-          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">/oauth2/** 전체에 permitAll이 걸려 Authorization Code 탈취 위험이 있었고, PKCE는 비활성화 상태였음</p></div>
-          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">부분 수정 vs 전체 SecurityFilterChain 재설계 → 권한 설정이 뒤섞이면 누락 위험이 높으므로 체인 분리로 책임 명확화</p></div>
-          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">SecurityFilterChain 분리, PKCE 활성화, OIDC 표준 전환, 불필요한 permitAll 제거로 보안 수준 강화</p></div>
+          <div class="detail-row row-problem">
+            <span class="dr-lbl">🔍 문제 상황</span>
+            <p class="dr-tx"><code>/oauth2/**</code> 엔드포인트 전체에 <code>permitAll</code>이 설정되어 있어 Authorization Code 탈취 공격에 취약한 상태였습니다. 또한 PKCE가 비활성화되어 있어 OAuth2.1 보안 요구사항을 충족하지 못하고 있었습니다.</p>
+          </div>
+          <div class="detail-row row-analysis">
+            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <p class="dr-tx">기존 설정을 부분적으로 수정하는 방법도 검토했지만, 권한 설정이 혼재할 경우 누락 위험이 높다고 판단했습니다. SecurityFilterChain을 역할별로 완전히 분리하면 OAuth2.1 전용 체인과 일반 API 체인의 책임이 명확해져 보안 취약점 발생 가능성을 낮출 수 있다고 판단했습니다.</p>
+          </div>
+          <div class="detail-row row-solution">
+            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <p class="dr-tx">SecurityFilterChain을 OAuth2.1 전용과 일반 API용으로 분리하고, PKCE를 활성화하며 OIDC 표준으로 전환했습니다. 불필요한 <code>permitAll</code>을 제거하여 인증 서버의 보안 수준을 전반적으로 강화했습니다.</p>
+          </div>
           <div class="acc-actions"><div class="imp-tags"><span class="itag">OAuth2.1</span><span class="itag">PKCE</span><span class="itag">OIDC</span></div></div>
         </div>
       </div>
 
       <!-- 4. Git 브랜치 전략 -->
-      <div class="trb-card fi acc-card">
+      <div class="trb-card fi acc-card open" data-cat="dev">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-g">DevOps</span><i class="fab fa-git-alt" style="color:var(--text3)"></i></div>
+          <div class="trb-top-row"><span class="trb-badge tb-g">DevOps</span></div>
           <div class="trb-ttl">Git 브랜치 전략 수립 & 문서화</div>
           <div class="acc-hint"><span class="acc-preview">브랜치 전략 부재 → 3-Tier + Conventional Commits</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
         <div class="acc-detail">
-          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">팀 내 브랜치 전략과 커밋 규칙이 없어 dev·staging·prod 배포 환경 혼선이 잦고 PR 리뷰 기준도 불명확했음</p></div>
-          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">Git Flow vs 3-Tier 단순화 → 팀 규모와 배포 환경에 맞게 feature/release/main 3단계로 단순화, 복잡한 hotfix/develop 분기 불필요</p></div>
-          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">3-Tier(Dev/Release/Main) 전략과 Conventional Commits 규칙을 수립해 문서화하고 팀에 전파, 배포 환경 혼선 방지 및 협업 효율 개선</p></div>
+          <div class="detail-row row-problem">
+            <span class="dr-lbl">🔍 문제 상황</span>
+            <p class="dr-tx">팀 내 브랜치 전략과 커밋 규칙이 정해져 있지 않아, 개발/스테이징/운영 배포 환경 혼선이 자주 발생했습니다. PR 리뷰 기준도 불명확해 코드 품질을 일관되게 관리하기 어려운 상황이었습니다.</p>
+          </div>
+          <div class="detail-row row-analysis">
+            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <p class="dr-tx">Git Flow는 팀 규모와 배포 환경에 비해 복잡하다고 판단했습니다. feature/release/main 3단계로 단순화한 3-Tier 전략이 현재 환경에 더 적합하고, Conventional Commits를 함께 도입하면 커밋 이력만으로도 변경 내용과 의도를 명확하게 파악할 수 있다고 생각했습니다.</p>
+          </div>
+          <div class="detail-row row-solution">
+            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <p class="dr-tx">3-Tier(Dev/Release/Main) 브랜치 전략과 Conventional Commits 규칙을 수립해 문서화하고 팀에 전파했습니다. 배포 환경 혼선이 줄었고, 커밋 이력을 통한 변경 이력 추적이 명확해졌습니다.</p>
+          </div>
           <div class="acc-actions"><div class="imp-tags"><span class="itag">Git Flow</span><span class="itag">Convention</span></div></div>
         </div>
       </div>
 
       <!-- 5. Systemd 전환 -->
-      <div class="trb-card fi acc-card">
+      <div class="trb-card fi acc-card open" data-cat="infra">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><i class="fas fa-server" style="color:var(--text3)"></i></div>
+          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><a href="https://tech-notes-nu.vercel.app/blog/2026-03-12-nohup-vs-systemd" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그</a></div>
           <div class="trb-ttl">Systemd 서비스 전환</div>
           <div class="acc-hint"><span class="acc-preview">nohup 수동 실행 → systemd 자동 관리</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
         <div class="acc-detail">
-          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">nohup으로 서비스를 띄우는 방식이어서 서버 재부팅 시 자동 재시작이 안 되고, Graceful Shutdown도 보장되지 않아 배포 중 요청 유실 위험이 있었음</p></div>
-          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">nohup + cron vs systemd → systemd는 재시작 정책, 의존성 관리, 로그 통합이 한 unit 파일로 가능해 운영 부담이 현저히 낮음</p></div>
-          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">Systemd unit 파일을 작성해 서비스로 등록. 재부팅 시 자동 시작과 Graceful Shutdown 보장</p></div>
-          <div class="acc-actions"><div class="imp-tags"><span class="itag">Reliability</span><span class="itag">Linux</span></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-12-nohup-vs-systemd" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div>
+          <div class="detail-row row-problem">
+            <span class="dr-lbl">🔍 문제 상황</span>
+            <p class="dr-tx"><code>nohup</code>으로 서비스를 실행하는 방식이어서, 서버 재부팅 시 수동으로 다시 기동해야 했습니다. Graceful Shutdown이 보장되지 않아 배포 중 요청이 유실될 위험이 있었고, 여러 서버에 걸쳐 실행 중인 프로세스를 추적하기도 어려운 상태였습니다.</p>
+          </div>
+          <div class="detail-row row-analysis">
+            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <p class="dr-tx"><code>nohup</code> + cron 조합으로 자동 재시작을 구현하는 방법도 있었지만, 재시작 정책·의존성 관리·로그 통합을 하나의 unit 파일로 선언적으로 관리할 수 있는 systemd가 장기적인 운영 부담 측면에서 훨씬 유리하다고 판단했습니다.</p>
+          </div>
+          <div class="detail-row row-solution">
+            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <p class="dr-tx">systemd unit 파일을 작성하여 전 서버에 서비스로 등록했습니다. 재부팅 시 자동 시작과 Graceful Shutdown이 보장되었고, <code>systemctl</code> 명령으로 상태 확인과 로그 조회가 가능해 운영 편의성이 크게 향상되었습니다.</p>
+          </div>
+          <div class="acc-actions"><div class="imp-tags"><span class="itag">Reliability</span><span class="itag">Linux</span></div></div>
         </div>
       </div>
 
       <!-- 6. 내부 네트워크 최적화 -->
-      <div class="trb-card fi acc-card">
+      <div class="trb-card fi acc-card open" data-cat="infra">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><i class="fas fa-network-wired" style="color:var(--text3)"></i></div>
+          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span></div>
           <div class="trb-ttl">내부 네트워크 경로 최적화</div>
           <div class="acc-hint"><span class="acc-preview">외부 ALB 경유 → Internal NLB + Private DNS</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
         <div class="acc-detail">
-          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">내부 서비스 간 통신이 외부 ALB를 경유하는 구조여서 불필요한 왕복이 발생해 간헐적 Timeout 이슈가 생겼음</p></div>
-          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">hosts 파일 직접 수정 vs NLB + Private DNS → 단기 패치보다 인프라 수준에서 해결해야 재현·롤백·확장이 쉬움</p></div>
-          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">Internal NLB와 Private DNS를 도입해 내부 트래픽을 VPC 내부로 직접 라우팅하는 방안을 분석하고 제안</p></div>
+          <div class="detail-row row-problem">
+            <span class="dr-lbl">🔍 문제 상황</span>
+            <p class="dr-tx">내부 서비스 간 통신이 외부 ALB를 경유하는 구조여서 불필요한 왕복 레이턴시가 발생했습니다. 간헐적인 Timeout 이슈가 생겼고, 외부 통신 비용도 함께 증가하는 문제가 있었습니다.</p>
+          </div>
+          <div class="detail-row row-analysis">
+            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <p class="dr-tx"><code>hosts</code> 파일을 직접 수정하는 방법은 단기 패치에 불과하고 서버별 관리가 어렵다고 판단했습니다. Internal NLB와 Private DNS를 도입하면 인프라 수준에서 근본적으로 해결되고, 재현·롤백·확장이 모두 용이한 구조가 된다고 분석했습니다.</p>
+          </div>
+          <div class="detail-row row-solution">
+            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <p class="dr-tx">Internal NLB와 Private DNS를 도입해 내부 트래픽을 VPC 내부로 직접 라우팅하는 방안을 설계하고 제안했습니다. 외부 ALB 경유 제거로 레이턴시가 감소하고, 불필요한 외부 통신 비용 절감 효과를 기대할 수 있었습니다.</p>
+          </div>
           <div class="acc-actions"><div class="imp-tags"><span class="itag">Network Optimization</span></div></div>
         </div>
       </div>
 
       <!-- 7. OTA Lambda 역할 분리 -->
-      <div class="trb-card fi acc-card" style="grid-column:1/-1">
+      <div class="trb-card fi acc-card open" data-cat="infra" style="grid-column:1/-1">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-a">AWS IoT</span><i class="fas fa-cloud-download-alt" style="color:var(--text3)"></i></div>
+          <div class="trb-top-row"><span class="trb-badge tb-a">AWS IoT</span><a href="https://tech-notes-nu.vercel.app/blog/2026-03-04-ota-lambda-role" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그</a></div>
           <div class="trb-ttl">OTA Lambda 역할 분리 및 구조 개선</div>
           <div class="acc-hint"><span class="acc-preview">단일 Lambda 다목적 처리 → 책임 분리 2개 Lambda</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
         <div class="acc-detail">
-          <div class="detail-row row-asis"><span class="dr-lbl">AS-IS</span><p class="dr-tx">ota-job-handler 하나가 Job 생성·삭제·초기 등록·상태 업데이트를 모두 처리해 역할 불명확. OTA 진행 중 신규 디바이스 ThingGroup 추가 시 DB 누락 케이스 존재</p></div>
-          <div class="detail-row row-reason"><span class="dr-lbl">선택 이유</span><p class="dr-tx">단일 Lambda 내 분기 처리 vs 책임 분리 → 이벤트 트리거 소스가 달라 분리가 자연스럽고, 장애 시 영향 범위를 줄이기 위해 분리 결정</p></div>
-          <div class="detail-row row-tobe"><span class="dr-lbl">TO-BE</span><p class="dr-tx">ota-job-handler(Job 생명주기)·ota-status-handler(상태 업데이트)로 책임 분리. AddThingToThingGroup 이벤트 처리 추가로 신규 디바이스 누락 선제 방어</p></div>
-          <div class="acc-actions"><div class="imp-tags"><span class="itag">Single Responsibility</span><span class="itag">Event-Driven</span><span class="itag">AWS IoT</span></div><a href="https://tech-notes-nu.vercel.app/blog/2026-03-04-ota-lambda-role" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그 보기</a></div>
+          <div class="detail-row row-problem">
+            <span class="dr-lbl">🔍 문제 상황</span>
+            <p class="dr-tx"><code>ota-job-handler</code> 하나가 Job 생성·삭제·초기 등록·상태 업데이트를 모두 처리하는 구조여서 역할이 불명확했습니다. OTA 진행 중 신규 디바이스가 ThingGroup에 추가될 때 DB에 누락되는 케이스가 존재했습니다.</p>
+          </div>
+          <div class="detail-row row-analysis">
+            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <p class="dr-tx">단일 Lambda 내 분기 처리로 수정하는 방법도 검토했지만, 이벤트 트리거 소스 자체가 달라 자연스러운 분리 경계가 존재했습니다. 역할을 분리하면 장애 발생 시 영향 범위가 줄어들고 각 Lambda의 책임이 명확해진다고 판단했습니다.</p>
+          </div>
+          <div class="detail-row row-solution">
+            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <p class="dr-tx"><code>ota-job-handler</code>(Job 생명주기)와 <code>ota-status-handler</code>(상태 업데이트)로 역할을 분리했습니다. <code>AddThingToThingGroup</code> 이벤트 처리를 추가하여 신규 디바이스 누락 케이스를 선제적으로 방어했습니다.</p>
+          </div>
+          <div class="acc-actions"><div class="imp-tags"><span class="itag">Single Responsibility</span><span class="itag">Event-Driven</span><span class="itag">AWS IoT</span></div></div>
         </div>
       </div>
 

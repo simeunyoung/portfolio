@@ -83,6 +83,22 @@ const fobs = new IntersectionObserver(entries => {
 }, {threshold: 0.08});
 document.querySelectorAll('.fi').forEach(el => fobs.observe(el));
 
+// Section filter tabs (개발 / 인프라)
+document.querySelectorAll('.sec-filter').forEach(filterBar => {
+  const grid = filterBar.nextElementSibling;
+  filterBar.querySelectorAll('.sec-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBar.querySelectorAll('.sec-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.getAttribute('data-cat');
+      grid.querySelectorAll('.trb-card').forEach(card => {
+        const match = cat === 'all' || card.getAttribute('data-cat') === cat;
+        card.classList.toggle('hidden', !match);
+      });
+    });
+  });
+});
+
 // Accordion cards
 document.querySelectorAll('.acc-card').forEach(card => {
   const summary = card.querySelector('.acc-summary');
