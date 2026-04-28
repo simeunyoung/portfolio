@@ -254,7 +254,7 @@
       <div class="ts-card fi">
         <div class="ts-hdr"><div class="ts-ico" style="background:var(--accent3)"><i class="fas fa-tools"></i></div><div class="ts-ttl">Infra & DevOps</div></div>
         <div class="ts-tags">
-          <div class="ts-tag"><i class="fab fa-linux"></i>Linux</div><div class="ts-tag">Logrotate</div><div class="ts-tag">MQTT</div><div class="ts-tag"><i class="fab fa-git-alt"></i>Git</div><div class="ts-tag">Firebase</div><div class="ts-tag">Tableau</div>
+          <div class="ts-tag"><i class="fab fa-linux"></i>Linux</div><div class="ts-tag">Logrotate</div><div class="ts-tag">MQTT</div><div class="ts-tag"><i class="fab fa-git-alt"></i>Git</div><div class="ts-tag">Firebase</div>
         </div>
       </div>
     </div>
@@ -273,8 +273,8 @@
       <h3 class="proj-title">DAMDA 2.0 Project</h3>
       <p class="proj-desc">스마트홈 IoT 디바이스 신규 버전 지원을 위해 기존 모놀리식 플랫폼을 <strong>AWS 기반의 MSA 구조</strong>로 전면 재설계한 상용화 프로젝트입니다.</p>
       <div class="ov-grid">
-        <div class="ov-card"><div class="ov-ico" style="background:var(--accent)"><i class="fas fa-layer-group"></i></div><div class="ov-ttl">Microservices Architecture</div><div class="ov-desc">인증, 회원, 알림, 자동화, 제어 등 <span class="stat-hl">5개</span>의 독립적인 Spring Boot 서비스로 구성하여 확장성 확보</div></div>
-        <div class="ov-card"><div class="ov-ico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="ov-ttl">AWS Serverless & IoT</div><div class="ov-desc">AWS IoT Core, <span class="stat-hl">4종 Lambda</span>, API Gateway를 활용한 이벤트 기반 서버리스 아키텍처 구현</div></div>
+        <div class="ov-card"><div class="ov-ico" style="background:var(--accent)"><i class="fas fa-layer-group"></i></div><div class="ov-ttl">Microservices Architecture</div><div class="ov-desc">인증, 회원, 알림, 자동화, 제어 등 Spring Boot 마이크로서비스로 구성하여 확장성 확보</div></div>
+        <div class="ov-card"><div class="ov-ico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="ov-ttl">AWS Serverless & IoT</div><div class="ov-desc">AWS IoT Core, Lambda, API Gateway를 활용한 이벤트 기반 서버리스 아키텍처 구현</div></div>
         <div class="ov-card"><div class="ov-ico" style="background:var(--accent2)"><i class="fas fa-lock"></i></div><div class="ov-ttl">Security First</div><div class="ov-desc">OAuth2.1 + PKCE 인증, MQTT TLS 암호화, 개인정보 마스킹 등 보안 최우선 설계 적용</div></div>
         <div class="ov-card"><div class="ov-ico" style="background:var(--accent3)"><i class="fas fa-check-circle"></i></div><div class="ov-ttl">Operational Excellence</div><div class="ov-desc">DEV/QA/PROD 3환경 분리, CI/CD, 시스템 모니터링 및 로그 표준화로 안정적인 운영 환경 구축</div></div>
       </div>
@@ -284,7 +284,7 @@
       </div>
       <div class="retro-box fi">
         <div class="retro-label"><i class="fas fa-comment-alt"></i> 회고</div>
-        <p class="retro-tx">IoT 플랫폼을 단독으로 설계하고 운영하면서, 기능 구현보다 '왜 이렇게 설계해야 하는가'를 먼저 생각하는 습관이 생겼습니다. 담당자 이탈로 인프라를 인수했을 때는 서비스 안정성을 유지하면서 구조를 개선해야 했고, 그 과정에서 빠른 덮기보다 근본 원인을 파악하는 것이 장기적으로 낫다는 것을 실감했습니다. OAuth2 이중화 이슈, EC2 부팅 실패 등 예상치 못한 문제들을 직접 분석하고 해결하면서, 시스템 전체를 이해하는 시야가 넓어진 프로젝트였습니다.</p>
+        <p class="retro-tx">백엔드 서비스를 담당하면서 기능 구현보다 '왜 이렇게 설계해야 하는가'를 먼저 생각하는 습관이 생겼습니다. 담당자 이동으로 인프라를 인수했을 때는 서비스 안정성을 유지하면서 구조를 개선해야 했고, 그 과정에서 빠른 덮기보다 근본 원인을 파악하는 것이 장기적으로 낫다는 것을 실감했습니다. OAuth2 이중화 이슈, EC2 부팅 실패 등 예상치 못한 문제들을 직접 분석하고 해결하면서, 개발 너머 시스템 전체를 바라보는 시야가 넓어진 프로젝트였습니다.</p>
       </div>
     </div>
   </section>
@@ -444,7 +444,7 @@
     <div class="section-header fi"><span class="section-tag">Infrastructure</span><h2 class="section-title">AWS Lambda & 인프라 운영</h2><p class="section-desc">서버리스 함수 구현 및 안정적인 인프라 운영·자동화 경험</p></div>
     <div class="lmb-layout">
       <div class="lmb-panel fi">
-        <div class="lmb-hdr"><div class="lmb-hico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="lmb-ttl">Serverless Functions — <span class="stat-hl">4종 Lambda</span></div></div>
+        <div class="lmb-hdr"><div class="lmb-hico" style="background:var(--accent4)"><i class="fab fa-aws"></i></div><div class="lmb-ttl">Serverless Functions — Lambda</div></div>
         <div class="lmb-list">
           <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">iot-event-router</span><span class="lmb-lg lg-n">Node.js</span></div><div class="lmb-dc">IoT Core MQTT 메시지 라우팅 — 이벤트 엔진</div></div>
           <div class="lmb-item"><div class="lmb-nr"><span class="lmb-nm">ota-status-handler</span><span class="lmb-lg lg-p">Python</span></div><div class="lmb-dc">OTA 업데이트 상태 실시간 추적</div></div>
@@ -486,15 +486,15 @@
         </div>
         <div class="acc-detail">
           <div class="detail-row row-problem">
-            <span class="dr-lbl">🔍 문제 상황</span>
+            <span class="dr-lbl">Background</span>
             <p class="dr-tx">이중화 환경에서 무중단 배포를 시도하던 중 발견했습니다. 서버가 기동될 때마다 RSA 키를 메모리에서 새로 생성하는 구조여서 인스턴스마다 키가 달랐고, 이 때문에 Sticky Session에 의존할 수밖에 없었습니다. 서버 재기동 시 전체 사용자가 로그아웃되는 현상이 발생했습니다.</p>
           </div>
           <div class="detail-row row-analysis">
-            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <span class="dr-lbl">Decision</span>
             <p class="dr-tx">RSA 키를 서버 기동 시마다 새로 생성하는 것 자체가 문제였습니다. 해결 방법으로 Redis 캐싱과 DB 영속화를 검토했는데, Redis는 장애 발생 시 키가 사라지는 리스크가 있고 서버 전체 재기동 시나리오에서 키 유실 가능성이 있어 DB 영속화를 선택했습니다.</p>
           </div>
           <div class="detail-row row-solution">
-            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <span class="dr-lbl">Result</span>
             <p class="dr-tx">jwk_settings 테이블에 RSA 키를 저장하고, 기동 시 DB에서 조회해 사용하고 없으면 그때 생성하도록 변경했습니다. Sticky Session 의존이 제거됐고 무중단 배포가 가능한 구조로 전환됐습니다.</p>
           </div>
         </div>
@@ -509,15 +509,15 @@
         </div>
         <div class="acc-detail">
           <div class="detail-row row-problem">
-            <span class="dr-lbl">🔍 문제 상황</span>
+            <span class="dr-lbl">Background</span>
             <p class="dr-tx">평일 09:00 자동 시작 스케줄로 운영하던 t2.large 인스턴스에서 간헐적으로 부팅 실패가 발생했습니다. 직렬 콘솔을 지원하지 않는 환경이라 내부 접근이 불가능했고, EC2 스크린샷으로만 원인을 추적해야 했습니다.</p>
           </div>
           <div class="detail-row row-analysis">
-            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <span class="dr-lbl">Decision</span>
             <p class="dr-tx">스크린샷에서 CONSOLE_EVTCHN 오류를 확인했습니다. t2는 Xen 하이퍼바이저 기반인데, 커널과 하이퍼바이저 간 콘솔 채널 협상 타이밍 이슈가 원인이었습니다. 수동 재부팅으로 즉시 복구는 가능했지만 재발 가능성이 남아있어, 근본 원인인 Xen 환경 자체를 바꾸는 방향으로 결정했습니다.</p>
           </div>
           <div class="detail-row row-solution">
-            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <span class="dr-lbl">Result</span>
             <p class="dr-tx">t2 → t3(Nitro 하이퍼바이저)로 인스턴스 타입을 변경했습니다. 부팅 실패가 재발하지 않았고, Nitro 전환으로 직렬 콘솔 지원도 함께 확보돼 향후 디버깅 환경이 개선됐습니다.</p>
           </div>
         </div>
@@ -532,15 +532,15 @@
         </div>
         <div class="acc-detail">
           <div class="detail-row row-problem">
-            <span class="dr-lbl">🔍 문제 상황</span>
+            <span class="dr-lbl">Background</span>
             <p class="dr-tx">OTA 펌웨어 업데이트 상태를 실시간으로 보여줘야 하는 요구사항이 있었는데, EventBridge 5분 주기 폴링 구조로 인해 <span class="stat-bad">최대 5분</span>의 지연이 발생했습니다. 진행 중인 Job이 없어도 Lambda가 5분마다 무조건 실행되어 불필요한 비용이 낭비되고 있었고, 상태 전이 가드도 없어서 SUCCEEDED 이후에 IN_PROGRESS가 덮어쓰이는 역전 케이스도 존재했습니다.</p>
           </div>
           <div class="detail-row row-analysis">
-            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <span class="dr-lbl">Decision</span>
             <p class="dr-tx">폴링 주기를 1분으로 줄이는 방법도 검토했지만, Lambda 호출 비용만 5배 증가하고 실시간 반영은 여전히 보장되지 않습니다. MQTT 이벤트가 이미 발생하고 있는 구조였기 때문에 이걸 트리거로 쓰는 이벤트 드리븐 방식으로 전환하는 것이 근본 해결이라고 판단했습니다.</p>
           </div>
           <div class="detail-row row-solution">
-            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <span class="dr-lbl">Result</span>
             <p class="dr-tx"><code>$aws/events/jobExecution/+/+</code> 토픽 이벤트 발생 시 IoT Rule이 즉시 Lambda를 트리거하도록 전환했습니다. <span class="stat-bad">최대 5분 지연</span>이 <span class="stat-good">즉시 반영</span>으로 바뀌었고, 불필요한 Lambda 호출이 제거됐습니다. should_update_status() 가드를 추가해 상태 역전도 차단했습니다.</p>
           </div>
         </div>
@@ -555,15 +555,15 @@
         </div>
         <div class="acc-detail">
           <div class="detail-row row-problem">
-            <span class="dr-lbl">🔍 문제 상황</span>
+            <span class="dr-lbl">Background</span>
             <p class="dr-tx">운영 서버 모니터링 중 디스크 알람이 발생했습니다. 사용률이 <span class="stat-bad">93%</span>에 달해 서비스 장애가 임박한 상태였고, 처음엔 원인이 불명확해 어디서부터 확인해야 할지 파악이 필요했습니다.</p>
           </div>
           <div class="detail-row row-analysis">
-            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <span class="dr-lbl">Decision</span>
             <p class="dr-tx"><code>du</code> 명령으로 디렉토리별 용량을 추적했고, 로그 디렉토리에 로테이션 없이 누적된 고아 로그 파일이 원인임을 확인했습니다. 수동 삭제만 하면 동일한 문제가 반복될 것이 명확했기 때문에, 이 기회에 <code>logrotate</code>를 개발/수요/운영 전 서버에 동시 표준화하는 방향으로 진행했습니다.</p>
           </div>
           <div class="detail-row row-solution">
-            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <span class="dr-lbl">Result</span>
             <p class="dr-tx">고아 로그 정리 후 <code>logrotate</code> 설정과 <code>crontab</code> 90일 자동 삭제를 전 서버에 적용했습니다. 디스크 사용률이 <span class="stat-bad">93%</span> → <span class="stat-good">46%</span>로 감소했고 재발 방지 체계를 마련했습니다.</p>
           </div>
         </div>
@@ -578,15 +578,15 @@
         </div>
         <div class="acc-detail">
           <div class="detail-row row-problem">
-            <span class="dr-lbl">🔍 문제 상황</span>
+            <span class="dr-lbl">Background</span>
             <p class="dr-tx">운영 중 이미지 교체 요청을 처리하면서 문제가 발생했습니다. S3에 동일한 파일명으로 새 이미지를 업로드했음에도 CloudFront가 구버전 이미지를 계속 반환하여, 사용자에게 항상 최신 이미지를 보여줘야 하는 서비스 요구사항에 맞지 않는 상황이었습니다.</p>
           </div>
           <div class="detail-row row-analysis">
-            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <span class="dr-lbl">Decision</span>
             <p class="dr-tx">CloudFront 캐시 동작 원리를 분석한 결과, URL이 동일하면 TTL 만료 전까지 캐시된 응답을 그대로 반환하는 것이 원인이었습니다. Invalidation API 호출도 검토했지만 건당 비용이 발생하고 즉시성이 보장되지 않아, URL 자체를 변경하는 파일명 타임스탬프 전략이 근본적인 해결책이라고 판단했습니다.</p>
           </div>
           <div class="detail-row row-solution">
-            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <span class="dr-lbl">Result</span>
             <p class="dr-tx">KST 서버 시간 기반 타임스탬프를 파일명에 포함하도록 업로드 로직을 수정했습니다. URL 자체가 매번 달라지기 때문에 Invalidation 없이도 이미지 교체 즉시 최신 버전이 반영되었습니다.</p>
           </div>
         </div>
@@ -615,15 +615,15 @@
         </div>
         <div class="acc-detail">
           <div class="detail-row row-problem">
-            <span class="dr-lbl">🔍 문제 상황</span>
+            <span class="dr-lbl">Background</span>
             <p class="dr-tx">자동화 엔진이 SmartThings·FCM·디바이스 제어 서비스를 API로 직접 호출하는 강결합 구조였습니다. 연동 서비스 중 하나가 실패하면 전체 자동화 흐름이 중단되었고, 서비스 간 의존성이 높아 유지보수와 기능 확장이 어려운 상태였습니다.</p>
           </div>
           <div class="detail-row row-analysis">
-            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <span class="dr-lbl">Decision</span>
             <p class="dr-tx">RestTemplate 분리 방식도 검토했지만, Spring ApplicationEvent를 활용하면 추가 인프라 없이도 느슨한 결합을 구현할 수 있고, Spring 트랜잭션 경계와 자연스럽게 분리할 수 있다는 점에서 더 적합하다고 판단했습니다. <span class="stat-hl">FCM 동기 → 비동기</span> 전환으로 자동화 흐름의 안정성을 높일 수 있었습니다.</p>
           </div>
           <div class="detail-row row-solution">
-            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <span class="dr-lbl">Result</span>
             <p class="dr-tx">Spring ApplicationEvent 기반 비동기 이벤트로 전환하여 서비스 간 의존성을 끊고 독립적인 실패 처리를 구현했습니다. 개별 서비스 장애가 전체 자동화 흐름에 영향을 주지 않는 구조가 되었습니다.</p>
           </div>
           <div class="acc-actions"><div class="imp-tags"><span class="itag">Loose Coupling</span><span class="itag">Async Event</span></div></div>
@@ -639,15 +639,15 @@
         </div>
         <div class="acc-detail">
           <div class="detail-row row-problem">
-            <span class="dr-lbl">🔍 문제 상황</span>
+            <span class="dr-lbl">Background</span>
             <p class="dr-tx">각 Service 클래스에서 파편화된 방식으로 로그를 남기고 있어, 장애 발생 시 특정 요청의 흐름을 추적하는 것이 매우 어려운 상태였습니다. 여러 서비스에 걸친 요청을 연결할 수 있는 공통 식별자가 없었습니다.</p>
           </div>
           <div class="detail-row row-analysis">
-            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <span class="dr-lbl">Decision</span>
             <p class="dr-tx">AOP로 로깅을 통합하는 방법도 검토했지만, HTTP 레이어에서 요청 단위로 식별자를 생성·전파하려면 Filter와 Interceptor가 더 적합한 위치라고 판단했습니다. MDC를 활용하면 별도 파라미터 전달 없이 모든 레이어에서 동일한 traceId를 참조할 수 있어 선택했습니다.</p>
           </div>
           <div class="detail-row row-solution">
-            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <span class="dr-lbl">Result</span>
             <p class="dr-tx">Filter/Interceptor에서 MDC traceId를 생성하고 전파하는 구조를 도입하여, 전 서비스의 로그가 동일한 요청 식별자로 연결되도록 표준화했습니다. 장애 발생 시 요청 흐름을 즉시 추적할 수 있게 되었습니다.</p>
           </div>
           <div class="acc-actions"><div class="imp-tags"><span class="itag">MDC</span><span class="itag">AOP</span><span class="itag">Tracing</span></div></div>
@@ -663,15 +663,15 @@
         </div>
         <div class="acc-detail">
           <div class="detail-row row-problem">
-            <span class="dr-lbl">🔍 문제 상황</span>
+            <span class="dr-lbl">Background</span>
             <p class="dr-tx"><code>/oauth2/**</code> 엔드포인트 전체에 <code>permitAll</code>이 설정되어 있어 Authorization Code 탈취 공격에 취약한 상태였습니다. 또한 PKCE가 비활성화되어 있어 OAuth2.1 보안 요구사항을 충족하지 못하고 있었습니다.</p>
           </div>
           <div class="detail-row row-analysis">
-            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <span class="dr-lbl">Decision</span>
             <p class="dr-tx">기존 설정을 부분적으로 수정하는 방법도 검토했지만, 권한 설정이 혼재할 경우 누락 위험이 높다고 판단했습니다. SecurityFilterChain을 역할별로 완전히 분리하면 OAuth2.1 전용 체인과 일반 API 체인의 책임이 명확해져 보안 취약점 발생 가능성을 낮출 수 있다고 판단했습니다.</p>
           </div>
           <div class="detail-row row-solution">
-            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <span class="dr-lbl">Result</span>
             <p class="dr-tx">SecurityFilterChain을 OAuth2.1 전용과 일반 API용으로 분리하고, PKCE를 활성화하며 OIDC 표준으로 전환했습니다. 불필요한 <code>permitAll</code>을 제거하여 인증 서버의 보안 수준을 전반적으로 강화했습니다.</p>
           </div>
           <div class="acc-actions"><div class="imp-tags"><span class="itag">OAuth2.1</span><span class="itag">PKCE</span><span class="itag">OIDC</span></div></div>
@@ -687,15 +687,15 @@
         </div>
         <div class="acc-detail">
           <div class="detail-row row-problem">
-            <span class="dr-lbl">🔍 문제 상황</span>
+            <span class="dr-lbl">Background</span>
             <p class="dr-tx">팀 내 브랜치 전략과 커밋 규칙이 정해져 있지 않아, 개발/스테이징/운영 배포 환경 혼선이 자주 발생했습니다. PR 리뷰 기준도 불명확해 코드 품질을 일관되게 관리하기 어려운 상황이었습니다.</p>
           </div>
           <div class="detail-row row-analysis">
-            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <span class="dr-lbl">Decision</span>
             <p class="dr-tx">Git Flow는 팀 규모와 배포 환경에 비해 복잡하다고 판단했습니다. feature/release/main 3단계로 단순화한 3-Tier 전략이 현재 환경에 더 적합하고, Conventional Commits를 함께 도입하면 커밋 이력만으로도 변경 내용과 의도를 명확하게 파악할 수 있다고 생각했습니다.</p>
           </div>
           <div class="detail-row row-solution">
-            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <span class="dr-lbl">Result</span>
             <p class="dr-tx">3-Tier(Dev/Release/Main) 브랜치 전략과 Conventional Commits 규칙을 수립해 문서화하고 팀에 전파했습니다. 배포 환경 혼선이 줄었고, 커밋 이력을 통한 변경 이력 추적이 명확해졌습니다.</p>
           </div>
           <div class="acc-actions"><div class="imp-tags"><span class="itag">Git Flow</span><span class="itag">Convention</span></div></div>
@@ -711,15 +711,15 @@
         </div>
         <div class="acc-detail">
           <div class="detail-row row-problem">
-            <span class="dr-lbl">🔍 문제 상황</span>
+            <span class="dr-lbl">Background</span>
             <p class="dr-tx"><code>nohup</code>으로 서비스를 실행하는 방식이어서, 서버 재부팅 시 수동으로 다시 기동해야 했습니다. Graceful Shutdown이 보장되지 않아 배포 중 요청이 유실될 위험이 있었고, 여러 서버에 걸쳐 실행 중인 프로세스를 추적하기도 어려운 상태였습니다.</p>
           </div>
           <div class="detail-row row-analysis">
-            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <span class="dr-lbl">Decision</span>
             <p class="dr-tx"><code>nohup</code> + cron 조합으로 자동 재시작을 구현하는 방법도 있었지만, 재시작 정책·의존성 관리·로그 통합을 하나의 unit 파일로 선언적으로 관리할 수 있는 systemd가 장기적인 운영 부담 측면에서 훨씬 유리하다고 판단했습니다.</p>
           </div>
           <div class="detail-row row-solution">
-            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <span class="dr-lbl">Result</span>
             <p class="dr-tx">systemd unit 파일을 작성하여 전 서버에 서비스로 등록했습니다. 재부팅 시 자동 시작과 Graceful Shutdown이 보장되었고, <code>systemctl</code> 명령으로 상태 확인과 로그 조회가 가능해 운영 편의성이 크게 향상되었습니다.</p>
           </div>
           <div class="acc-actions"><div class="imp-tags"><span class="itag">Reliability</span><span class="itag">Linux</span></div></div>
@@ -735,15 +735,15 @@
         </div>
         <div class="acc-detail">
           <div class="detail-row row-problem">
-            <span class="dr-lbl">🔍 문제 상황</span>
+            <span class="dr-lbl">Background</span>
             <p class="dr-tx">내부 서비스 간 통신이 외부 ALB를 경유하는 구조여서 불필요한 왕복 레이턴시가 발생했습니다. 간헐적인 Timeout 이슈가 생겼고, 외부 통신 비용도 함께 증가하는 문제가 있었습니다.</p>
           </div>
           <div class="detail-row row-analysis">
-            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <span class="dr-lbl">Decision</span>
             <p class="dr-tx"><code>hosts</code> 파일을 직접 수정하는 방법은 단기 패치에 불과하고 서버별 관리가 어렵다고 판단했습니다. Internal NLB와 Private DNS를 도입하면 인프라 수준에서 근본적으로 해결되고, 재현·롤백·확장이 모두 용이한 구조가 된다고 분석했습니다.</p>
           </div>
           <div class="detail-row row-solution">
-            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <span class="dr-lbl">Result</span>
             <p class="dr-tx">Internal NLB와 Private DNS를 도입해 내부 트래픽을 VPC 내부로 직접 라우팅하는 방안을 설계하고 제안했습니다. 외부 ALB 경유 제거로 레이턴시가 감소하고, 불필요한 외부 통신 비용 절감 효과를 기대할 수 있었습니다.</p>
           </div>
           <div class="acc-actions"><div class="imp-tags"><span class="itag">Network Optimization</span></div></div>
@@ -759,15 +759,15 @@
         </div>
         <div class="acc-detail">
           <div class="detail-row row-problem">
-            <span class="dr-lbl">🔍 문제 상황</span>
+            <span class="dr-lbl">Background</span>
             <p class="dr-tx"><code>ota-job-handler</code> 하나가 Job 생성·삭제·초기 등록·상태 업데이트를 모두 처리하는 구조여서 역할이 불명확했습니다. OTA 진행 중 신규 디바이스가 ThingGroup에 추가될 때 DB에 누락되는 케이스가 존재했습니다.</p>
           </div>
           <div class="detail-row row-analysis">
-            <span class="dr-lbl">💭 원인 분석 & 선택 이유</span>
+            <span class="dr-lbl">Decision</span>
             <p class="dr-tx">단일 Lambda 내 분기 처리로 수정하는 방법도 검토했지만, 이벤트 트리거 소스 자체가 달라 자연스러운 분리 경계가 존재했습니다. 역할을 분리하면 장애 발생 시 영향 범위가 줄어들고 각 Lambda의 책임이 명확해진다고 판단했습니다.</p>
           </div>
           <div class="detail-row row-solution">
-            <span class="dr-lbl">✅ 해결 & 결과</span>
+            <span class="dr-lbl">Result</span>
             <p class="dr-tx"><code>ota-job-handler</code>(Job 생명주기)와 <code>ota-status-handler</code>(상태 업데이트)로 역할을 분리했습니다. <code>AddThingToThingGroup</code> 이벤트 처리를 추가하여 신규 디바이스 누락 케이스를 선제적으로 방어했습니다.</p>
           </div>
           <div class="acc-actions"><div class="imp-tags"><span class="itag">Single Responsibility</span><span class="itag">Event-Driven</span><span class="itag">AWS IoT</span></div></div>
