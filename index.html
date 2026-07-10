@@ -411,7 +411,7 @@
 
   <!-- DEVICE CONTROL -->
   <section id="devicecontrol" class="section">
-    <div class="section-header fi"><span class="section-tag">IoT</span><h2 class="section-title">디바이스 등록 · MQTT 인프라</h2><p class="section-desc">디바이스 제어 모듈(DCM)을 인계받아 운영하며 HTTP 기반 등록 흐름을 MQTT 상시구독으로 재설계했고, SmartThings 동기화용 MQTT 라우터의 용량을 설계·기술검토했습니다.</p></div>
+    <div class="section-header fi"><span class="section-tag">IoT</span><h2 class="section-title">디바이스 등록 · MQTT 인프라</h2><p class="section-desc">디바이스 제어 모듈을 인계받아 운영하며 HTTP 기반 등록 흐름을 MQTT 상시구독으로 재설계했고, SmartThings 동기화용 MQTT 라우터의 용량을 설계·기술검토했습니다.</p></div>
     <div class="dev-layout">
       <div class="dc-panel fi">
         <div class="dc-ph"><i class="fas fa-stream"></i><div class="dc-pttl">디바이스 등록 흐름 재설계 (HTTP → MQTT 상시구독)</div></div>
@@ -420,7 +420,7 @@
           <div class="dc-arrow"><i class="fas fa-arrow-down"></i>재설계</div>
           <div class="dc-step"><div class="dc-snum">2</div><div><div class="dc-sttl">After: MQTT 상시 구독</div><div class="dc-sdc"><code>MqttRegisterSubscriber</code>가 <code>@PostConstruct</code>로 상시 구독합니다. 기존 rg(등록)·rn(상태알림) 2개 메시지를 <code>rg</code> 단일 메시지로 합병해 수신 → 7단계 처리 → result 발행.</div></div></div>
           <div class="dc-arrow"><i class="fas fa-arrow-down"></i></div>
-          <div class="dc-step"><div class="dc-snum">3</div><div><div class="dc-sttl">Shared Subscription 이중화</div><div class="dc-sdc"><code>$share/dcm/...</code> 공유구독으로 인스턴스 중 1대만 메시지를 수신합니다 — 코드 변경 없이 단일/이중화 환경을 동일하게 운영할 수 있습니다.</div></div></div>
+          <div class="dc-step"><div class="dc-snum">3</div><div><div class="dc-sttl">Shared Subscription 이중화</div><div class="dc-sdc">AWS IoT Core의 공유구독(Shared Subscription)을 적용해 인스턴스 중 1대만 메시지를 수신하도록 했습니다 — 코드 변경 없이 단일/이중화 환경을 동일하게 운영할 수 있습니다.</div></div></div>
           <div class="dc-arrow"><i class="fas fa-arrow-down"></i></div>
           <div class="dc-step"><div class="dc-snum">4</div><div><div class="dc-sttl">등록 검증 N+1 → 1회</div><div class="dc-sdc">요소마다 개별 조회하던 검증 로직을 DB 1회 조회 후 expectedMap 단일 순회(O(1))로 통합했습니다.</div></div></div>
         </div>
