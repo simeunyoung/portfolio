@@ -411,9 +411,9 @@
 
   <!-- DEVICE CONTROL -->
   <section id="devicecontrol" class="section">
-    <div class="section-header fi"><span class="section-tag">IoT</span><h2 class="section-title">디바이스 등록 · MQTT 인프라</h2><p class="section-desc">디바이스 제어 모듈을 인계받아 운영하며 HTTP 기반 등록 흐름을 MQTT 상시구독으로 재설계했고, SmartThings 동기화용 MQTT 라우터의 용량을 설계·기술검토했습니다.</p></div>
+    <div class="section-header fi"><span class="section-tag">IoT</span><h2 class="section-title">디바이스 등록 · MQTT 인프라</h2><p class="section-desc">디바이스 제어 모듈을 인계받아 운영하며 HTTP 기반 등록 흐름을 MQTT 상시구독으로 재설계했습니다.</p></div>
     <div class="dev-layout">
-      <div class="dc-panel fi">
+      <div class="dc-panel fi" style="grid-column:1/-1">
         <div class="dc-ph"><i class="fas fa-stream"></i><div class="dc-pttl">디바이스 등록 흐름 재설계 (HTTP → MQTT 상시구독)</div></div>
         <div class="dc-flow">
           <div class="dc-step"><div class="dc-snum">1</div><div><div class="dc-sttl">Before: HTTP 트리거 기반 구독</div><div class="dc-sdc">디바이스가 HTTP <code>/validate</code>를 호출해야 그때부터 MQTT를 구독(10초 대기)하는 구조 — 구독 전에 발행된 메시지가 유실되는 타이밍 레이스가 있었습니다.</div></div></div>
@@ -425,15 +425,6 @@
           <div class="dc-step"><div class="dc-snum">4</div><div><div class="dc-sttl">등록 검증 N+1 → 1회</div><div class="dc-sdc">요소마다 개별 조회하던 검증 로직을 DB 1회 조회 후 expectedMap 단일 순회(O(1))로 통합했습니다.</div></div></div>
         </div>
         <div class="rollback"><i class="fas fa-exclamation-triangle"></i><span>구펌웨어 대응을 위해 기존 <code>/register/check</code>, <code>/validate</code> 엔드포인트는 deprecated 상태로 병행 운영 중이며, 앱 팀의 result MQTT 수신 전환 전까지는 <code>/registercheck</code> 폴링도 함께 유지됩니다.</span></div>
-      </div>
-      <div class="dc-panel fi">
-        <div class="dc-ph"><i class="fas fa-sitemap" style="color:var(--accent)"></i><div class="dc-pttl">MQTT 라우터 설계 — SmartThings 동기화</div></div>
-        <div class="dc-feats">
-          <div class="dc-fcard"><div class="dc-fith"><div class="dc-fi fi-s"><i class="fas fa-project-diagram"></i></div><div class="dc-fttl">아키텍처 설계</div></div><div class="dc-fdc">MQTT Broker → EC2 2대(Spring Boot, 공유구독 로드밸런싱) → ThreadPoolTaskExecutor → HikariCP → RDS → HTTP 전송 구조로 설계했습니다.</div></div>
-          <div class="dc-fcard"><div class="dc-fith"><div class="dc-fi fi-t"><i class="fas fa-microchip"></i></div><div class="dc-fttl">스레드풀 용량 산정</div></div><div class="dc-fdc">I/O bound 공식(스레드 수 = vCPU × (1+대기/CPU))으로 개발 50 / 운영 100 스레드를 산정하고, 처리량을 스레드당 약 38건/초 → 이중화 기준 7,600건/초로 계산했습니다.</div><div class="tmt"><span class="tm">개발 50</span><span class="tm">운영 100</span><span class="tm">7,600건/초</span></div></div>
-          <div class="dc-fcard"><div class="dc-fith"><div class="dc-fi fi-o"><i class="fas fa-database"></i></div><div class="dc-fttl">HikariCP 커넥션 배분</div></div><div class="dc-fdc">운영 RDS 커넥션 한도(약 1,365) 중 여유 20%를 제외한 1,092 범위 안에서 8개 서비스에 배분 — MQTT 라우터는 SELECT 전용으로 운영 30 / 개발 15로 산정해 여유를 확보했습니다.</div></div>
-          <div class="dc-fcard"><div class="dc-fith"><div class="dc-fi fi-m"><i class="fas fa-info-circle"></i></div><div class="dc-fttl">기여 범위</div></div><div class="dc-fdc">SmartThings 디바이스 동기화용 MQTT 라우터의 아키텍처·용량 산정·정책을 담은 설계 정책서(초안)를 작성했습니다. 실제 구현은 별도 담당자가 수행했습니다.</div></div>
-        </div>
       </div>
     </div>
   </section>
