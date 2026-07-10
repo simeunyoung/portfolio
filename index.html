@@ -416,15 +416,15 @@
       <div class="dc-panel fi" style="grid-column:1/-1">
         <div class="dc-ph"><i class="fas fa-stream"></i><div class="dc-pttl">디바이스 등록 흐름 재설계 (HTTP → MQTT 상시구독)</div></div>
         <div class="dc-flow">
-          <div class="dc-step"><div class="dc-snum">1</div><div><div class="dc-sttl">Before: HTTP 트리거 기반 구독</div><div class="dc-sdc">디바이스가 HTTP <code>/validate</code>를 호출해야 그때부터 MQTT를 구독(10초 대기)하는 구조 — 구독 전에 발행된 메시지가 유실되는 타이밍 레이스가 있었습니다.</div></div></div>
+          <div class="dc-step"><div class="dc-snum">1</div><div><div class="dc-sttl">Before: API 트리거 기반 구독</div><div class="dc-sdc">디바이스가 특정 REST API를 먼저 호출해야 그때부터 MQTT를 구독(10초 대기)하는 구조였습니다 — 구독 전에 발행된 메시지가 유실되는 타이밍 레이스가 있었습니다.</div></div></div>
           <div class="dc-arrow"><i class="fas fa-arrow-down"></i>재설계</div>
-          <div class="dc-step"><div class="dc-snum">2</div><div><div class="dc-sttl">After: MQTT 상시 구독</div><div class="dc-sdc"><code>MqttRegisterSubscriber</code>가 <code>@PostConstruct</code>로 상시 구독합니다. 기존 rg(등록)·rn(상태알림) 2개 메시지를 <code>rg</code> 단일 메시지로 합병해 수신 → 7단계 처리 → result 발행.</div></div></div>
+          <div class="dc-step"><div class="dc-snum">2</div><div><div class="dc-sttl">After: MQTT 상시 구독</div><div class="dc-sdc">애플리케이션이 기동되는 시점부터 MQTT를 상시 구독하도록 전환했습니다. 기존에 등록 메시지와 상태알림 메시지로 나뉘어 있던 것을 단일 메시지로 합쳐 수신 → 다단계 검증·처리 → 결과 메시지 발행.</div></div></div>
           <div class="dc-arrow"><i class="fas fa-arrow-down"></i></div>
           <div class="dc-step"><div class="dc-snum">3</div><div><div class="dc-sttl">Shared Subscription 이중화</div><div class="dc-sdc">AWS IoT Core의 공유구독(Shared Subscription)을 적용해 인스턴스 중 1대만 메시지를 수신하도록 했습니다 — 코드 변경 없이 단일/이중화 환경을 동일하게 운영할 수 있습니다.</div></div></div>
           <div class="dc-arrow"><i class="fas fa-arrow-down"></i></div>
-          <div class="dc-step"><div class="dc-snum">4</div><div><div class="dc-sttl">등록 검증 N+1 → 1회</div><div class="dc-sdc">요소마다 개별 조회하던 검증 로직을 DB 1회 조회 후 expectedMap 단일 순회(O(1))로 통합했습니다.</div></div></div>
+          <div class="dc-step"><div class="dc-snum">4</div><div><div class="dc-sttl">등록 검증 N+1 → 1회</div><div class="dc-sdc">요소마다 개별 조회하던 검증 로직을 DB 1회 조회 후 단일 순회(O(1))로 통합했습니다.</div></div></div>
         </div>
-        <div class="rollback"><i class="fas fa-exclamation-triangle"></i><span>구펌웨어 대응을 위해 기존 <code>/register/check</code>, <code>/validate</code> 엔드포인트는 deprecated 상태로 병행 운영 중이며, 앱 팀의 result MQTT 수신 전환 전까지는 <code>/registercheck</code> 폴링도 함께 유지됩니다.</span></div>
+        <div class="rollback"><i class="fas fa-exclamation-triangle"></i><span>구펌웨어 대응을 위해 기존 REST 기반 등록 확인 엔드포인트는 당분간 병행 운영하며, 클라이언트 쪽 전환이 완료되는 대로 단계적으로 정리할 예정입니다.</span></div>
       </div>
     </div>
   </section>
