@@ -73,6 +73,7 @@
         <span class="nav-grp-hdr-txt">상세</span>
       </div>
       <div class="nav-grp-items">
+        <a class="nav-item" href="#devicecontrol"><i class="fas fa-microchip"></i>디바이스·MQTT</a>
         <a class="nav-item" href="#services"><i class="fas fa-users"></i>회원</a>
         <a class="nav-item" href="#security"><i class="fas fa-shield-alt"></i>인증서버</a>
         <a class="nav-item" href="#eventengine"><i class="fas fa-bolt"></i>이벤트엔진</a>
@@ -150,11 +151,9 @@
     <div class="about-left fi">
       <div class="about-card">
         <div class="about-hdr"><i class="fas fa-user-circle"></i><span>About Me</span></div>
-        <p class="about-tx">처음엔 화면을 만들었고, 지금은 그 화면 뒤의 모든 것을 만듭니다.<br> 
-          퍼블리셔로 시작해 백엔드 개발자로 전환했고, IoT 플랫폼 2.0 개발팀에 합류해 모듈 개발을 담당했습니다. 이후 담당자 이동으로 AWS 인프라 운영까지 맡으면서, 화면부터 서버와 인프라까지 서비스 전체 흐름을 직접 경험할 수 있었습니다.<br>
-           한 영역에 머물지 않고 필요한 곳으로 역할이 넓어진 경험이, 시스템을 넓게 바라보는 시각을 만들어줬다고 생각합니다.</p>
-        <p class="about-tx about-tx-2">개발할 때 기능 자체보다 "왜 필요한가"와 "이 결정이 어디까지 영향을 미치는가"를 먼저 생각하려 합니다.<br>
-          좁은 범위에서 구현을 완성하는 것보다, 전체 흐름 안에서 이 기능이 어디에 위치하는지를 파악하고 사이드이펙트를 미리 고려하는 것이 습관이 됐습니다. 문제가 생겼을 때도 증상을 빠르게 덮기보다 근본 원인을 찾는 방향으로 접근합니다.
+        <p class="about-tx">처음엔 화면을 만들었고, 지금은 그 화면 뒤의 모든 것을 만듭니다.<br>
+          퍼블리셔로 시작해 백엔드 개발자로 전환했고, IoT 플랫폼 개발팀에 합류해 시스템을 처음부터 설계해보기도 하고, 인계받아 구조적 문제를 찾아 개선해보기도 했습니다. 이 둘은 서로 다른 근육을 쓰는 일이라는 걸 배웠고, 지금은 두 경험을 모두 가진 개발자로 일하고 있습니다.</p>
+        <p class="about-tx about-tx-2">개발할 때 기능 자체보다 "왜 필요한가"와 "이 결정이 어디까지 영향을 미치는가"를 먼저 생각하려 합니다. 문제가 생겼을 때도 로그나 눈에 보이는 결과를 그대로 믿기보다, 데이터를 직접 확인하고 근본 원인을 찾는 방향으로 접근합니다. 판단이 필요한 순간에는 감이 아니라 계산과 근거를 먼저 남기는 편입니다.
           <br>무언가를 만들기 전에 한 번 더 "왜"를 묻고 "그래서 어디까지 영향이 가는가"를 생각하는 태도, 그 습관만큼은 계속 가져가고 싶습니다.</p>
       </div>
       <div class="about-card" style="margin-top:14px">
@@ -290,6 +289,27 @@
   </section>
   <div class="sep"></div>
 
+  <!-- DEVICE CONTROL -->
+  <section id="devicecontrol" class="section">
+    <div class="section-header fi"><span class="section-tag">IoT</span><h2 class="section-title">디바이스 등록 · MQTT 인프라</h2><p class="section-desc">디바이스 제어 모듈을 인계받아 운영하며 HTTP 기반 등록 흐름을 MQTT 상시구독으로 재설계했습니다.</p></div>
+    <div class="dev-layout">
+      <div class="dc-panel fi" style="grid-column:1/-1">
+        <div class="dc-ph"><i class="fas fa-stream"></i><div class="dc-pttl">디바이스 등록 흐름 재설계 (HTTP → MQTT 상시구독)</div></div>
+        <div class="dc-flow">
+          <div class="dc-step"><div class="dc-snum">1</div><div><div class="dc-sttl">Before: API 트리거 기반 구독</div><div class="dc-sdc">디바이스가 특정 REST API를 먼저 호출해야 그때부터 MQTT를 구독(10초 대기)하는 구조였습니다 — 구독 전에 발행된 메시지가 유실되는 타이밍 레이스가 있었습니다.</div></div></div>
+          <div class="dc-arrow"><i class="fas fa-arrow-down"></i>재설계</div>
+          <div class="dc-step"><div class="dc-snum">2</div><div><div class="dc-sttl">After: MQTT 상시 구독</div><div class="dc-sdc">애플리케이션이 기동되는 시점부터 MQTT를 상시 구독하도록 전환했습니다. 기존에 등록 메시지와 상태알림 메시지로 나뉘어 있던 것을 단일 메시지로 합쳐 수신 → 다단계 검증·처리 → 결과 메시지 발행.</div></div></div>
+          <div class="dc-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="dc-step"><div class="dc-snum">3</div><div><div class="dc-sttl">Shared Subscription 이중화</div><div class="dc-sdc">AWS IoT Core의 공유구독(Shared Subscription)을 적용해 인스턴스 중 1대만 메시지를 수신하도록 했습니다 — 코드 변경 없이 단일/이중화 환경을 동일하게 운영할 수 있습니다.</div></div></div>
+          <div class="dc-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="dc-step"><div class="dc-snum">4</div><div><div class="dc-sttl">등록 검증 N+1 → 1회</div><div class="dc-sdc">요소마다 개별 조회하던 검증 로직을 DB 1회 조회 후 단일 순회(O(1))로 통합했습니다.</div></div></div>
+        </div>
+        <div class="rollback"><i class="fas fa-exclamation-triangle"></i><span>구펌웨어 대응을 위해 기존 REST 기반 등록 확인 엔드포인트는 당분간 병행 운영하며, 클라이언트 쪽 전환이 완료되는 대로 단계적으로 정리할 예정입니다.</span></div>
+      </div>
+    </div>
+  </section>
+  <div class="sep"></div>
+
   <!-- ARCHITECTURE -->
   <!-- <section id="architecture" class="section">
     <div class="section-header fi">
@@ -404,27 +424,6 @@
         <div class="arch-box" style="border-color:rgba(52,199,89,.3);background:rgba(52,199,89,.05)">Spring ApplicationEvent</div>
         <div class="mini-tags"><div class="mini-tag">Push</div><div class="mini-tag">History</div><div class="mini-tag">Device</div></div>
         <div class="kpt"><div class="pt-good">✅ Loose Coupling</div><div class="pt-dc">비동기 리스너 분리로 <strong>독립적 실패 처리</strong> 및 트랜잭션 분리</div></div>
-      </div>
-    </div>
-  </section>
-  <div class="sep"></div>
-
-  <!-- DEVICE CONTROL -->
-  <section id="devicecontrol" class="section">
-    <div class="section-header fi"><span class="section-tag">IoT</span><h2 class="section-title">디바이스 등록 · MQTT 인프라</h2><p class="section-desc">디바이스 제어 모듈을 인계받아 운영하며 HTTP 기반 등록 흐름을 MQTT 상시구독으로 재설계했습니다.</p></div>
-    <div class="dev-layout">
-      <div class="dc-panel fi" style="grid-column:1/-1">
-        <div class="dc-ph"><i class="fas fa-stream"></i><div class="dc-pttl">디바이스 등록 흐름 재설계 (HTTP → MQTT 상시구독)</div></div>
-        <div class="dc-flow">
-          <div class="dc-step"><div class="dc-snum">1</div><div><div class="dc-sttl">Before: API 트리거 기반 구독</div><div class="dc-sdc">디바이스가 특정 REST API를 먼저 호출해야 그때부터 MQTT를 구독(10초 대기)하는 구조였습니다 — 구독 전에 발행된 메시지가 유실되는 타이밍 레이스가 있었습니다.</div></div></div>
-          <div class="dc-arrow"><i class="fas fa-arrow-down"></i>재설계</div>
-          <div class="dc-step"><div class="dc-snum">2</div><div><div class="dc-sttl">After: MQTT 상시 구독</div><div class="dc-sdc">애플리케이션이 기동되는 시점부터 MQTT를 상시 구독하도록 전환했습니다. 기존에 등록 메시지와 상태알림 메시지로 나뉘어 있던 것을 단일 메시지로 합쳐 수신 → 다단계 검증·처리 → 결과 메시지 발행.</div></div></div>
-          <div class="dc-arrow"><i class="fas fa-arrow-down"></i></div>
-          <div class="dc-step"><div class="dc-snum">3</div><div><div class="dc-sttl">Shared Subscription 이중화</div><div class="dc-sdc">AWS IoT Core의 공유구독(Shared Subscription)을 적용해 인스턴스 중 1대만 메시지를 수신하도록 했습니다 — 코드 변경 없이 단일/이중화 환경을 동일하게 운영할 수 있습니다.</div></div></div>
-          <div class="dc-arrow"><i class="fas fa-arrow-down"></i></div>
-          <div class="dc-step"><div class="dc-snum">4</div><div><div class="dc-sttl">등록 검증 N+1 → 1회</div><div class="dc-sdc">요소마다 개별 조회하던 검증 로직을 DB 1회 조회 후 단일 순회(O(1))로 통합했습니다.</div></div></div>
-        </div>
-        <div class="rollback"><i class="fas fa-exclamation-triangle"></i><span>구펌웨어 대응을 위해 기존 REST 기반 등록 확인 엔드포인트는 당분간 병행 운영하며, 클라이언트 쪽 전환이 완료되는 대로 단계적으로 정리할 예정입니다.</span></div>
       </div>
     </div>
   </section>
