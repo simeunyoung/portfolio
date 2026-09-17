@@ -150,11 +150,12 @@
       <p class="section-desc">숫자와 판단 근거로 남긴 것들</p>
     </div>
     <div class="ov-grid fi" style="grid-template-columns:repeat(4,1fr)">
-      <div class="ov-card"><div class="ov-ico" style="background:var(--accent)"><i class="fas fa-key"></i></div><div class="ov-ttl">이중화 무중단 배포 전환</div><div class="ov-desc">재기동마다 로그아웃되던 JWT 키 재생성 구조를 DB 영속화로 전환</div></div>
-      <div class="ov-card"><div class="ov-ico" style="background:var(--accent2)"><i class="fas fa-search"></i></div><div class="ov-ttl">배포 전 치명적 결함 사전 발견</div><div class="ov-desc">신규 서비스 설계 검증 중 데이터 정합성 결함 다수를 배포 전 차단</div></div>
-      <div class="ov-card"><div class="ov-ico" style="background:var(--accent4)"><i class="fas fa-network-wired"></i></div><div class="ov-ttl">Mixed Content 근본원인 규명</div><div class="ov-desc">인프라 헬스체크로 먼저 배제한 뒤 코드에서 원인 특정, 즉시 해결</div></div>
-      <div class="ov-card"><div class="ov-ico" style="background:var(--accent3)"><i class="fas fa-server"></i></div><div class="ov-ttl">EC2 부팅 실패 근본원인 규명</div><div class="ov-desc">Xen 하이퍼바이저 이슈 특정, t3(Nitro) 전환으로 재발 방지</div></div>
+      <a class="ov-card" href="#hl-jwt"><div class="ov-ico" style="background:var(--accent)"><i class="fas fa-key"></i></div><div class="ov-ttl">이중화 무중단 배포 전환</div><div class="ov-desc">재기동마다 로그아웃되던 JWT 키 재생성 구조를 DB 영속화로 전환</div></a>
+      <a class="ov-card" href="#hl-dsim"><div class="ov-ico" style="background:var(--accent2)"><i class="fas fa-code-branch"></i></div><div class="ov-ttl">"성공 로그 직후 롤백"이라는 모순 규명</div><div class="ov-desc">@Transactional과 재시도 루프의 Spring 전파 규칙 충돌을 규명, DB 직접 조회로 실유실 없음 검증</div></a>
+      <a class="ov-card" href="#hl-ota"><div class="ov-ico" style="background:var(--accent4)"><i class="fas fa-file-signature"></i></div><div class="ov-ttl">OTA 코드사이닝 인프라 구축</div><div class="ov-desc">OpenSSL·ACM·AWS Signer 기반 펌웨어 서명 파이프라인을 처음부터 구축</div></a>
+      <a class="ov-card" href="#hl-ec2"><div class="ov-ico" style="background:var(--accent3)"><i class="fas fa-server"></i></div><div class="ov-ttl">EC2 부팅 실패 근본원인 규명</div><div class="ov-desc">Xen 하이퍼바이저 이슈 특정, t3(Nitro) 전환으로 재발 방지</div></a>
     </div>
+    <p class="fi" style="text-align:center;font-size:11px;color:var(--text3);margin-top:10px">카드를 클릭하면 자세한 내용으로 이동합니다</p>
   </section>
   <div class="sep"></div>
 
@@ -299,7 +300,7 @@
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">비회원 인증 기획:</span> 매직링크/OTP 기반 비회원 인증, 기존 통합 인증서버와의 OAuth2 신규 클라이언트 연동 설계</div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">DB/API 설계:</span> REST API 42개 설계(v0.1→v0.14), 개발 일정을 3인/화면단위 → 2인/도메인단위로 재구성</div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">인프라 구축:</span> AWS S3·네트워크 인프라(보안그룹/ALB/API Gateway) 구성 항목 정리 및 점검, ALB/타겟그룹/보안그룹/ACM 인증서 상태 검증, Self-hosted Runner 추가로 부족해진 개발서버 용량을 고객사 협의 후 EBS 증설로 해소</div></div>
-        <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">배포 전 결함 사전 발견:</span> 문서가 아닌 실제 코드를 직접 대조해 검증, 비회원→회원 매칭 후 데이터 미노출 등 치명적 정합성 결함 다수 차단</div></div>
+        <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">배포 전 결함 사전 발견:</span> 요구사항정의서·PDF 도면·설계서를 필드 단위로 교차검증, 비회원→회원 매칭 후 데이터 미노출 등 치명적 정합성 결함 다수 차단</div></div>
       </div>
       <div class="stk-lbl">Core Tech Stack</div>
       <div class="stk-tags">
@@ -473,6 +474,16 @@
           <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">Database:</span> RDS MariaDB 버전 업그레이드 일정 조율 및 SDS 보고</div></div>
         </div>
       </div>
+      <div class="lmb-panel fi" style="grid-column:1/-1" id="hl-ota">
+        <div class="lmb-hdr"><div class="lmb-hico" style="background:var(--accent2)"><i class="fas fa-file-signature"></i></div><div class="lmb-ttl">OTA 코드사이닝 인프라 신규 구축</div></div>
+        <div class="inf-list">
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">배경:</span> 펌웨어를 OTA로 배포하려면 디바이스가 서명을 검증할 수 있는 코드 서명 인프라가 필요했으나, 처음부터 구축된 적이 없었음</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">키·인증서:</span> OpenSSL로 ECDSA P-256 개인키 생성, <code>codeSigning</code> 전용 용도로 제한한 X.509 인증서 발급 후 AWS Certificate Manager 등록</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">서명 파이프라인:</span> AWS Signer 서명 프로파일 생성, 펌웨어 업로드용 S3 버킷(버전 관리 활성화) 구성</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">권한 설계:</span> S3·Signer·IoT Job/Stream·CloudWatch 등 파이프라인 전 단계에 필요한 권한만 부여한 IAM 역할 설계</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">결과:</span> OpenSSL → ACM → AWS Signer → S3 → IAM으로 이어지는 펌웨어 서명 파이프라인을 처음부터 구축, 디바이스가 서명 검증 가능한 신뢰 체인 확보</div></div>
+        </div>
+      </div>
     </div>
   </section>
   <div class="sep"></div>
@@ -488,7 +499,7 @@
     <div class="trb-grid">
 
       <!-- Card 1: OAuth2 JWT -->
-      <div class="trb-card fi acc-card open" data-cat="dev">
+      <div class="trb-card fi acc-card open" data-cat="dev" id="hl-jwt">
         <div class="acc-summary">
           <div class="trb-top-row"><span class="trb-badge tb-s">Security</span><a href="https://tech-notes-nu.vercel.app/blog/2026-02-23-oauth2-jwt-key" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그</a></div>
           <div class="trb-ttl">OAuth2 JWT 이중화 이슈</div>
@@ -510,8 +521,31 @@
         </div>
       </div>
 
+      <!-- Card 1b: DSIM UnexpectedRollback -->
+      <div class="trb-card fi acc-card open" data-cat="dev" id="hl-dsim">
+        <div class="acc-summary">
+          <div class="trb-top-row"><span class="trb-badge tb-c">Code</span></div>
+          <div class="trb-ttl">"성공 로그 직후 롤백"이라는 모순</div>
+          <div class="acc-hint"><span class="acc-preview">@Transactional + retry 루프 전파 규칙 충돌</span><i class="fas fa-chevron-down acc-arrow"></i></div>
+        </div>
+        <div class="acc-detail">
+          <div class="detail-row row-problem">
+            <span class="dr-lbl">Background</span>
+            <p class="dr-tx">MQTT 데이터 적재 중 성공 로그가 찍힌 직후 <code>UnexpectedRollbackException</code>이 발생했습니다. 처음엔 데이터가 유실된 것으로 의심되는 상황이었습니다.</p>
+          </div>
+          <div class="detail-row row-analysis">
+            <span class="dr-lbl">Decision</span>
+            <p class="dr-tx"><code>@Transactional</code>이 걸린 외부 트랜잭션 안에서 재시도 루프가 돌고 있었는데, 초기 시도의 예외가 REQUIRED 전파 규칙에 따라 트랜잭션을 rollback-only로 마킹해버려서, 이후 재시도가 성공해도 커밋 시점에 예외가 발생하는 구조임을 규명했습니다. retry 루프와 <code>@Transactional</code>은 공존할 수 없다는 걸 확인하고, 로그만 보지 않고 DB를 직접 조회해 실제 데이터 유실 여부부터 확정했습니다.</p>
+          </div>
+          <div class="detail-row row-solution">
+            <span class="dr-lbl">Result</span>
+            <p class="dr-tx">DB 직접 확인으로 실유실이 없음을 검증한 뒤, <code>@Transactional</code>을 재시도 메서드에서 제거하고 트랜잭션 경계를 서비스 단위로 재조정해 문제를 해결했습니다. 재시도 루프 안에서 중복 호출되던 이력 저장 로직도 루프 밖으로 분리했습니다.</p>
+          </div>
+        </div>
+      </div>
+
       <!-- Card 2: EC2 부팅 실패 -->
-      <div class="trb-card fi acc-card open" data-cat="infra">
+      <div class="trb-card fi acc-card open" data-cat="infra" id="hl-ec2">
         <div class="acc-summary">
           <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><a href="https://tech-notes-nu.vercel.app/blog/2026-03-26-ec2-boot-failure" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그</a></div>
           <div class="trb-ttl">EC2 부팅 실패<br>(CONSOLE_EVTCHN 오류)</div>
@@ -575,29 +609,6 @@
           <div class="detail-row row-solution">
             <span class="dr-lbl">Result</span>
             <p class="dr-tx">과점유 로그 정리로 디스크 사용률을 <span class="stat-bad">93%</span> → <span class="stat-good">46%</span>로 즉시 안정화했고, 이후 <code>logrotate</code> 설정과 <code>crontab</code> 90일 자동 삭제를 전 서버에 표준화 적용해 재발 방지 체계를 마련했습니다.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5c: DARP Mixed Content -->
-      <div class="trb-card fi acc-card open" data-cat="infra">
-        <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-a">ALB / OAuth2</span></div>
-          <div class="trb-ttl">OAuth2 로그인 iframe Mixed Content 에러</div>
-          <div class="acc-hint"><span class="acc-preview">ALB TLS 종료 후 http로 포워딩되는 리다이렉트</span><i class="fas fa-chevron-down acc-arrow"></i></div>
-        </div>
-        <div class="acc-detail">
-          <div class="detail-row row-problem">
-            <span class="dr-lbl">Background</span>
-            <p class="dr-tx">신규 서비스(빅데이터분석포탈) dev 환경에서 사내 통합 인증서버 OAuth2 로그인을 iframe으로 띄울 때 "https 페이지에서 http iframe 차단" Mixed Content 에러가 발생했습니다.</p>
-          </div>
-          <div class="detail-row row-analysis">
-            <span class="dr-lbl">Decision</span>
-            <p class="dr-tx">AWS CLI로 ALB 리스너·타겟그룹·보안그룹·ACM 인증서 상태를 먼저 추적해 인프라 경로가 전부 정상임을 확인한 뒤, 백엔드 소스를 직접 열어 원인을 좁혀갔습니다. ALB가 TLS를 종료하고 백엔드로는 HTTP로 포워딩하는데, <code>server.forward-headers-strategy</code>가 설정되지 않아 <code>X-Forwarded-Proto</code>를 신뢰하지 못해 리다이렉트 URL의 scheme이 http로 나가는 구조였습니다.</p>
-          </div>
-          <div class="detail-row row-solution">
-            <span class="dr-lbl">Result</span>
-            <p class="dr-tx"><code>server.forward-headers-strategy: framework</code> 설정을 적용해 즉시 해결했습니다. 에러 메시지 하나만으로 인프라와 애플리케이션 코드 양쪽을 연결해서 원인을 규명한 사례입니다.</p>
           </div>
         </div>
       </div>
