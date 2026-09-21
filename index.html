@@ -298,8 +298,10 @@
       <p class="proj-desc">비회원 사용자도 이용해야 하는 신규 서비스 전체를 기획하고 DB/API를 설계했습니다. <strong>기획 총괄 + 인프라 구축</strong>을 함께 담당하고 있습니다(개발은 별도 담당).</p>
       <div class="inf-list">
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">비회원 인증 기획:</span> 매직링크/OTP 기반 비회원 인증, 기존 통합 인증서버와의 OAuth2 신규 클라이언트 연동 설계</div></div>
-        <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">DB/API 설계:</span> REST API 42개 설계(v0.1→v0.14), 개발 일정을 3인/화면단위 → 2인/도메인단위로 재구성</div></div>
+        <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">DB/API 설계:</span> REST API 42개 설계(v0.1→v0.14), 상태값은 코드 테이블 대신 Java Enum으로, PK/FK는 예상 물량을 따져 INT로 정하는 등 설계 기준 정립, 개발 일정을 3인/화면단위 → 2인/도메인단위로 재구성 <a href="https://tech-notes-nu.vercel.app/blog/2026-09-21-enum-vs-code-table" target="_blank" class="trb-blog-link" style="margin:0 0 0 6px;font-size:10px;padding:2px 9px"><i class="fas fa-pen-nib"></i>블로그</a></div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">인프라 구축:</span> AWS S3·네트워크 인프라(보안그룹/ALB/API Gateway) 구성 항목 정리 및 점검, ALB/타겟그룹/보안그룹/ACM 인증서 상태 검증, Self-hosted Runner 추가로 부족해진 개발서버 용량을 고객사 협의 후 EBS 증설로 해소</div></div>
+        <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">CI/CD 구축:</span> 개발·운영·온프레미스 3개 환경이 모두 허용된 IP만 접근 가능해 GitHub-hosted 러너를 쓸 수 없어, 전 구간 Self-hosted Runner + Docker 기반 파이프라인으로 구성해 수동 배포를 없앴습니다 <a href="https://tech-notes-nu.vercel.app/blog/2026-09-20-selfhosted-runner-cicd" target="_blank" class="trb-blog-link" style="margin:0 0 0 6px;font-size:10px;padding:2px 9px"><i class="fas fa-pen-nib"></i>블로그</a></div></div>
+        <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">메일 발송 방식 검토:</span> 이미 개인 Gmail 계정으로 발송 중이던 서비스에 알림 발송을 추가하며 Gmail SMTP와 AWS SES를 공식 문서·직접 테스트로 비교해, 계정 종속과 한도 구조 때문에 SES가 맞다고 정리했습니다 <a href="https://tech-notes-nu.vercel.app/blog/2026-09-18-ses-vs-gmail-smtp" target="_blank" class="trb-blog-link" style="margin:0 0 0 6px;font-size:10px;padding:2px 9px"><i class="fas fa-pen-nib"></i>블로그</a></div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">배포 전 결함 사전 발견:</span> 요구사항정의서·PDF 도면·설계서를 필드 단위로 교차검증, 비회원→회원 매칭 후 데이터 미노출 등 치명적 정합성 결함 다수 차단</div></div>
       </div>
       <div class="stk-lbl">Core Tech Stack</div>
@@ -324,6 +326,8 @@
           <div class="dc-step"><div class="dc-snum">3</div><div><div class="dc-sttl">Shared Subscription 이중화</div><div class="dc-sdc">AWS IoT Core의 공유구독(Shared Subscription)을 적용해 인스턴스 중 1대만 메시지를 수신하도록 했습니다 — 코드 변경 없이 단일/이중화 환경을 동일하게 운영할 수 있습니다.</div></div></div>
           <div class="dc-arrow"><i class="fas fa-arrow-down"></i></div>
           <div class="dc-step"><div class="dc-snum">4</div><div><div class="dc-sttl">등록 검증 N+1 → 1회</div><div class="dc-sdc">요소마다 개별 조회하던 검증 로직을 DB 1회 조회 후 단일 순회(O(1))로 통합했습니다.</div></div></div>
+          <div class="dc-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="dc-step"><div class="dc-snum">5</div><div><div class="dc-sttl">등록 결과 유실 방지 — retain</div><div class="dc-sdc">서버가 결과를 발행한 직후 늦게 구독한 디바이스가 메시지를 놓치는 문제를 MQTT retain으로 해결했습니다. 적용 시 위험(다른 발행 경로와 공유될 때의 부작용, 실패 결과의 stale 전달)을 코드 근거로 정리하고, 팀 회의를 거쳐 적용 범위를 확정했습니다.<br><a href="https://tech-notes-nu.vercel.app/blog/2026-09-20-mqtt-persistent-subscribe" target="_blank" class="trb-blog-link" style="margin:8px 6px 0 0;font-size:10px;padding:2px 9px"><i class="fas fa-pen-nib"></i>재설계 블로그</a><a href="https://tech-notes-nu.vercel.app/blog/2026-09-21-hibernate-flush-timing" target="_blank" class="trb-blog-link" style="margin:8px 0 0 0;font-size:10px;padding:2px 9px"><i class="fas fa-pen-nib"></i>구현 중 만난 JPA flush 이슈</a></div></div></div>
         </div>
         <div class="rollback"><i class="fas fa-exclamation-triangle"></i><span>구펌웨어 대응을 위해 기존 REST 기반 등록 확인 엔드포인트는 당분간 병행 운영하며, 클라이언트 쪽 전환이 완료되는 대로 단계적으로 정리할 예정입니다.</span></div>
       </div>
@@ -481,7 +485,9 @@
           <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">키·인증서:</span> OpenSSL로 ECDSA P-256 개인키 생성, <code>codeSigning</code> 전용 용도로 제한한 X.509 인증서 발급 후 AWS Certificate Manager 등록</div></div>
           <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">서명 파이프라인:</span> AWS Signer 서명 프로파일 생성, 펌웨어 업로드용 S3 버킷(버전 관리 활성화) 구성</div></div>
           <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">권한 설계:</span> S3·Signer·IoT Job/Stream·CloudWatch 등 파이프라인 전 단계에 필요한 권한만 부여한 IAM 역할 설계</div></div>
-          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">결과:</span> OpenSSL → ACM → AWS Signer → S3 → IAM으로 이어지는 펌웨어 서명 파이프라인을 처음부터 구축, 디바이스가 서명 검증 가능한 신뢰 체인 확보</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">검증:</span> OTA 테스트 중 공개키를 전달하지 않았는데도 업데이트가 진행되는 것을 발견해 디바이스 담당자에게 전달하고 함께 해결 — 서명을 만드는 것과 디바이스가 검증하는 것을 별개로 확인</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">운영:</span> 신규 제조사·운영 환경 키 발급을 같은 절차로 확장(운영 계정 MFA 세션, 삭제 전 인증서 사용처 확인). 발급 절차 자동화 도구는 테스트까지 완료했고 실운영은 수동 발급</div></div>
+          <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">결과:</span> OpenSSL → ACM → AWS Signer → S3 → IAM으로 이어지는 펌웨어 서명 파이프라인을 처음부터 구축, 디바이스가 서명 검증 가능한 신뢰 체인 확보 <a href="https://tech-notes-nu.vercel.app/blog/2026-09-20-ota-code-signing" target="_blank" class="trb-blog-link" style="margin:0 0 0 6px;font-size:10px;padding:2px 9px"><i class="fas fa-pen-nib"></i>블로그</a></div></div>
         </div>
       </div>
     </div>
@@ -524,7 +530,7 @@
       <!-- Card 1b: DSIM UnexpectedRollback -->
       <div class="trb-card fi acc-card open" data-cat="dev" id="hl-dsim">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-c">Code</span></div>
+          <div class="trb-top-row"><span class="trb-badge tb-c">Code</span><a href="https://tech-notes-nu.vercel.app/blog/2026-04-06-transactional-retry" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그</a></div>
           <div class="trb-ttl">"성공 로그 직후 롤백"이라는 모순</div>
           <div class="acc-hint"><span class="acc-preview">@Transactional + retry 루프 전파 규칙 충돌</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
@@ -540,6 +546,29 @@
           <div class="detail-row row-solution">
             <span class="dr-lbl">Result</span>
             <p class="dr-tx">DB 직접 확인으로 실유실이 없음을 검증한 뒤, <code>@Transactional</code>을 재시도 메서드에서 제거하고 트랜잭션 경계를 서비스 단위로 재조정해 문제를 해결했습니다. 재시도 루프 안에서 중복 호출되던 이력 저장 로직도 루프 밖으로 분리했습니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 1c: API Gateway 인증 우회 -->
+      <div class="trb-card fi acc-card open" data-cat="dev">
+        <div class="acc-summary">
+          <div class="trb-top-row"><span class="trb-badge tb-s">Security</span><a href="https://tech-notes-nu.vercel.app/blog/2026-09-20-apigw-key-substring" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그</a></div>
+          <div class="trb-ttl">API Gateway 인증 우회 버그</div>
+          <div class="acc-hint"><span class="acc-preview">API 키가 "포함 여부"로 검증되던 문제</span><i class="fas fa-chevron-down acc-arrow"></i></div>
+        </div>
+        <div class="acc-detail">
+          <div class="detail-row row-problem">
+            <span class="dr-lbl">Background</span>
+            <p class="dr-tx">Lambda Authorizer의 <code>x-api-key</code> 검증이 공용 키 하나를 문자열 포함(<code>in</code>) 비교로 확인하고 있어, 정상 키의 일부만 알아도 인증이 통과되는 취약점이 있었습니다.</p>
+          </div>
+          <div class="detail-row row-analysis">
+            <span class="dr-lbl">Decision</span>
+            <p class="dr-tx">배포된 Lambda 코드를 CloudShell로 직접 조회해 원인을 확인했습니다. 일치 비교로만 바꿔도 우회는 막히지만, 키 하나를 여러 파트너사가 공유하면 문제가 생겨도 특정 기업만 막을 수 없어 기업별 키 발급으로 방향을 잡았습니다. 파트너사가 소수여서 별도 저장소 대신 Lambda 환경변수의 JSON 매핑을 택했습니다.</p>
+          </div>
+          <div class="detail-row row-solution">
+            <span class="dr-lbl">Result</span>
+            <p class="dr-tx">"키 → 회사명" 딕셔너리 조회로 전환해 우회를 차단하고, 기업별 개별 회수와 호출 주체 로깅(Access Log 회사 식별 필드)이 가능해졌습니다.</p>
           </div>
         </div>
       </div>
@@ -701,7 +730,7 @@
       <!-- 2b. 로그 정책 Logback 전환 -->
       <div class="trb-card fi acc-card open" data-cat="dev">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-g">DevOps</span></div>
+          <div class="trb-top-row"><span class="trb-badge tb-g">DevOps</span><a href="https://tech-notes-nu.vercel.app/blog/2026-09-20-logback-vs-logrotate" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그</a></div>
           <div class="trb-ttl">로그 정책 전면 개편 — logrotate에서 Logback으로 전환</div>
           <div class="acc-hint"><span class="acc-preview">4개 서비스 × 3개 환경 순차 롤아웃</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
@@ -797,7 +826,7 @@
       <!-- 5b. EBS 볼륨 확장 -->
       <div class="trb-card fi acc-card open" data-cat="infra">
         <div class="acc-summary">
-          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span></div>
+          <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><a href="https://tech-notes-nu.vercel.app/blog/2026-09-20-ebs-volume-expand" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그</a></div>
           <div class="trb-ttl">개발서버 용량 부족 — EBS 볼륨 증설</div>
           <div class="acc-hint"><span class="acc-preview">고객사 협의 후 10G → 13G 무중단 확장</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
@@ -828,7 +857,7 @@
         <div class="acc-detail">
           <div class="detail-row row-problem">
             <span class="dr-lbl">Background</span>
-            <p class="dr-tx">내부 서비스 간 통신이 외부 ALB를 경유하는 구조여서 불필요한 왕복 레이턴시가 발생했습니다. 간헐적인 Timeout 이슈가 생겼고, 외부 통신 비용도 함께 증가하는 문제가 있었습니다.</p>
+            <p class="dr-tx">같은 내부망 서비스 간 호출이 외부 공개 도메인과 API Gateway/ALB를 거쳐 다시 들어오는 구조였고, 이 경로에서 Timeout 에러가 발생했습니다. SSL 문제가 직접 원인으로 확정된 것은 아니었지만, 외부 구간을 거치며 홉과 장애 지점이 늘어나 Timeout 가능성이 커진 것으로 판단했습니다.</p>
           </div>
           <div class="detail-row row-analysis">
             <span class="dr-lbl">Decision</span>
@@ -836,7 +865,7 @@
           </div>
           <div class="detail-row row-solution">
             <span class="dr-lbl">Result</span>
-            <p class="dr-tx">Internal NLB와 Private DNS를 도입해 내부 트래픽을 VPC 내부로 직접 라우팅하는 방안을 설계하고 제안했습니다. 외부 ALB 경유 제거로 레이턴시가 감소하고, 불필요한 외부 통신 비용 절감 효과를 기대할 수 있었습니다.</p>
+            <p class="dr-tx">internal NLB, internal ALB + Private DNS, 외부 DNS CNAME 세 방안을 판단 기준(외부 경로 회피·이중화 유지·경로 단순화·운영 난이도)으로 비교해, 단기에는 internal NLB, 장기에는 internal ALB + Private DNS로 내부 트래픽을 VPC 내부로 직접 라우팅하는 방안을 설계하고 제안했습니다. 실제 적용은 후속 작업입니다.</p>
           </div>
           <div class="acc-actions"><div class="imp-tags"><span class="itag">Network Optimization</span></div></div>
         </div>
