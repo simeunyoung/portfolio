@@ -280,7 +280,7 @@
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">MSA 전환:</span> 인증·회원·알림·자동화·제어를 Spring Boot 마이크로서비스로 분리해 확장성 확보</div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">이벤트 기반 서버리스:</span> AWS IoT Core·Lambda·API Gateway 기반 디바이스 이벤트 처리 구조 구현</div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">인증서버 신규 구축:</span> OAuth2.1 + PKCE 기반 Spring Authorization Server 직접 설계·개발, 이중화 무중단 배포 구조로 전환</div></div>
-        <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">운영 표준화:</span> DEV/QA/PROD 3환경 분리, 로그·디스크·Git 브랜치 전략 표준화로 안정적인 운영 체계 구축</div></div>
+        <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">운영 표준화:</span> DEV/QA/PROD 3환경 분리, 로그 구조 표준화 및 방치돼 있던 Git 브랜치 전략을 담당자로서 실제로 정착시켜 안정적인 운영 체계 구축</div></div>
       </div>
       <div class="stk-lbl">Core Tech Stack</div>
       <div class="stk-tags">
@@ -300,7 +300,6 @@
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">비회원 인증 기획:</span> 매직링크/OTP 기반 비회원 인증, 기존 통합 인증서버와의 OAuth2 신규 클라이언트 연동 설계</div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">DB/API 설계:</span> REST API 42개 설계(v0.1→v0.14), 상태값은 코드 테이블 대신 Java Enum으로, PK/FK는 예상 물량을 따져 INT로 정하는 등 설계 기준 정립, 개발 일정을 3인/화면단위 → 2인/도메인단위로 재구성 <a href="https://tech-notes-nu.vercel.app/blog/2026-09-21-enum-vs-code-table" target="_blank" class="trb-blog-link" style="margin:0 0 0 6px;font-size:10px;padding:2px 9px"><i class="fas fa-pen-nib"></i>블로그</a></div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">인프라 구축:</span> AWS S3·네트워크 인프라(보안그룹/ALB/API Gateway) 구성 항목 정리 및 점검, ALB/타겟그룹/보안그룹/ACM 인증서 상태 검증, Self-hosted Runner 추가로 부족해진 개발서버 용량을 고객사 협의 후 EBS 증설로 해소</div></div>
-        <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">CI/CD 구축:</span> 개발·운영·온프레미스 3개 환경이 모두 허용된 IP만 접근 가능해 GitHub-hosted 러너를 쓸 수 없어, 전 구간 Self-hosted Runner + Docker 기반 파이프라인으로 구성해 수동 배포를 없앴습니다 <a href="https://tech-notes-nu.vercel.app/blog/2026-09-20-selfhosted-runner-cicd" target="_blank" class="trb-blog-link" style="margin:0 0 0 6px;font-size:10px;padding:2px 9px"><i class="fas fa-pen-nib"></i>블로그</a></div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">메일 발송 방식 검토:</span> 이미 개인 Gmail 계정으로 발송 중이던 서비스에 알림 발송을 추가하며 Gmail SMTP와 AWS SES를 공식 문서·직접 테스트로 비교해, 계정 종속과 한도 구조 때문에 SES가 맞다고 정리했습니다 <a href="https://tech-notes-nu.vercel.app/blog/2026-09-18-ses-vs-gmail-smtp" target="_blank" class="trb-blog-link" style="margin:0 0 0 6px;font-size:10px;padding:2px 9px"><i class="fas fa-pen-nib"></i>블로그</a></div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">배포 전 결함 사전 발견:</span> 요구사항정의서·PDF 도면·설계서를 필드 단위로 교차검증, 비회원→회원 매칭 후 데이터 미노출 등 치명적 정합성 결함 다수 차단</div></div>
       </div>
@@ -779,21 +778,21 @@
       <div class="trb-card fi acc-card open" data-cat="dev">
         <div class="acc-summary">
           <div class="trb-top-row"><span class="trb-badge tb-g">DevOps</span></div>
-          <div class="trb-ttl">Git 브랜치 전략 수립 & 문서화</div>
-          <div class="acc-hint"><span class="acc-preview">브랜치 전략 부재 → 3-Tier + Conventional Commits</span><i class="fas fa-chevron-down acc-arrow"></i></div>
+          <div class="trb-ttl">Git 브랜치 전략 정착</div>
+          <div class="acc-hint"><span class="acc-preview">지켜지지 않던 3-Tier 정책 → 담당자로서 실제 정착</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
         <div class="acc-detail">
           <div class="detail-row row-problem">
             <span class="dr-lbl">Background</span>
-            <p class="dr-tx">팀 내 브랜치 전략과 커밋 규칙이 정해져 있지 않아, 개발/스테이징/운영 배포 환경 혼선이 자주 발생했습니다. PR 리뷰 기준도 불명확해 코드 품질을 일관되게 관리하기 어려운 상황이었습니다.</p>
+            <p class="dr-tx">배포 환경(개발/스테이징/운영)에 맞춘 3-Tier 브랜치 전략과 커밋 규칙이 이미 제안돼 있었지만 담당자가 관리하지 않아 지켜지지 않고 있었고, 배포 환경 혼선이 계속됐습니다.</p>
           </div>
           <div class="detail-row row-analysis">
             <span class="dr-lbl">Decision</span>
-            <p class="dr-tx">Git Flow는 팀 규모와 배포 환경에 비해 복잡하다고 판단했습니다. feature/release/main 3단계로 단순화한 3-Tier 전략이 현재 환경에 더 적합하고, Conventional Commits를 함께 도입하면 커밋 이력만으로도 변경 내용과 의도를 명확하게 파악할 수 있다고 생각했습니다.</p>
+            <p class="dr-tx">새 전략을 설계하기보다, 왜 안 지켜지고 있는지부터 봤습니다. 원인은 담당자 부재였고, 그래서 제가 Git 담당을 맡은 뒤 정책을 팀에 다시 제대로 알리고 운영(main) 배포 전 PR 검토를 담당하며 실제로 지켜지게 만드는 데 집중했습니다.</p>
           </div>
           <div class="detail-row row-solution">
             <span class="dr-lbl">Result</span>
-            <p class="dr-tx">3-Tier(Dev/Release/Main) 브랜치 전략과 Conventional Commits 규칙을 수립해 문서화하고 팀에 전파했습니다. 배포 환경 혼선이 줄었고, 커밋 이력을 통한 변경 이력 추적이 명확해졌습니다.</p>
+            <p class="dr-tx">이미 있었지만 방치돼 있던 3-Tier(Dev/Release/Main) 브랜치 전략과 Conventional Commits를 실제로 팀에 정착시켰습니다. 배포 환경 혼선이 줄었고, 커밋 이력을 통한 변경 이력 추적이 명확해졌습니다.</p>
           </div>
           <div class="acc-actions"><div class="imp-tags"><span class="itag">Git Flow</span><span class="itag">Convention</span></div></div>
         </div>
