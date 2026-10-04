@@ -97,7 +97,7 @@
     </div>
 
   </nav>
-  <div class="sb-footer">Backend Dev · 4yr 5mo</div>
+  <div class="sb-footer">Backend Dev · 4yr 6mo</div>
 </aside>
 
 <!-- MAIN -->
@@ -115,7 +115,7 @@
         <span class="hero-kw">AWS Cloud</span>
         <span class="hero-kw">MSA</span>
       </div>
-      <p class="hero-exp">총 경력 4년 5개월</p>
+      <p class="hero-exp">총 경력 4년 6개월</p>
       <div class="hero-contact">
         <a href="mailto:duddl4766@gmail.com" class="cp"><i class="fas fa-envelope"></i>duddl4766@gmail.com</a>
         <a href="https://github.com/simeunyoung" class="cp" target="_blank"><i class="fab fa-github"></i>github.com/simeunyoung</a>
@@ -176,7 +176,7 @@
       </div>
       <div class="about-card" style="margin-top:14px">
         <div class="about-hdr"><i class="fas fa-briefcase"></i><span>Experience</span></div>
-        <p class="exp-total">총 경력 <strong>4년 5개월</strong></p>
+        <p class="exp-total">총 경력 <strong>4년 6개월</strong></p>
         <div class="exp-list">
           <div class="exp-item">
             <div class="exp-dot"></div>
@@ -275,9 +275,9 @@
     <div class="proj-card fi">
       <div class="proj-lbl"><i class="fas fa-satellite-dish"></i>IoT Platform Renewal</div>
       <h3 class="proj-title">DAMDA 2.0 Project</h3>
-      <p class="proj-desc">스마트홈 IoT 디바이스 신규 버전 지원을 위해 기존 모놀리식 플랫폼을 <strong>AWS 기반의 MSA 구조</strong>로 전면 재설계한 상용화 프로젝트입니다.</p>
+      <p class="proj-desc">스마트홈 IoT 디바이스 신규 버전 지원을 위해 기존 모놀리식 플랫폼(담다 1.0)을 <strong>AWS 기반의 MSA 지향 구조(2.0)</strong>로 전환한 상용화 프로젝트입니다. 전환 설계는 팀장이 주도했고, 저는 설계에 참여하며 서비스 개발을 담당했습니다.</p>
       <div class="inf-list">
-        <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">MSA 전환:</span> 인증·회원·알림·자동화·제어를 Spring Boot 마이크로서비스로 분리해 확장성 확보</div></div>
+        <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">MSA 전환:</span> 인증·회원·알림·자동화 서비스를 Spring Boot 마이크로서비스로 개발해 확장성 확보 (전환 설계는 팀장 주도, 본인은 설계 참여 및 개발 담당)</div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">이벤트 기반 서버리스:</span> AWS IoT Core·Lambda·API Gateway 기반 디바이스 이벤트 처리 구조 구현</div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">인증서버 재작성:</span> 인수받은 인증서버를 OAuth2.1 + PKCE 기반 Spring Authorization Server 구조로 대부분 재작성, 이중화 무중단 배포 구조로 전환</div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">운영 표준화:</span> DEV/QA/PROD 3환경 분리, 로그 구조 표준화 및 방치돼 있던 Git 브랜치 전략을 담당자로서 실제로 정착시켜 안정적인 운영 체계 구축</div></div>
@@ -802,7 +802,7 @@
       <div class="trb-card fi acc-card open" data-cat="infra">
         <div class="acc-summary">
           <div class="trb-top-row"><span class="trb-badge tb-a">Infra</span><a href="https://tech-notes-nu.vercel.app/blog/2026-03-12-nohup-vs-systemd" target="_blank" class="trb-blog-link"><i class="fas fa-pen-nib"></i>블로그</a></div>
-          <div class="trb-ttl">Systemd 서비스 전환</div>
+          <div class="trb-ttl">Systemd 전환 제안·적용</div>
           <div class="acc-hint"><span class="acc-preview">nohup 수동 실행 → systemd 자동 관리</span><i class="fas fa-chevron-down acc-arrow"></i></div>
         </div>
         <div class="acc-detail">
@@ -812,11 +812,11 @@
           </div>
           <div class="detail-row row-analysis">
             <span class="dr-lbl">Decision</span>
-            <p class="dr-tx"><code>nohup</code> + cron 조합으로 자동 재시작을 구현하는 방법도 있었지만, 재시작 정책·의존성 관리·로그 통합을 하나의 unit 파일로 선언적으로 관리할 수 있는 systemd가 장기적인 운영 부담 측면에서 훨씬 유리하다고 판단했습니다.</p>
+            <p class="dr-tx"><code>nohup</code> + cron 조합으로 자동 재시작을 구현하는 방법도 있었지만, 재시작 정책·의존성 관리·로그 통합을 하나의 unit 파일로 선언적으로 관리할 수 있는 systemd가 장기적인 운영 부담 측면에서 훨씬 유리하다고 판단했습니다. 이 문제를 제가 먼저 인지해 방식을 조사한 뒤 팀에 systemd 전환을 건의했습니다.</p>
           </div>
           <div class="detail-row row-solution">
             <span class="dr-lbl">Result</span>
-            <p class="dr-tx">systemd unit 파일을 작성하여 전 서버에 서비스로 등록했습니다. 재부팅 시 자동 시작과 Graceful Shutdown이 보장되었고, <code>systemctl</code> 명령으로 상태 확인과 로그 조회가 가능해 운영 편의성이 크게 향상되었습니다.</p>
+            <p class="dr-tx">건의가 받아들여져 systemd unit 파일을 작성해 서비스로 등록했습니다(2025.01 적용, 이후 OAuth·Redis에도 확대). 재부팅 시 자동 시작과 Graceful Shutdown이 보장되었고, <code>systemctl</code> 명령으로 상태 확인과 로그 조회가 가능해 운영 편의성이 크게 향상되었습니다.</p>
           </div>
           <div class="acc-actions"><div class="imp-tags"><span class="itag">Reliability</span><span class="itag">Linux</span></div></div>
         </div>
