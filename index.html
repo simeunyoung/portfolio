@@ -297,7 +297,7 @@
       <h3 class="proj-title">빅데이터분석포탈</h3>
       <p class="proj-desc">비회원 사용자도 이용해야 하는 신규 서비스 전체를 기획하고 DB/API를 설계했습니다. <strong>기획 총괄 + 인프라 구축</strong>을 함께 담당하고 있습니다(개발은 별도 담당).</p>
       <div class="inf-list">
-        <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">비회원 인증 기획:</span> 매직링크/OTP 기반 비회원 인증, 기존 통합 인증서버와의 OAuth2 신규 클라이언트 연동 설계</div></div>
+        <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">비회원 인증 기획:</span> 이메일 매직링크와 연락처·접수번호 조회 기반 비회원 인증, 기존 통합 인증서버와의 OAuth2 신규 클라이언트 연동 설계</div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">DB/API 설계:</span> REST API 42개 설계(v0.1→v0.14), 상태값은 코드 테이블 대신 Java Enum으로, PK/FK는 예상 물량을 따져 INT로 정하는 등 설계 기준 정립, 개발 일정을 3인/화면단위 → 2인/도메인단위로 재구성 <a href="https://tech-notes-nu.vercel.app/blog/2026-09-21-enum-vs-code-table" target="_blank" class="trb-blog-link" style="margin:0 0 0 6px;font-size:10px;padding:2px 9px"><i class="fas fa-pen-nib"></i>블로그</a></div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">인프라 구축:</span> AWS S3·네트워크 인프라(보안그룹/ALB/API Gateway) 구성 항목 정리 및 점검, ALB/타겟그룹/보안그룹/ACM 인증서 상태 검증, Self-hosted Runner 추가로 부족해진 개발서버 용량을 고객사 협의 후 EBS 증설로 해소</div></div>
         <div class="inf-item"><i class="fas fa-check-circle inf-chk"></i><div class="inf-tx"><span class="inf-hl">메일 발송 방식 검토:</span> 이미 개인 Gmail 계정으로 발송 중이던 서비스에 알림 발송을 추가하며 Gmail SMTP와 AWS SES를 공식 문서·직접 테스트로 비교해, 계정 종속과 한도 구조 때문에 SES가 맞다고 정리했습니다 <a href="https://tech-notes-nu.vercel.app/blog/2026-09-18-ses-vs-gmail-smtp" target="_blank" class="trb-blog-link" style="margin:0 0 0 6px;font-size:10px;padding:2px 9px"><i class="fas fa-pen-nib"></i>블로그</a></div></div>
@@ -373,7 +373,7 @@
 
   <!-- SERVICES -->
   <section id="services" class="section">
-    <div class="section-header fi"><span class="section-tag">Microservices</span><h2 class="section-title">회원 & 알림 서비스</h2><p class="section-desc">회원 관리 & 푸시 알림 마이크로서비스 구현 상세</p></div>
+    <div class="section-header fi"><span class="section-tag">Microservices</span><h2 class="section-title">회원 & 알림 서비스</h2><p class="section-desc">담다 1.0 기능을 분석해 서비스로 분리·재구현한 회원 관리 & 푸시 알림 마이크로서비스</p></div>
     <div class="svc-grid">
       <div class="svc-card fi">
         <div class="svc-hdr"><div class="svc-ico" style="background:var(--accent)"><i class="fas fa-users-cog"></i></div><div><div class="svc-ttl">회원 관리 서비스</div><div class="svc-sub">Membership Management</div></div></div>
@@ -388,7 +388,7 @@
         <div class="svc-hdr"><div class="svc-ico" style="background:var(--accent3)"><i class="fas fa-paper-plane"></i></div><div><div class="svc-ttl">푸시 알림 서비스</div><div class="svc-sub">Firebase Push Notification</div></div></div>
         <div class="svc-body">
           <div class="feat"><i class="fas fa-check-circle feat-chk" style="color:var(--accent3)"></i><div><div class="feat-ttl">FCM 토큰 고성능 UPSERT</div><div class="feat-desc">Native SQL 'ON DUPLICATE KEY UPDATE'를 활용하여 DB 부하 최소화 및 토큰 갱신 속도 극대화</div><div class="feat-tags"><span class="ftag ftag-g">Native SQL</span><span class="ftag">Performance</span></div></div></div>
-          <div class="feat"><i class="fas fa-check-circle feat-chk" style="color:var(--accent3)"></i><div><div class="feat-ttl">WebClient 기반 비동기 전송</div><div class="feat-desc"><span class="stat-bad">동기 블로킹</span> → <span class="stat-good">비동기</span>, 메인 API 응답에서 FCM 대기 제거. Spring WebFlux WebClient 사용 (6초 타임아웃)</div><div class="feat-tags"><span class="ftag ftag-g">WebFlux</span><span class="ftag">Non-blocking</span></div></div></div>
+          <div class="feat"><i class="fas fa-check-circle feat-chk" style="color:var(--accent3)"></i><div><div class="feat-ttl">푸시 호출 분리와 타임아웃</div><div class="feat-desc">EM이 이벤트 리스너(@Async)와 WebClient 비동기 호출로 푸시를 보내 메인 API 응답이 FCM을 기다리지 않게 하고(실패 시 3회 재시도), FPN은 FCM 호출에 6초 타임아웃을 적용</div><div class="feat-tags"><span class="ftag ftag-g">WebFlux</span><span class="ftag">Retry</span></div></div></div>
           <div class="feat"><i class="fas fa-check-circle feat-chk" style="color:var(--accent3)"></i><div><div class="feat-ttl">Access Token 자동 갱신</div><div class="feat-desc">만료 60초 전 선제적 캐시 갱신 로직으로 인증 실패 방지</div></div></div>
           <div class="feat"><i class="fas fa-check-circle feat-chk" style="color:var(--accent3)"></i><div><div class="feat-ttl">토큰 생명주기 자동 관리</div><div class="feat-desc">FCM 404/Unregistered 에러 감지 시 유효하지 않은 토큰 즉시 자동 삭제</div><div class="feat-tags"><span class="ftag ftag-g">Garbage Collection</span><span class="ftag">Masking</span></div></div></div>
         </div>
@@ -425,7 +425,7 @@
 
   <!-- EVENT ENGINE -->
   <section id="eventengine" class="section">
-    <div class="section-header fi"><span class="section-tag">Automation</span><h2 class="section-title">자동화 이벤트 엔진</h2><p class="section-desc">다양한 IoT 제어 방식 통합 및 이벤트 기반 아키텍처 개선</p></div>
+    <div class="section-header fi"><span class="section-tag">Automation</span><h2 class="section-title">자동화 이벤트 엔진</h2><p class="section-desc">담다 1.0 자동화 기능을 분리·재구현하며 IoT 제어 방식 통합 및 이벤트 기반 구조로 개선</p></div>
     <div class="evt-types fi">
       <div class="type-card"><div class="type-ico" style="background:var(--accent)"><i class="fas fa-tasks"></i></div><div class="type-ttl">일괄 제어</div><div class="type-dc">버튼 하나로 여러 디바이스를 동시에 제어하는 수동 일괄 실행</div></div>
       <div class="type-card"><div class="type-ico" style="background:var(--accent2)"><i class="fas fa-clock"></i></div><div class="type-ttl">스케줄링</div><div class="type-dc">Quartz 1분 주기 스케줄링 — 요일/시간 기반 반복 예약 제어</div></div>
